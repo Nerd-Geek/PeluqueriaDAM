@@ -1,8 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.repository;
 
 import ies.luisvives.serverpeluqueriadam.model.Service;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.repository.CrudRepository;
 

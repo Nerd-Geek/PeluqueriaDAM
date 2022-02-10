@@ -1,9 +1,13 @@
 package ies.luisvives.serverpeluqueriadam.repository;
 
 import ies.luisvives.serverpeluqueriadam.model.Appointment;
-import org.apache.catalina.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.CrudRepository;
 
-public interface AppointmentRepository extends CrudRepository<Appointment,String> {
+import java.util.Date;
 
+public interface AppointmentRepository extends CrudRepository<Appointment,String> {
+    Appointment findByDate(Date date);
+    Page<Appointment> findByMonth(Pageable pageable, Date date);
 }

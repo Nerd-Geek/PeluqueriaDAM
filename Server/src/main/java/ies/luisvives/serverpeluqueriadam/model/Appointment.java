@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ import java.util.Date;
 @Table(name="appointment")
 public class Appointment {
 private String id;
-private Date date;
+private LocalDate date;
 private LocalTime time;
 private User user;
     @Id
@@ -28,11 +29,11 @@ private User user;
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

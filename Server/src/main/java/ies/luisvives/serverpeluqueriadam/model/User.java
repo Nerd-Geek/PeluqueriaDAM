@@ -21,7 +21,6 @@ public class User {
     private String id;
     private String image;
     private boolean superUser;
-    private String image;
     @Column(unique = true)
     private String username;
     private String password;
