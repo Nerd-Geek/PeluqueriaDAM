@@ -61,6 +61,14 @@ public class ServerPeluqueriaDamApplication {
             .instance(Date.from(Instant.now()))
             .user(user)
             .build();
+
+//    @Bean
+//    public CommandLineRunner dropDB () {
+//        return args -> {
+//
+//        };
+//    }
+
     @Bean
     public CommandLineRunner initUsers(UserRepository repository) {
         return args -> {
@@ -89,6 +97,13 @@ public class ServerPeluqueriaDamApplication {
     public CommandLineRunner initLogin(LoginRepository repository) {
         return args -> {
             repository.save(login);
+        };
+    }
+
+    @Bean
+    public CommandLineRunner firstSelect(UserRepository repository) {
+        return args -> {
+            System.out.println(repository.findByUsername("peludito150"));
         };
     }
 }

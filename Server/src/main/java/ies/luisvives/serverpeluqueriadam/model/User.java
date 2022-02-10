@@ -127,6 +127,24 @@ public class User {
         this.appointments = appointments;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id='" + id + '\'' +
+                ", image='" + image + '\'' +
+                ", superUser=" + superUser +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", email='" + email + '\'' +
+                ", gender=" + gender +
+                ", logins=" + logins +
+                ", appointments=" + appointments +
+                '}';
+    }
+
     public enum Gender {
         Male,
         Female

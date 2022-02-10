@@ -9,5 +9,5 @@ import java.util.Date;
 
 public interface AppointmentRepository extends CrudRepository<Appointment,String> {
     Appointment findByDate(Date date);
-    Page<Appointment> findByMonth(Pageable pageable, Date date);
+//    Page<Appointment> findByMonth(Pageable pageable, Date date);
 }
