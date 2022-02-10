@@ -16,6 +16,7 @@ import javax.persistence.Table;
 @Table(name = "services")
 public class Service {
     private String id;
+    private String image;
     private String name;
     private String description;
     private Double price;
@@ -29,6 +30,10 @@ public class Service {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
 
     @Column(unique = true)
     public String getName() {

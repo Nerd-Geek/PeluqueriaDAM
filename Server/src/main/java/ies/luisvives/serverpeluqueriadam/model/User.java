@@ -6,6 +6,10 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Set;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Builder
@@ -15,6 +19,7 @@ import java.util.Set;
 public class User {
     //todo UUID
     private String id;
+    private String image;
     private boolean superUser;
     private String image;
     @Column(unique = true)
@@ -36,6 +41,10 @@ public class User {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
 
     public boolean isSuperUser() {
         return superUser;
