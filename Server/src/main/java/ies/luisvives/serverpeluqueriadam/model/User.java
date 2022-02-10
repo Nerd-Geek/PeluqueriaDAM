@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -15,6 +16,7 @@ public class User {
     //todo UUID
     private String id;
     private boolean superUser;
+    private String image;
     @Column(unique = true)
     private String username;
     private String password;
@@ -23,6 +25,8 @@ public class User {
     private String phoneNumber;
     private String email;
     private Gender gender;
+    private Set<Login> logins;
+    private Set<Appointment> appointments;
 
     @Id
     public String getId() {
@@ -95,6 +99,24 @@ public class User {
 
     public void setGender(Gender gender) {
         this.gender = gender;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.REMOVE)
+    public Set<Login> getLogins() {
+        return logins;
+    }
+
+    public void setLogins(Set<Login> logins) {
+        this.logins = logins;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.REMOVE)
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
     }
 
     public enum Gender {

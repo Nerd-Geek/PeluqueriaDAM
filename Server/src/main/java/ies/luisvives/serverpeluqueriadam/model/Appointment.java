@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.util.Date;
@@ -20,6 +18,7 @@ public class Appointment {
 private String id;
 private Date date;
 private LocalTime time;
+private User user;
     @Id
     public String getId() {
         return id;
@@ -43,5 +42,15 @@ private LocalTime time;
 
     public void setTime(LocalTime time) {
         this.time = time;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user", referencedColumnName = "id")
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

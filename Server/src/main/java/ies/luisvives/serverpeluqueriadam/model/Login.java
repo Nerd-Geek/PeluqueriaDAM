@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -16,8 +14,10 @@ import java.util.Date;
 @Table(name = "Login")
 public class Login {
     private String id;
+    private String image;
     private String token;
     private Date instance;
+    private User user;
     @Id
     public String getId() {
         return id;
@@ -26,6 +26,10 @@ public class Login {
     public void setId(String id) {
         this.id = id;
     }
+
+    public String getImage() {return image;}
+
+    public void setImage(String image) {this.image = image;}
 
     public String getToken() {
         return token;
@@ -41,5 +45,15 @@ public class Login {
 
     public void setInstance(Date instance) {
         this.instance = instance;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "user", referencedColumnName = "id", nullable = false)
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
