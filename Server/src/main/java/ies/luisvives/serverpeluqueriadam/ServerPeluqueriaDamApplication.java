@@ -24,15 +24,16 @@ public class ServerPeluqueriaDamApplication {
                             .id(UUID.randomUUID().toString())
                             .superUser(true)
                             .name("poro")
-                            .surname("frejorld")
+                            .surname("freljorld")
                             .username("peludito150")
                             .password("braumILY")
+                            .email("porofernandez@freljorld.com")
                             .phoneNumber("234567890")
                             .gender(User.Gender.Male)
                     .build());
         };
     }
 
-    
+
 
 }

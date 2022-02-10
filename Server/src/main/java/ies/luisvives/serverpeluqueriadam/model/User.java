@@ -4,9 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Builder
@@ -17,6 +15,7 @@ public class User {
     //todo UUID
     private String id;
     private boolean superUser;
+    @Column(unique = true)
     private String username;
     private String password;
     private String name;
