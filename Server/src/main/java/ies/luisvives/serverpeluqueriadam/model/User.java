@@ -1,9 +1,18 @@
 package ies.luisvives.serverpeluqueriadam.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name = "users")
 public class User {
     //todo UUID
     private String id;

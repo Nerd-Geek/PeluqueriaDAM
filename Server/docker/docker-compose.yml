@@ -1,0 +1,35 @@
+# Use root/example as user/password credentials
+version: '3.1'
+
+services:
+
+  db:
+    build: ./mariadb
+    image: mariadb
+    container_name: mariaDBPeluqueria
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
+    volumes:
+      - mariadb-peluqueria-volumen:/var/lib/mysql
+    networks:
+      - mariadb-network
+    restart: always
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    networks:
+      - mariadb-network
+    depends_on:
+      - db
+volumes:
+  mariadb-peluqueria-volumen:
+
+networks:
+  mariadb-network:
+    driver: bridge
