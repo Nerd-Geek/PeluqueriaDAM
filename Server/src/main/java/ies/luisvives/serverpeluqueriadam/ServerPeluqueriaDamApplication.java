@@ -99,11 +99,4 @@ public class ServerPeluqueriaDamApplication {
             repository.save(login);
         };
     }
-
-    @Bean
-    public CommandLineRunner firstSelect(UserRepository repository) {
-        return args -> {
-            System.out.println(repository.findByUsername("peludito150"));
-        };
-    }
 }
