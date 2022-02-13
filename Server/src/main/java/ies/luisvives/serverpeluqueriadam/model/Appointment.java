@@ -20,6 +20,7 @@ private String id;
 private LocalDate date;
 private LocalTime time;
 private User user;
+//todo add service
     @Id
     public String getId() {
         return id;
@@ -29,6 +30,7 @@ private User user;
         this.id = id;
     }
 
+    @Column(name = "appointmentDate")
     public LocalDate getDate() {
         return date;
     }
@@ -37,6 +39,7 @@ private User user;
         this.date = date;
     }
 
+    @Column(name = "appointmentTime")
     public LocalTime getTime() {
         return time;
     }
@@ -46,12 +49,22 @@ private User user;
     }
 
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id")
+    @JoinColumn(name = "id_user", referencedColumnName = "id")
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Appointment{" +
+                "id='" + id + '\'' +
+                ", date=" + date +
+                ", time=" + time +
+//                ", user=" + user + TODO Recursividad
+                '}';
     }
 }

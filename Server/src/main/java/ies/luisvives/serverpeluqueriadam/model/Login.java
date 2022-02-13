@@ -48,12 +48,23 @@ public class Login {
     }
 
     @ManyToOne
-    @JoinColumn(name = "user", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_user", referencedColumnName = "id", nullable = false)
     public User getUser() {
         return user;
     }
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    @Override
+    public String toString() {
+        return "Login{" +
+                "id='" + id + '\'' +
+                ", image='" + image + '\'' +
+                ", token='" + token + '\'' +
+                ", instance=" + instance +
+//                ", user=" + user + TODO RECURSIVIDAD
+                '}';
     }
 }
