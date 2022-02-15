@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.UUID;
@@ -62,6 +61,7 @@ public class ServerPeluqueriaDamApplication {
 //            .user(user)
 //            .build();
 
+//    static Login login = Login.builder()
 //    @Bean
 //    public CommandLineRunner dropDB () {
 //        return args -> {
