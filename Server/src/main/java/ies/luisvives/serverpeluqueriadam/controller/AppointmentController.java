@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(APIConfig.API_PATH + "/auth/appointments")
+@RequestMapping("/appointments")
 public class AppointmentController {
     private final AppointmentRepository appointmentRepository;
     private final AppointmentMapper appointmentMapper;

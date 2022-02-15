@@ -56,7 +56,6 @@ public class Login {
     public String toString() {
         return "Login{" +
                 "id='" + id + '\'' +
-                ", image='" + image + '\'' +
                 ", token='" + token + '\'' +
                 ", instance=" + instance +
 //                ", user=" + user + TODO RECURSIVIDAD

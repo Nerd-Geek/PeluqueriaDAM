@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(APIConfig.API_PATH + "/auth/logins")
+@RequestMapping("/logins") //TODO : ¿asignamos el API_PATH al principio? - APIConfig.API_PATH
 public class LoginController {
     private final LoginRepository loginRepository;
     private final LoginMapper loginMapper;

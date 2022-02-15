@@ -61,7 +61,7 @@ public class ServerPeluqueriaDamApplication {
 //            .user(user)
 //            .build();
 
-    static Login login = Login.builder()
+//    static Login login = Login.builder()
 //    @Bean
 //    public CommandLineRunner dropDB () {
 //        return args -> {
