@@ -1,6 +1,7 @@
 package ies.luisvives.serverpeluqueriadam.mapper;
 
-import ies.luisvives.serverpeluqueriadam.dto.UserDTO;
+import ies.luisvives.serverpeluqueriadam.dto.user.CreateUserDTO;
+import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.model.User;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -19,6 +20,10 @@ public class UserMapper {
     }
 
     public User fromDTO(UserDTO userDTO) {
+        return modelMapper.map(userDTO, User.class);
+    }
+
+    public User fromDTOCreate(CreateUserDTO userDTO) {
         return modelMapper.map(userDTO, User.class);
     }
 

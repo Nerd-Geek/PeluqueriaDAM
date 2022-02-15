@@ -1,6 +1,7 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
-import ies.luisvives.serverpeluqueriadam.dto.UserDTO;
+import ies.luisvives.serverpeluqueriadam.dto.user.CreateUserDTO;
+import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UserBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundException;
@@ -56,9 +57,9 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<?> save(@RequestBody UserDTO userDTO) {
+    public ResponseEntity<?> save(@RequestBody CreateUserDTO userDTO) {
         try {
-            User user = userMapper.fromDTO(userDTO);
+            User user = userMapper.fromDTOCreate(userDTO);
             checkUserData(user);
             User inserted = repository.save(user);
             return ResponseEntity.ok(userMapper.toDTO(inserted));

@@ -1,4 +1,4 @@
-package ies.luisvives.serverpeluqueriadam.dto;
+package ies.luisvives.serverpeluqueriadam.dto.user;
 
 import ies.luisvives.serverpeluqueriadam.model.Appointment;
 import ies.luisvives.serverpeluqueriadam.model.Login;
