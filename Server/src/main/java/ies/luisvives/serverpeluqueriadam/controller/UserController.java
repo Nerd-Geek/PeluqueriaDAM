@@ -1,12 +1,19 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
 import ies.luisvives.serverpeluqueriadam.dto.UserDTO;
+import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UserBadRequestException;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundException;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UsersNotFoundException;
 import ies.luisvives.serverpeluqueriadam.mapper.UserMapper;
 import ies.luisvives.serverpeluqueriadam.model.User;
 import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class UserController {
@@ -20,43 +27,93 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<?> all() {
-        return ResponseEntity.ok(userMapper.toDTO(repository.findAll()));
+    public ResponseEntity<?> findAll(@RequestParam(name = "limit")Optional<String> limit) {
+        List<User> users = null;
+        try {
+            users = repository.findAll();
+            if (limit.isPresent() && !users.isEmpty() && users.size() > Integer.parseInt(limit.get())) {
+                return ResponseEntity.ok(userMapper.toDTO(users.subList(0, Integer.parseInt(limit.get()))));
+            } else {
+                if (!users.isEmpty()) {
+                    return ResponseEntity.ok(userMapper.toDTO(users));
+                } else {
+                    throw new UsersNotFoundException();
+                }
+            }
+        } catch (Exception e) {
+            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
+        }
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<?> one(@PathVariable String id) {
+    public ResponseEntity<?> findById(@PathVariable String id) {
         User user = repository.findById(id).orElse(null);
-        return ResponseEntity.ok(userMapper.toDTO(user));
+        if (user == null) {
+            throw new UserNotFoundException(id);
+        } else {
+            return ResponseEntity.ok(userMapper.toDTO(user));
+        }
     }
 
     @PostMapping("/users")
-    public ResponseEntity<?> newService(@RequestBody UserDTO newUser) {
-        User user = userMapper.fromDTO(newUser);
-        User userInsert = repository.save(user);
-        return ResponseEntity.ok(userMapper.toDTO(userInsert));
+    public ResponseEntity<?> save(@RequestBody UserDTO userDTO) {
+        try {
+            User user = userMapper.fromDTO(userDTO);
+            checkUserData(user);
+            User inserted = repository.save(user);
+            return ResponseEntity.ok(userMapper.toDTO(inserted));
+        } catch (Exception e) {
+            throw new GeneralBadRequestException("Insertar", "Error al insertar el usuario. Campos incorrectos.");
+        }
     }
 
     @PutMapping("/users/{id}")
-    public ResponseEntity<?> replaceService(@RequestBody User newUser, @PathVariable String id) {
-        User userUpdated = repository.findById(id).orElse(null);
-
-        userUpdated.setName(newUser.getName());
-        userUpdated.setImage(newUser.getImage());
-        userUpdated.setSuperUser(newUser.isSuperUser());
-        userUpdated.setUsername(newUser.getUsername());
-        userUpdated.setPassword(newUser.getPassword());
-        userUpdated.setSurname(newUser.getSurname());
-        userUpdated.setPhoneNumber(newUser.getPhoneNumber());
-        userUpdated.setEmail(newUser.getEmail());
-        userUpdated.setGenders(newUser.getGenders());
-        userUpdated.setLogins(newUser.getLogins());
-        userUpdated.setAppointments(newUser.getAppointments());
-        return ResponseEntity.ok(userMapper.toDTO(userUpdated));
+    public ResponseEntity<?> update(@RequestBody User newUser, @PathVariable String id) {
+        try {
+            User userUpdated = repository.findById(id).orElse(null);
+        if (userUpdated == null) {
+                throw new UserNotFoundException(id);
+            } else {
+                userUpdated.setName(newUser.getName());
+                userUpdated.setImage(newUser.getImage());
+                userUpdated.setSuperUser(newUser.isSuperUser());
+                userUpdated.setUsername(newUser.getUsername());
+                userUpdated.setPassword(newUser.getPassword());
+                userUpdated.setSurname(newUser.getSurname());
+                userUpdated.setPhoneNumber(newUser.getPhoneNumber());
+                userUpdated.setEmail(newUser.getEmail());
+                userUpdated.setGenders(newUser.getGenders());
+                userUpdated.setLogins(newUser.getLogins());
+                userUpdated.setAppointments(newUser.getAppointments());
+                return ResponseEntity.ok(userMapper.toDTO(userUpdated));
+            }
+        } catch (Exception e) {
+            throw new GeneralBadRequestException("Actualizar", "Error al actualizar el usuario. Campos incorrectos.");
+        }
     }
 
     @DeleteMapping("/users/{id}")
-    public void deleteService(@PathVariable String id) {
-        repository.deleteById(id);
+    public ResponseEntity<UserDTO> delete(@PathVariable String id) {
+        try {
+            User user = repository.findById(id).orElse(null);
+            if (user == null) {
+                throw new UserNotFoundException(id);
+            } else {
+                repository.delete(user);
+                return ResponseEntity.ok(userMapper.toDTO(user));
+            }
+        } catch (Exception e) {
+            throw new GeneralBadRequestException("Eliminar", "Error al borrar el usuario");
+        }
     }
+
+    private void checkUserData(User user) {
+        if (user.getUsername() == null || user.getUsername().isEmpty()) {
+            throw new UserBadRequestException("Username", "El username es obligatorio");
+        }
+        if (user.getPassword() == null) {
+            throw new UserBadRequestException("Password", "La password es obligatoria");
+        }
+    }
+
 }
