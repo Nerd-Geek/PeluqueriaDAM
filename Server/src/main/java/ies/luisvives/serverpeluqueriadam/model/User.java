@@ -31,7 +31,7 @@ public class User {
     private String email;
     private Set<Login> logins;
     private Set<Appointment> appointments;
-    private Set<UserGender> genders;
+    private UserGender genders;
 
     @Id
     public String getId() {
@@ -102,13 +102,12 @@ public class User {
         this.email = email;
     }
 
-    @ElementCollection(fetch = FetchType.EAGER)
     @Enumerated(EnumType.STRING)
-    public Set<UserGender> getGenders() {
+    public UserGender getGenders() {
         return genders;
     }
 
-    public void setGenders(Set<UserGender> genders) {
+    public void setGenders(UserGender genders) {
         this.genders = genders;
     }
 
