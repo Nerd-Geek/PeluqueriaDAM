@@ -14,7 +14,6 @@ import java.util.Date;
 @Table(name = "Login")
 public class Login {
     private String id;
-    private String image;
     private String token;
     private Date instance;
     private User user;
@@ -26,10 +25,6 @@ public class Login {
     public void setId(String id) {
         this.id = id;
     }
-
-    public String getImage() {return image;}
-
-    public void setImage(String image) {this.image = image;}
 
     public String getToken() {
         return token;

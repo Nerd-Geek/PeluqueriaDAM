@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Bean;
 
 import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.Date;
 import java.util.UUID;
@@ -57,7 +56,6 @@ public class ServerPeluqueriaDamApplication {
     static Login login = Login.builder()
             .id(UUID.randomUUID().toString())
             .token("123213412")
-            .image("a")
             .instance(Date.from(Instant.now()))
             .user(user)
             .build();

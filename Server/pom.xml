@@ -53,7 +53,12 @@
             <version>2.1.210</version>
             <scope>runtime</scope>
         </dependency>
-
+        <!-- ModelMapper -->
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+            <version>2.4.5</version>
+        </dependency>
     </dependencies>
 
     <build>
