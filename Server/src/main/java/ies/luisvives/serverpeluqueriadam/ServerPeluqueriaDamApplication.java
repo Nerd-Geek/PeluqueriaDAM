@@ -25,76 +25,88 @@ public class ServerPeluqueriaDamApplication {
     public static void main(String[] args) {
         SpringApplication.run(ServerPeluqueriaDamApplication.class, args);
     }
-    static User user = User.builder()
-            .id(UUID.randomUUID().toString())
-            .superUser(true)
-            .name("poro")
-            .surname("freljorld")
-            .username("peludito150")
-            .password("braumILY")
-            .email("porofernandez@freljorld.com")
-            .phoneNumber("234567890")
-            .gender(User.Gender.Male)
-            .build();
-
-    static Appointment appointment = Appointment.builder()
-            .id(UUID.randomUUID().toString())
-            .date(LocalDate.now())
-            .time(LocalTime.now())
-            .user(user)
-            .build();
-
-    static Service service = Service.builder()
-            .id(UUID.randomUUID().toString())
-            .name("Corte pelo")
-            .image("/a")
-            .description("Este es un corte de pelo para gnomos")
-            .price(100.00)
-            .stock(4)
-            .build();
+//    static User user = User.builder()
+//            .id(UUID.randomUUID().toString())
+//            .superUser(true)
+//            .name("poro")
+//            .surname("freljorld")
+//            .username("peludito150")
+//            .password("braumILY")
+//            .email("porofernandez@freljorld.com")
+//            .phoneNumber("234567890")
+//            .gender(User.Gender.Male)
+//            .build();
+//
+//    static Appointment appointment = Appointment.builder()
+//            .id(UUID.randomUUID().toString())
+//            .date(LocalDate.now())
+//            .time(LocalTime.now())
+//            .user(user)
+//            .build();
+//
+//    static Service service = Service.builder()
+//            .id(UUID.randomUUID().toString())
+//            .name("Corte pelo")
+//            .image("/a")
+//            .description("Este es un corte de pelo para gnomos")
+//            .price(100.00)
+//            .stock(4)
+//            .build();
+//
+//    static Login login = Login.builder()
+//            .id(UUID.randomUUID().toString())
+//            .token("123213412")
+//            .image("a")
+//            .instance(Date.from(Instant.now()))
+//            .user(user)
+//            .build();
 
     static Login login = Login.builder()
-            .id(UUID.randomUUID().toString())
-            .token("123213412")
-            .instance(Date.from(Instant.now()))
-            .user(user)
-            .build();
-
 //    @Bean
 //    public CommandLineRunner dropDB () {
 //        return args -> {
 //
 //        };
 //    }
+//
+//    @Bean
+//    public CommandLineRunner initUsers(UserRepository repository) {
+//        return args -> {
+//            repository.save(
+//                    user);
+//        };
+//    }
+//
+//    @Bean
+//    public CommandLineRunner initAppointment(AppointmentRepository repository) {
+//        return args -> {
+//            repository.save(
+//                    appointment);
+//        };
+//    }
+//
+//    @Bean
+//    public CommandLineRunner initService(ServiceRepository repository) {
+//        return args -> {
+//            repository.save(
+//                    service);
+//        };
+//    }
+//
+//    @Bean
+//    public CommandLineRunner initLogin(LoginRepository repository) {
+//        return args -> {
+//            repository.save(login);
+//        };
+//    }
 
     @Bean
-    public CommandLineRunner initUsers(UserRepository repository) {
+    public CommandLineRunner selectAll(LoginRepository loginRepo, ServiceRepository serviceRepo, AppointmentRepository appointmentRepo, UserRepository userRepo) {
         return args -> {
-            repository.save(
-                    user);
-        };
-    }
-
-    @Bean
-    public CommandLineRunner initAppointment(AppointmentRepository repository) {
-        return args -> {
-            repository.save(
-                    appointment);
-        };
-    }
-
-    @Bean
-    public CommandLineRunner initService(ServiceRepository repository) {
-        return args -> {
-            repository.save(
-                    service);
-        };
-    }
-
-    @Bean
-    public CommandLineRunner initLogin(LoginRepository repository) {
-        return args -> {
-            repository.save(login);
+            loginRepo.findAll().forEach(System.out::println);
+            appointmentRepo.findAll().forEach(System.out::println);
+            serviceRepo.findAll().forEach(System.out::println);
+            userRepo.findAll().forEach(System.out::println);
         };
     }
 }

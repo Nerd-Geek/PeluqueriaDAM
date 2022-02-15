@@ -140,8 +140,9 @@ public class User {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
-                ", logins=" + logins +
-                ", appointments=" + appointments +
+                // TODO: RECUSRSIVIDAD COMENTARLA
+                //", logins=" + logins +
+                //", appointments=" + appointments +
                 '}';
     }
 
