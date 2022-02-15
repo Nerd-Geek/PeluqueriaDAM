@@ -3,6 +3,7 @@ package ies.luisvives.serverpeluqueriadam.dto;
 import ies.luisvives.serverpeluqueriadam.model.Appointment;
 import ies.luisvives.serverpeluqueriadam.model.Login;
 import ies.luisvives.serverpeluqueriadam.model.User;
+import ies.luisvives.serverpeluqueriadam.model.UserGender;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,12 +16,13 @@ public class UserDTO {
     private String image;
     private boolean superUser;
     private String username;
-    private String password;
+    // Comento la contraseña porque no quiero mostrarla o sí si queremos recuperarla o sobreescribirla
+    //private String password;
     private String name;
     private String surname;
     private String phoneNumber;
     private String email;
-    private User.Gender gender;
+    private Set<UserGender> genders;
     // TODO: RECUSRSIVIDAD COMENTARLA
     //private Set<Login> logins;
     //private Set<Appointment> appointments;

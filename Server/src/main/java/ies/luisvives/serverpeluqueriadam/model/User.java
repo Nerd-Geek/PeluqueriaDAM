@@ -20,6 +20,7 @@ public class User {
     //todo UUID
     private String id;
     private String image;
+    // Sustituir por UserRole
     private boolean superUser;
     @Column(unique = true)
     private String username;
@@ -28,9 +29,11 @@ public class User {
     private String surname;
     private String phoneNumber;
     private String email;
-    private Gender gender;
     private Set<Login> logins;
     private Set<Appointment> appointments;
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    private Set<UserGender> genders;
 
     @Id
     public String getId() {
@@ -101,12 +104,12 @@ public class User {
         this.email = email;
     }
 
-    public Gender getGender() {
-        return gender;
+    public Set<UserGender> getGenders() {
+        return genders;
     }
 
-    public void setGender(Gender gender) {
-        this.gender = gender;
+    public void setGenders(Set<UserGender> genders) {
+        this.genders = genders;
     }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.REMOVE)
@@ -139,15 +142,10 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", gender=" + gender +
+                ", gender=" + genders +
                 // TODO: RECUSRSIVIDAD COMENTARLA
                 //", logins=" + logins +
                 //", appointments=" + appointments +
                 '}';
-    }
-
-    public enum Gender {
-        Male,
-        Female
     }
 }
