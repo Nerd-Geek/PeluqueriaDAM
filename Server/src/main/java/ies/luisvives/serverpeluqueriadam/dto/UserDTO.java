@@ -22,7 +22,7 @@ public class UserDTO {
     private String surname;
     private String phoneNumber;
     private String email;
-    private Set<UserGender> genders;
+    private Set<String> genders;
     // TODO: RECUSRSIVIDAD COMENTARLA
     //private Set<Login> logins;
     //private Set<Appointment> appointments;

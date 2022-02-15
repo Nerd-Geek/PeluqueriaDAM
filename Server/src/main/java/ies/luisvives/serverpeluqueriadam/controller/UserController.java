@@ -49,7 +49,7 @@ public class UserController {
         userUpdated.setSurname(newUser.getSurname());
         userUpdated.setPhoneNumber(newUser.getPhoneNumber());
         userUpdated.setEmail(newUser.getEmail());
-        userUpdated.setGender(newUser.getGender());
+        userUpdated.setGenders(newUser.getGenders());
         userUpdated.setLogins(newUser.getLogins());
         userUpdated.setAppointments(newUser.getAppointments());
         return ResponseEntity.ok(userMapper.toDTO(userUpdated));
