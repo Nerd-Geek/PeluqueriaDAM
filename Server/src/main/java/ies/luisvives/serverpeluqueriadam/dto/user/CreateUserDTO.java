@@ -16,5 +16,5 @@ public class CreateUserDTO {
     private String surname;
     private String phoneNumber;
     private String email;
-    private UserGender genders;
+    private UserGender gender;
 }

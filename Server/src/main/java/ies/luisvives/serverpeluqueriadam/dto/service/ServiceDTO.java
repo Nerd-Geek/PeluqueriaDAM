@@ -1,4 +1,4 @@
-package ies.luisvives.serverpeluqueriadam.dto;
+package ies.luisvives.serverpeluqueriadam.dto.service;
 
 import lombok.Getter;
 import lombok.Setter;
