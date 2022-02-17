@@ -58,6 +58,7 @@ public class Service {
         this.price = price;
     }
 
+    //@Min
     public Integer getStock() {
         return stock;
     }
