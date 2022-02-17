@@ -18,6 +18,6 @@ public class AppointmentDTO {
     private String id;
     private LocalDate date;
     private LocalTime time;
-    private User user;
+    private UserDTO user;
     private Service service;
 }
