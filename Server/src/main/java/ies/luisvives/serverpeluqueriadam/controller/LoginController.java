@@ -1,6 +1,5 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
-import ies.luisvives.serverpeluqueriadam.config.APIConfig;
 import ies.luisvives.serverpeluqueriadam.dto.login.ListLoginPageDTO;
 import ies.luisvives.serverpeluqueriadam.dto.login.LoginDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
@@ -9,17 +8,15 @@ import ies.luisvives.serverpeluqueriadam.exceptions.login.LoginNotFoundException
 import ies.luisvives.serverpeluqueriadam.exceptions.login.LoginsNotFoundException;
 import ies.luisvives.serverpeluqueriadam.mapper.LoginMapper;
 import ies.luisvives.serverpeluqueriadam.model.Login;
-import ies.luisvives.serverpeluqueriadam.model.User;
 import ies.luisvives.serverpeluqueriadam.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.data.domain.Pageable;
 
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -129,11 +126,6 @@ public class LoginController {
      *
      * @param login DAO de Login
      */
-    private String image;
-    private String token;
-    private Date instance;
-    private User user;
-
     private void checkLoginData(Login login) {
         if (login.getToken() == null || login.getInstance() == null) {
             throw new LoginBadRequestException("Token", "El token es obligatorio");
