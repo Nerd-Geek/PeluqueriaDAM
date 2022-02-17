@@ -31,7 +31,7 @@ public class User {
     private String email;
     private Set<Login> logins;
     private Set<Appointment> appointments;
-    private UserGender genders;
+    private UserGender gender;
 
     @Id
     public String getId() {
@@ -103,12 +103,12 @@ public class User {
     }
 
     @Enumerated(EnumType.STRING)
-    public UserGender getGenders() {
-        return genders;
+    public UserGender getGender() {
+        return gender;
     }
 
-    public void setGenders(UserGender genders) {
-        this.genders = genders;
+    public void setGender(UserGender genders) {
+        this.gender = genders;
     }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.REMOVE)
@@ -141,7 +141,7 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
-                ", gender=" + genders +
+                ", gender=" + gender +
                 // TODO: RECUSRSIVIDAD COMENTARLA
                 //", logins=" + logins +
                 //", appointments=" + appointments +

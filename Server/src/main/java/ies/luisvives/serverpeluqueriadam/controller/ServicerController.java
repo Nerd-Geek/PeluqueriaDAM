@@ -1,6 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
-import ies.luisvives.serverpeluqueriadam.dto.ServiceDTO;
+import ies.luisvives.serverpeluqueriadam.dto.service.ServiceDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.ServiceNotFoundException;
 import ies.luisvives.serverpeluqueriadam.exceptions.service.ServiceBadRequestException;

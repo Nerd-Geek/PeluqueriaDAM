@@ -20,7 +20,8 @@ private String id;
 private LocalDate date;
 private LocalTime time;
 private User user;
-//todo add service
+private Service service;
+
     @Id
     public String getId() {
         return id;
@@ -57,6 +58,17 @@ private User user;
     public void setUser(User user) {
         this.user = user;
     }
+
+    @ManyToOne
+    @JoinColumn(name = "service", referencedColumnName = "id")
+    public Service getService() {
+        return service;
+    }
+
+    public void setService(Service service) {
+        this.service = service;
+    }
+
 
     @Override
     public String toString() {

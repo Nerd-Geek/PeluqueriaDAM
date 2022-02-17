@@ -1,6 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.mapper;
 
-import ies.luisvives.serverpeluqueriadam.dto.ServiceDTO;
+import ies.luisvives.serverpeluqueriadam.dto.service.ServiceDTO;
 import ies.luisvives.serverpeluqueriadam.model.Service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;

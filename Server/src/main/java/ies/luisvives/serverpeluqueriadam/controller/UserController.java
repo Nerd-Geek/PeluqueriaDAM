@@ -75,6 +75,7 @@ public class UserController {
         if (userUpdated == null) {
                 throw new UserNotFoundException(id);
             } else {
+                checkUserData(newUser);
                 userUpdated.setName(newUser.getName());
                 userUpdated.setImage(newUser.getImage());
                 userUpdated.setSuperUser(newUser.isSuperUser());
@@ -83,9 +84,10 @@ public class UserController {
                 userUpdated.setSurname(newUser.getSurname());
                 userUpdated.setPhoneNumber(newUser.getPhoneNumber());
                 userUpdated.setEmail(newUser.getEmail());
-                userUpdated.setGenders(newUser.getGenders());
+                userUpdated.setGender(newUser.getGender());
                 userUpdated.setLogins(newUser.getLogins());
                 userUpdated.setAppointments(newUser.getAppointments());
+                userUpdated = repository.save(userUpdated);
                 return ResponseEntity.ok(userMapper.toDTO(userUpdated));
             }
         } catch (Exception e) {
