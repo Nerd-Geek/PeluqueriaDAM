@@ -60,7 +60,7 @@ private Service service;
     }
 
     @ManyToOne
-    @JoinColumn(name = "service", referencedColumnName = "id")
+    @JoinColumn(name = "id_service", referencedColumnName = "id")
     public Service getService() {
         return service;
     }

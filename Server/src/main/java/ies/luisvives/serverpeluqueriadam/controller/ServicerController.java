@@ -60,6 +60,7 @@ public class ServicerController {
 	@PostMapping("/services")
 	public ResponseEntity<?> newService(@RequestBody ServiceDTO newService) {
 		Service service = serviceMapper.fromDTO(newService);
+		checkServiceData(service);
 		Service serviceInsert = repository.save(service);
 		return ResponseEntity.ok(serviceMapper.toDTO(serviceInsert));
 	}
@@ -106,7 +107,7 @@ public class ServicerController {
 		if (service.getName() == null || service.getName().isEmpty()) {
 			throw new ServiceBadRequestException("Nombre", "El nombre es obligatorio");
 		}
-		if (service.getPrice() == 0) {
+		if (service.getPrice() <= 0) {
 			throw new ServiceBadRequestException("Precio", "El precio debe ser mayor que 0");
 		}
 		if (service.getStock() < 0) {
