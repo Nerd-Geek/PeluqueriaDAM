@@ -1,0 +1,15 @@
+#crear_service {
+    -fx-background-color: #3a3c51;
+    -fx-text-fill: #ffce3c;
+    -fx-border-color: #595b79;
+    -fx-border-width: 3;
+    -fx-font-size: 15px;
+}
+
+#subir_image_service {
+    -fx-background-color: #3a3c51;
+    -fx-text-fill: #ffce3c;
+    -fx-border-color: #595b79;
+    -fx-border-width: 3;
+    -fx-font-size: 15px;
+}
