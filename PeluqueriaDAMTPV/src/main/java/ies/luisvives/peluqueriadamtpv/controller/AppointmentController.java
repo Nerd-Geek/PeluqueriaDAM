@@ -1,4 +1,4 @@
-package ies.luisvives.peluqueriadamtpv;
+package ies.luisvives.peluqueriadamtpv.controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,7 +13,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
+public class AppointmentController implements Initializable {
 	private Calendar calendar;
 
 	@FXML
@@ -109,7 +109,7 @@ public class Controller implements Initializable {
 
 	private List<List<Button>> gridButtons;
 
-	public Controller () {
+	public AppointmentController() {
 		calendar = Calendar.getInstance();
 		gridButtons = new ArrayList<>();
 	}

@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<SplitPane dividerPositions="0.2" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<SplitPane dividerPositions="0.2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ies.luisvives.peluqueriadamtpv.controller.MainController">
   <items>
-      <VBox alignment="TOP_CENTER" style="-fx-background-color: #393b50;">
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #393b50;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -18,14 +23,14 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </ImageView>
-            <Label style="-fx-background-color: #434659;" text="Admin" textFill="WHITE">
+            <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #434659;" text="Admin" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="16.0" />
                </font>
                <padding>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </padding></Label>
-            <HBox alignment="CENTER_LEFT" onMouseClicked="#menuClicked" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -35,7 +40,7 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Citas" textFill="WHITE">
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Citas" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -44,7 +49,7 @@
                      </HBox.margin></Label>
                </children>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -54,7 +59,7 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Usuarios" textFill="WHITE">
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Usuarios" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -66,7 +71,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -76,7 +81,7 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Servicios" textFill="WHITE">
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Servicios" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -88,7 +93,7 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="337.0" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="337.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="100.0" prefWidth="200.0">
                <children>
                   <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -98,7 +103,7 @@
                         <Insets left="30.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="Informes" textFill="WHITE">
+                  <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Informes" textFill="WHITE">
                      <font>
                         <Font name="Arial Bold" size="18.0" />
                      </font>
@@ -113,10 +118,10 @@
          </children>
       </VBox>
 
-     <VBox prefHeight="200.0" prefWidth="100.0">
-        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+     <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+        <HBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
            <children>
-              <TextField fx:id="search_field" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" HBox.hgrow="ALWAYS">
+              <TextField fx:id="search_field" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" HBox.hgrow="ALWAYS">
                  <padding>
                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                  </padding>
@@ -124,13 +129,13 @@
                     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                  </HBox.margin>
               </TextField>
-              <Button fx:id="search_button" mnemonicParsing="false" text="Search">
+              <Button fx:id="search_button" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Search">
                   <HBox.margin>
                      <Insets right="20.0" />
                   </HBox.margin></Button>
            </children>
         </HBox>
-        <fx:include source="appointment_view.fxml"></fx:include>
+        <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="appointment_view.fxml" />
      </VBox>
   </items>
 </SplitPane>
