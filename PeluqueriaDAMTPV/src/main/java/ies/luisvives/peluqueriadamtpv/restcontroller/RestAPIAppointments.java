@@ -6,7 +6,7 @@ import retrofit2.http.*;
 import java.util.Date;
 
 public interface RestAPIAppointments {
-    //Personajes
+
     @GET("appointments")
     Call<?> appointmentsGetAll();
 
