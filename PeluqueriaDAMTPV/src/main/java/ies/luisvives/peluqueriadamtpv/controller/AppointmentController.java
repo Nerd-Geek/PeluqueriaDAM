@@ -136,7 +136,7 @@ public class AppointmentController implements Initializable {
 		int firstDayIndex = calculateFirstDayPosition(calendar);
 		int lastDayIndex = 6;
 		int lastRow = 4;
-		if (firstDayIndex == 5 || firstDayIndex == 6)
+		if (firstDayIndex == 5 && calendar.getActualMaximum(Calendar.DATE) != 30 || firstDayIndex == 6)
 			lastRow = 5;
 		int day = 1;
 		for (int i = 0; i <=lastRow; i++) {
