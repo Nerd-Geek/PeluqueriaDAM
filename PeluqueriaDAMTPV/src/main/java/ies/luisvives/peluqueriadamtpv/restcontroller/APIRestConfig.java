@@ -10,7 +10,7 @@ public class APIRestConfig {
 
     }
 
-    public RestAPIAppointments getService() {
+    public RestAPIAppointments getAppointmentsService() {
         return RetrofitClient.getClient(API_URL).create(RestAPIAppointments.class);
     }
 }
