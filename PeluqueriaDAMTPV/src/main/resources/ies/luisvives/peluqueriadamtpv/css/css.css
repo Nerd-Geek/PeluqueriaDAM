@@ -1,3 +1,11 @@
+
+#main_view_menu{
+    -fx-background-color: #393b50;
+}
+.split-pane *.split-pane-divider {
+    -fx-padding: 0 1 0 1;
+}
+
 #crear_service {
     -fx-background-color: #3a3c51;
     -fx-text-fill: #ffce3c;

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <Label contentDisplay="RIGHT" text="Username:">
+               <graphic>
+                  <Label alignment="CENTER" contentDisplay="CENTER" text="Label">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font></Label>
+               </graphic>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="160.0" text="Name:">
+               <graphic>
+                  <Label text="Label" />
+               </graphic>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="177.0" text="Sur Name:">
+               <graphic>
+                  <Label text="Label" />
+               </graphic>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="194.0" text="Telephone:">
+               <graphic>
+                  <Label text="Label" />
+               </graphic>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="211.0" text="E-mail:">
+               <graphic>
+                  <Label text="Label" />
+               </graphic>
+            </Label>
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="228.0" text="Gender:">
+               <graphic>
+                  <Label text="Label" />
+               </graphic>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</StackPane>
