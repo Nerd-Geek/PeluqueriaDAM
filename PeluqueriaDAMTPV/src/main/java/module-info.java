@@ -4,6 +4,8 @@ module ies.luisvives.peluqueriadamtpv {
 	requires org.kordamp.ikonli.core;
 	requires org.kordamp.ikonli.javafx;
 	requires org.kordamp.ikonli.fontawesome5;
+	requires retrofit2;
+	requires retrofit2.converter.jackson;
 
 	opens ies.luisvives.peluqueriadamtpv to javafx.fxml;
 	exports ies.luisvives.peluqueriadamtpv;
