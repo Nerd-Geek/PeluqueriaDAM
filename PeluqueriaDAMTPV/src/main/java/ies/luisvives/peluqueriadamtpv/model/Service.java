@@ -1,17 +1,8 @@
-package ies.luisvives.serverpeluqueriadam.model;
+package ies.luisvives.peluqueriadamtpv.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.Data;
 
-import javax.persistence.*;
-import java.util.Set;
-
-@Entity
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@Table(name = "services")
+@Data
 public class Service {
     private String id;
     private String image;
@@ -20,7 +11,6 @@ public class Service {
     private Double price;
     private Integer stock;
 
-    @Id
     public String getId() {
         return id;
     }
@@ -29,11 +19,14 @@ public class Service {
         this.id = id;
     }
 
-    public String getImage() {return image;}
+    public String getImage() {
+        return image;
+    }
 
-    public void setImage(String image) {this.image = image;}
+    public void setImage(String image) {
+        this.image = image;
+    }
 
-    @Column(unique = true)
     public String getName() {
         return name;
     }
