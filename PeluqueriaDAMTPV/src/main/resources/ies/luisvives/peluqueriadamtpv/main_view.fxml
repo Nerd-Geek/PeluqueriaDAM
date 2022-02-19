@@ -128,8 +128,11 @@
                      <Insets right="20.0" />
                   </HBox.margin></Button>
            </children>
+            <VBox.margin>
+               <Insets top="20.0" />
+            </VBox.margin>
         </HBox>
-        <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="appointment_view.fxml" />
+        <fx:include maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" source="appointment_view.fxml" VBox.vgrow="ALWAYS" />
      </VBox>
   </items>
 </SplitPane>
