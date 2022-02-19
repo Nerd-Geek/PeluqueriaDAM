@@ -2,8 +2,28 @@
 #main_view_menu{
     -fx-background-color: #393b50;
 }
-.split-pane *.split-pane-divider {
-    -fx-padding: 0 1 0 1;
+.HboxMenuItem:hover{
+    -fx-background-color: #434659;
+    -fx-border-color:  #a17c28;
+    -fx-border-width: 0px 0px 0px 12px;
+}
+.HboxMenuItem:focused{
+    -fx-background-color: #434659;
+}
+
+.HboxMenuItem:hover > .menulabel{
+    -fx-alignment: center-right;
+    -fx-text-fill: #ffca3c;
+}
+.HboxMenuItem:hover > .FontIcon{
+    -fx-alignment: center-right;
+    -fx-icon-color: #ffca3c;
+}
+.split-pane:horizontal > .split-pane-divider {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-shape: " ";
 }
 
 #crear_service {
