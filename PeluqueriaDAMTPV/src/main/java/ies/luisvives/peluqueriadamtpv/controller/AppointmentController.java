@@ -8,10 +8,9 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class AppointmentController implements Initializable {
 	private Calendar calendar;
@@ -115,6 +114,7 @@ public class AppointmentController implements Initializable {
 	}
 	private void setButtonNamesForMonthYear(Calendar calendar) {
 		gridButtons.forEach(l -> l.forEach(b -> b.setText("")));
+		gridButtons.forEach(l -> l.forEach(b -> b.setDisable(true)));
 		int firstDayIndex = calculateFirstDayPosition(calendar);
 		int lastDayIndex = 6;
 		int day = 1;
@@ -122,10 +122,16 @@ public class AppointmentController implements Initializable {
 			if (i != 0) firstDayIndex = 0;
 			if (i == 4) {
 				lastDayIndex = calculateLastDayPosition(calendar);
-				System.out.println(lastDayIndex);
 			}
 			for (int j = firstDayIndex; j <= lastDayIndex; j++) {
 				gridButtons.get(i).get(j).setText(day + "");
+				if (
+						(day >= calendar.get(Calendar.DAY_OF_MONTH)
+							&& calendar.get(Calendar.MONTH) == Calendar.getInstance().get(Calendar.MONTH)
+							&& calendar.get(Calendar.YEAR) == Calendar.getInstance().get(Calendar.YEAR)
+						)
+						|| calendar.getTime().after(Calendar.getInstance().getTime()))
+					gridButtons.get(i).get(j).setDisable(false);
 				day++;
 			}
 		}
@@ -152,30 +158,33 @@ public class AppointmentController implements Initializable {
 		gridButtons.add(List.of(day_button_2_0, day_button_2_1, day_button_2_2, day_button_2_3, day_button_2_4,day_button_2_5, day_button_2_6));
 		gridButtons.add(List.of(day_button_3_0, day_button_3_1, day_button_3_2, day_button_3_3, day_button_3_4,day_button_3_5, day_button_3_6));
 		gridButtons.add(List.of(day_button_4_0, day_button_4_1, day_button_4_2, day_button_4_3, day_button_4_4,day_button_4_5, day_button_4_6));
-		setButtonNamesForMonthYear(Calendar.getInstance());
-		month_string.setText(calendar.get(Calendar.MONTH) + "");
+		setButtonNamesForMonthYear(calendar);
+		updateMonthYearLabel();
+	}
+
+	private void updateMonthYearLabel() {
+		DateFormat monthFormat = new SimpleDateFormat("MMMM", Locale.getDefault());
+		month_string.setText(monthFormat.format(calendar.getTime()));
 		year_string.setText(calendar.get(Calendar.YEAR) + "");
 	}
 
 	@FXML
 	public void nextMonthButtonAction() {
-		if (calendar.get(Calendar.MONTH)==11)
-			calendar.set(calendar.get(Calendar.YEAR) + 1, 0, calendar.get(Calendar.DAY_OF_MONTH));
+		if (calendar.get(Calendar.MONTH)== Calendar.DECEMBER)
+			calendar.set(calendar.get(Calendar.YEAR) + 1, Calendar.JANUARY, calendar.get(Calendar.DAY_OF_MONTH));
 		else
 			calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH));
 		setButtonNamesForMonthYear(calendar);
-		month_string.setText(calendar.get(Calendar.MONTH) + 1 + "");
-		year_string.setText(calendar.get(Calendar.YEAR) + "");
+		updateMonthYearLabel();
 	}
 
 	@FXML
 	public void prevMonthButtonAction() {
-		if (calendar.get(Calendar.MONTH)==0)
-			calendar.set(calendar.get(Calendar.YEAR) - 1, 11, calendar.get(Calendar.DAY_OF_MONTH));
+		if (calendar.get(Calendar.MONTH)== Calendar.JANUARY)
+			calendar.set(calendar.get(Calendar.YEAR) - 1, Calendar.DECEMBER, calendar.get(Calendar.DAY_OF_MONTH));
 		else
 			calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) - 1, calendar.get(Calendar.DAY_OF_MONTH));
 		setButtonNamesForMonthYear(calendar);
-		month_string.setText(calendar.get(Calendar.MONTH) + 1 + "");
-		year_string.setText(calendar.get(Calendar.YEAR) + "");
+		updateMonthYearLabel();
 	}
 }
