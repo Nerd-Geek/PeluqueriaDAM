@@ -1,7 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.dto.appointment;
 import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.model.Service;
-import ies.luisvives.serverpeluqueriadam.model.User;
 import lombok.Getter;
 import lombok.Setter;
 
