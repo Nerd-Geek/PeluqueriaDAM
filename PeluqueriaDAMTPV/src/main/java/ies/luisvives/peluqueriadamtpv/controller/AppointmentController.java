@@ -1,5 +1,6 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.time.LocalDate;
 
 public class AppointmentController implements Initializable {
 	private Calendar calendar;
@@ -34,7 +36,7 @@ public class AppointmentController implements Initializable {
 	@FXML
 	private Button createAppointmentButton;
 	@FXML
-	private ListView<?> listAppointmentView;
+	private ListView<AppointmentListViewElement> listAppointmentView;
 	@FXML
 	private Button day_button_0_0;
 	@FXML
@@ -105,6 +107,20 @@ public class AppointmentController implements Initializable {
 	private Button day_button_4_5;
 	@FXML
 	private Button day_button_4_6;
+	@FXML
+	private Button day_button_5_0;
+	@FXML
+	private Button day_button_5_1;
+	@FXML
+	private Button day_button_5_2;
+	@FXML
+	private Button day_button_5_3;
+	@FXML
+	private Button day_button_5_4;
+	@FXML
+	private Button day_button_5_5;
+	@FXML
+	private Button day_button_5_6;
 
 	private List<List<Button>> gridButtons;
 
@@ -113,14 +129,19 @@ public class AppointmentController implements Initializable {
 		gridButtons = new ArrayList<>();
 	}
 	private void setButtonNamesForMonthYear(Calendar calendar) {
-		gridButtons.forEach(l -> l.forEach(b -> b.setText("")));
-		gridButtons.forEach(l -> l.forEach(b -> b.setDisable(true)));
+		gridButtons.forEach(l -> l.forEach(b -> {
+			b.setText("");
+			b.setDisable(true);
+		}));
 		int firstDayIndex = calculateFirstDayPosition(calendar);
 		int lastDayIndex = 6;
+		int lastRow = 4;
+		if (firstDayIndex == 5 || firstDayIndex == 6)
+			lastRow = 5;
 		int day = 1;
-		for (int i = 0; i <=4; i++) {
+		for (int i = 0; i <=lastRow; i++) {
 			if (i != 0) firstDayIndex = 0;
-			if (i == 4) {
+			if (i == lastRow) {
 				lastDayIndex = calculateLastDayPosition(calendar);
 			}
 			for (int j = firstDayIndex; j <= lastDayIndex; j++) {
@@ -153,11 +174,12 @@ public class AppointmentController implements Initializable {
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
-		gridButtons.add(List.of(day_button_0_0, day_button_0_1, day_button_0_2, day_button_0_3, day_button_0_4,day_button_0_5, day_button_0_6));
-		gridButtons.add(List.of(day_button_1_0, day_button_1_1, day_button_1_2, day_button_1_3, day_button_1_4,day_button_1_5, day_button_1_6));
-		gridButtons.add(List.of(day_button_2_0, day_button_2_1, day_button_2_2, day_button_2_3, day_button_2_4,day_button_2_5, day_button_2_6));
-		gridButtons.add(List.of(day_button_3_0, day_button_3_1, day_button_3_2, day_button_3_3, day_button_3_4,day_button_3_5, day_button_3_6));
-		gridButtons.add(List.of(day_button_4_0, day_button_4_1, day_button_4_2, day_button_4_3, day_button_4_4,day_button_4_5, day_button_4_6));
+		gridButtons.add(List.of(day_button_0_0, day_button_0_1, day_button_0_2, day_button_0_3, day_button_0_4, day_button_0_5, day_button_0_6));
+		gridButtons.add(List.of(day_button_1_0, day_button_1_1, day_button_1_2, day_button_1_3, day_button_1_4, day_button_1_5, day_button_1_6));
+		gridButtons.add(List.of(day_button_2_0, day_button_2_1, day_button_2_2, day_button_2_3, day_button_2_4, day_button_2_5, day_button_2_6));
+		gridButtons.add(List.of(day_button_3_0, day_button_3_1, day_button_3_2, day_button_3_3, day_button_3_4, day_button_3_5, day_button_3_6));
+		gridButtons.add(List.of(day_button_4_0, day_button_4_1, day_button_4_2, day_button_4_3, day_button_4_4, day_button_4_5, day_button_4_6));
+		gridButtons.add(List.of(day_button_5_0, day_button_5_1, day_button_5_2, day_button_5_3, day_button_5_4, day_button_5_5, day_button_5_6));
 		setButtonNamesForMonthYear(calendar);
 		updateMonthYearLabel();
 	}
@@ -186,5 +208,12 @@ public class AppointmentController implements Initializable {
 			calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) - 1, calendar.get(Calendar.DAY_OF_MONTH));
 		setButtonNamesForMonthYear(calendar);
 		updateMonthYearLabel();
+	}
+
+	@FXML
+	public void onCalendarDayAction (ActionEvent event) {
+		System.out.println("Button pressed");
+		LocalDate date = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, Integer.parseInt(((Button)event.getSource()).getText()));
+		System.out.println("REST petition with date " + date);
 	}
 }
