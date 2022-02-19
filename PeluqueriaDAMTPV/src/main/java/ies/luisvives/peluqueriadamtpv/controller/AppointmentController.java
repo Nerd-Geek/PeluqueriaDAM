@@ -1,5 +1,6 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
+import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,6 +12,7 @@ import javafx.scene.control.TextField;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.Instant;
 import java.util.*;
 import java.time.LocalDate;
 
@@ -215,5 +217,6 @@ public class AppointmentController implements Initializable {
 		System.out.println("Button pressed");
 		LocalDate date = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, Integer.parseInt(((Button)event.getSource()).getText()));
 		System.out.println("REST petition with date " + date);
+		APIRestConfig.getAppointmentsService().appointmentGetAllWithDate(Date.from(Instant.from(date)));
 	}
 }

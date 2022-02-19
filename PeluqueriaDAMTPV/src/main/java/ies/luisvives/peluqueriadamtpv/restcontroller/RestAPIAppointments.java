@@ -11,7 +11,7 @@ public interface RestAPIAppointments {
     Call<?> appointmentsGetAll();
 
     @GET("appointments")
-    Call<?> appointmentGetById(@Query("date") Date date);
+    Call<?> appointmentGetAllWithDate(@Query("date") Date date);
 
     @GET("appointments/{id}")
     Call<?> appointmentGetById();
