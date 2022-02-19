@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
+import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -217,6 +218,12 @@ public class AppointmentController implements Initializable {
 		System.out.println("Button pressed");
 		LocalDate date = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, Integer.parseInt(((Button)event.getSource()).getText()));
 		System.out.println("REST petition with date " + date);
-		APIRestConfig.getAppointmentsService().appointmentGetAllWithDate(Date.from(Instant.from(date)));
+//		APIRestConfig.getAppointmentsService().appointmentGetAllWithDate(Date.from(Instant.from(date)));
+		try {
+			APIRestConfig.getAppointmentsService().appointmentsGetAll().execute().body().forEach(System.out::println);
+		} catch (Exception e) {
+			System.err.println("Cagaste");
+			e.printStackTrace();
+		}
 	}
 }
