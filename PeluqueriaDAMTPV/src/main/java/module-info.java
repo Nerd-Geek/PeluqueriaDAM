@@ -5,4 +5,6 @@ module ies.luisvives.peluqueriadamtpv {
 
 	opens ies.luisvives.peluqueriadamtpv to javafx.fxml;
 	exports ies.luisvives.peluqueriadamtpv;
+	exports ies.luisvives.peluqueriadamtpv.controller;
+	opens ies.luisvives.peluqueriadamtpv.controller to javafx.fxml;
 }
