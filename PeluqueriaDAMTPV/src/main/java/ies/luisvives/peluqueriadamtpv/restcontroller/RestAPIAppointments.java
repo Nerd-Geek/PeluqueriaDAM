@@ -3,10 +3,15 @@ package ies.luisvives.peluqueriadamtpv.restcontroller;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.Date;
+
 public interface RestAPIAppointments {
-    //Personajes
+
     @GET("appointments")
     Call<?> appointmentsGetAll();
+
+    @GET("appointments")
+    Call<?> appointmentGetById(@Query("date") Date date);
 
     @GET("appointments/{id}")
     Call<?> appointmentGetById();
