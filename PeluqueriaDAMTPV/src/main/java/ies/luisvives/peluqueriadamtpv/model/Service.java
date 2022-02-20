@@ -62,7 +62,7 @@ public class Service {
 
     @Override
     public String toString() {
-        return "Service{" +
+        return
                 "id='" + id + '\'' +
                 ", image='" + image + '\'' +
                 ", name='" + name + '\'' +

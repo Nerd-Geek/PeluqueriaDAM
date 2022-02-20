@@ -18,8 +18,7 @@ public class APIRestConfig {
         return RetrofitClient.getClient(API_URL).create(RestApiUsers.class);
     }
 
-
-
-
-
+    public static RestApiService getServicesService() {
+        return RetrofitClient.getClient(API_URL).create(RestApiService.class);
+    }
 }

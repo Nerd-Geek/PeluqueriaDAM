@@ -1,28 +1,32 @@
 package ies.luisvives.peluqueriadamtpv.restcontroller;
 
+import ies.luisvives.peluqueriadamtpv.model.Service;
+import javafx.collections.ObservableList;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.List;
+
 public interface RestApiService {
 
-    @GET("service")
-    Call<?> serviceGetAll();
+    @GET("services")
+    Call<List<Service>> serviceGetAll();
 
-    @GET("service/{name}")
+    @GET("services/{name}")
     Call<?> getByName();
 
-    @GET("service/{name}")
+    @GET("services/{name}")
     Call<?> getByNameByOrderByPriceAsc();
 
-    @GET("service/{id}")
+    @GET("services/{id}")
     Call<?> serviceGetById(@Path("id")String id);
 
-    @POST("service")
+    @POST("services")
     Call<?> insertService();
 
-    @PUT("service/{id}")
+    @PUT("services/{id}")
     Call<?> updateService();
 
-    @DELETE("service/{id}")
+    @DELETE("services/{id}")
     Call<?> deleteService();
 }
