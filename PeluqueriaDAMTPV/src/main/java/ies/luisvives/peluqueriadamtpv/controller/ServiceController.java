@@ -42,10 +42,11 @@ public class ServiceController implements Initializable, Callback {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listService.getColumns().addAll(name, description, price, stock, image);
+        onTableItemService();
     }
 
     @FXML
-    public void onTableItemService (ActionEvent event) {
+    public void onTableItemService () {
         try {
             Response<List<Service>> service = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());
             if (service.body() != null) {

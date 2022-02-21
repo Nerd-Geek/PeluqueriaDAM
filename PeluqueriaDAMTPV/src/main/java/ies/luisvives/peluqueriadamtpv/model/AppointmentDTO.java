@@ -11,8 +11,8 @@ import java.time.LocalTime;
 @Data
 public class AppointmentDTO {
     private String id;
-    private LocalDate date;
-    private LocalTime time;
+    private String date;
+    private String time;
     private UserDTO user;
     private Service service;
 }
