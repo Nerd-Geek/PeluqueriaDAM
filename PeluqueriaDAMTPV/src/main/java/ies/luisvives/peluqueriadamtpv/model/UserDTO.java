@@ -9,7 +9,7 @@ public class UserDTO {
     private boolean superUser;
     private String username;
     // Comento la contraseña porque no quiero mostrarla o sí si queremos recuperarla o sobreescribirla
-    //private String password;
+    private String password;
     private String name;
     private String surname;
     private String phoneNumber;

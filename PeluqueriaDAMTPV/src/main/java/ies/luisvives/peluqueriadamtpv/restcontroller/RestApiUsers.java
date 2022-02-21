@@ -20,12 +20,12 @@ public interface RestApiUsers {
     Call<?> usersGetById(@Path("id")String id);
 
     @POST("users")
-    Call<UserDTO> insertusers(@Body Service service);
+    Call<UserDTO> insertUsers(@Body UserDTO userDTO);
 
     @PUT("users/{id}")
-    Call<?> updateusers();
+    Call<?> updateUsers();
 
     @DELETE("users/{id}")
-    Call<UserDTO> deleteusers(@Path("id")String id);
+    Call<UserDTO> deleteUser(@Path("id")String id);
 
 }

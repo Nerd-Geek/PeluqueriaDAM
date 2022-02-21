@@ -52,37 +52,37 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField fx:id="userTextFieldUsername" alignment="CENTER_RIGHT">
+                        <TextField fx:id="usernameTextField" alignment="CENTER_RIGHT">
                            <VBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                            <font>
                               <Font size="11.0" />
                            </font></TextField>
-                        <TextField fx:id="userTextFieldName" alignment="CENTER">
+                        <TextField fx:id="nameTextField" alignment="CENTER">
                            <font>
                               <Font size="11.0" />
                            </font>
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></TextField>
-                        <TextField fx:id="userTextFieldSurName">
+                        <TextField fx:id="surnameTextField">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></TextField>
-                        <TextField fx:id="userTextFieldPassword">
+                        <TextField fx:id="passwordTextField">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></TextField>
-                        <TextField fx:id="userTextFieldTelephone">
+                        <TextField fx:id="telephoneTextField">
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></TextField>
-                        <TextField fx:id="userTextFieldEmail">
+                        <TextField fx:id="emailTextField">
                            <VBox.margin>
                               <Insets />
                            </VBox.margin></TextField>
-                        <ChoiceBox prefWidth="150.0">
+                        <ChoiceBox fx:id="genderTextField" prefWidth="150.0">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin></ChoiceBox>
@@ -97,7 +97,7 @@
                            <VBox.margin>
                               <Insets />
                            </VBox.margin></ImageView>
-                        <TextField fx:id="userTextFieldImagePath">
+                        <TextField fx:id="imageTextField">
                            <VBox.margin>
                               <Insets top="7.0" />
                            </VBox.margin></TextField>
@@ -115,18 +115,12 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Create User" />
+            <Button mnemonicParsing="false" text="Create User" onAction="#insertUser"/>
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
-                  <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                  <TableView fx:id="listUsers" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                     <columns>
-                      <TableColumn maxWidth="1.7976931348623157E308" text="Username" />
-                      <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" text="Name" />
-                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" text="SurName" />
-                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Telephone" />
-                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Email" />
-                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Gender" />
-                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Image" />
+
                     </columns>
                      <HBox.margin>
                         <Insets bottom="10.0" left="10.0" top="10.0" />
@@ -134,9 +128,9 @@
                   </TableView>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Modify" />
-                        <Button mnemonicParsing="false" text="View" />
-                        <Button mnemonicParsing="false" text="Delete" />
+                        <Button mnemonicParsing="false" text="Modify"/>
+                        <Button mnemonicParsing="false" text="View" onAction="#onTableItemUser"/>
+                        <Button mnemonicParsing="false" text="Delete" onAction="#deleteUser"/>
                      </children>
                   </VBox>
                </children>
