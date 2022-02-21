@@ -10,7 +10,7 @@
 
 <SplitPane dividerPositions="0.2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ies.luisvives.peluqueriadamtpv.controller.MainController">
   <items>
-      <VBox fx:id="main_view_menu" alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" stylesheets="@css/css.css" SplitPane.resizableWithParent="false">
+      <VBox fx:id="main_view_menu" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" stylesheets="@css/css.css" SplitPane.resizableWithParent="false">
          <children>
             <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -77,6 +77,20 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </ToggleButton>
+            <ToggleButton fx:id="mainViewSideMenuButtonSettings" graphicTextGap="5.0" layoutX="10.0" layoutY="510.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onMenuItemSettingsMouseClicked" onTouchPressed="#onMenuItemSettingsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="Ajustes" toggleGroup="$sidemenutogglebuttons">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-cog" iconSize="32" styleClass="FontIcon" />
+               </graphic>
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+            </ToggleButton>
          </children>
          <padding>
             <Insets bottom="10.0" />
@@ -105,6 +119,7 @@
            <fx:include fx:id="includedViewUsers" disable="true" maxHeight="760.0" source="users_view.fxml" visible="false" StackPane.alignment="BOTTOM_CENTER" />
            <fx:include fx:id="includedViewServices" disable="true" maxHeight="760.0" source="service_view.fxml" visible="false" StackPane.alignment="BOTTOM_CENTER" />
            <fx:include fx:id="includedViewReports" disable="true" maxHeight="760.0" source="report_view.fxml" visible="false" StackPane.alignment="BOTTOM_CENTER" />
+            <fx:include fx:id="includedViewSettings" disable="true" maxHeight="760.0" source="settings_view.fxml" visible="false" StackPane.alignment="BOTTOM_CENTER" />
          </children>
       </StackPane>
   </items>

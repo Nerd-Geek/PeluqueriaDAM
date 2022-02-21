@@ -1,13 +1,41 @@
+.label{
+    -fx-font-size: 16px;
+    -fx-font-family: 'arial';
+    -fx-font-weight: bold;
+}
 
 #main_view_menu{
     -fx-background-color: #393b50;
 }
 
+.table-view{
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header{
+    -fx-size: 50;
+}
+
+.table-view .cell{
+    -fx-border-style: hidden;
+    -fx-alignment: center-left;
+    -fx-cell-size: 50px;
+    -fx-font-weight: bold;
+    -fx-font-size: 16px;
+}
+
+.table-view .cell:selected{
+
+    -fx-background-color: #595b79;
+}
+
 .toggle-button{
+    -fx-font-size: 18px;
+    -fx-font-family: 'arial';
+    -fx-font-weight: bold;
     -fx-alignment: center-left;
     -fx-border-style: hidden;
     -fx-text-fill: white;
-    -fx-font: bold 18px 'arial';
     -fx-background-color: transparent;
 }
 
@@ -36,8 +64,9 @@
     -fx-alignment: center;
     -fx-icon-color: #ffca3c;
 }
-
-
+.split-pane{
+    -fx-background-color: white;
+}
 .split-pane:horizontal > .split-pane-divider {
     -fx-padding: 0;
     -fx-background-color: transparent;
@@ -45,18 +74,18 @@
     -fx-shape: " ";
 }
 
-#crear_service {
+.button {
     -fx-background-color: #3a3c51;
     -fx-text-fill: #ffce3c;
     -fx-border-color: #595b79;
     -fx-border-width: 3;
-    -fx-font-size: 15px;
+    -fx-font-weight: bold;
 }
 
 #subir_image_service {
     -fx-background-color: #3a3c51;
     -fx-text-fill: #ffce3c;
     -fx-border-color: #595b79;
-    -fx-border-width: 3;
-    -fx-font-size: 15px;
+    -fx-border-width: 2;
+    -fx-font-size: 14px;
 }
