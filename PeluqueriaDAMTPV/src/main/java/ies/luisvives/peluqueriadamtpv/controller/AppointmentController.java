@@ -144,9 +144,10 @@ public class AppointmentController implements Initializable {
 //		if (firstDayIndex == 5 && calendar.getActualMaximum(Calendar.DATE) != 30 || firstDayIndex == 6)
 //			lastRow = 5;
 		int day = 1;
-		for (int i = 0; i <=lastPosition[1]; i++) {
+		System.out.println(lastPosition[0] + " " + lastPosition[1]);
+		for (int i = 0; i < lastPosition[1]; i++) {
 			if (i != 0) firstDayIndex = 0;
-			if (i == lastPosition[1]) {
+			if (i == lastPosition[1] - 1) {
 				lastDayIndex = lastPosition[0];
 			}
 			for (int j = firstDayIndex; j <= lastDayIndex; j++) {
@@ -166,11 +167,17 @@ public class AppointmentController implements Initializable {
 	private int[] calculateLastDayPosition(Calendar calendar, int firstDayIndex) {
 		Calendar lastDayOfMonth = Calendar.getInstance();
 		lastDayOfMonth.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.getActualMaximum(Calendar.DATE));
+		int nRows = 0;
+		if ((firstDayIndex + calendar.getActualMaximum(Calendar.DATE))%7 == 0)
+			nRows = (firstDayIndex + calendar.getActualMaximum(Calendar.DATE))/7;
+		else
+			nRows = (firstDayIndex + calendar.getActualMaximum(Calendar.DATE))/7 + 1;
+		
 		if (lastDayOfMonth.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-			return new int[]{ 6, firstDayIndex + calendar.getActualMaximum(Calendar.DATE)/7};
+			return new int[]{ 6, nRows};
 		}
 		else {
-			return new int[]{lastDayOfMonth.get(Calendar.DAY_OF_WEEK) - 2, firstDayIndex + calendar.getActualMaximum(Calendar.DATE)/7};
+			return new int[]{lastDayOfMonth.get(Calendar.DAY_OF_WEEK) - 2, nRows};
 		}
 	}
 
