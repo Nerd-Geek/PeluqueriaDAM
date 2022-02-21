@@ -126,6 +126,7 @@ public class AppointmentController implements Initializable {
 	private Button day_button_5_6;
 
 	private List<List<Button>> gridButtons;
+	private ListView<Object> list_view_appointments;
 
 	public AppointmentController() {
 		calendar = Calendar.getInstance();
@@ -224,18 +225,18 @@ public class AppointmentController implements Initializable {
 		LocalDate date = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, Integer.parseInt(((Button)event.getSource()).getText()));
 		System.out.println("REST petition with date " + date);
 //		APIRestConfig.getAppointmentsService().appointmentGetAllWithDate(Date.from(Instant.from(date)));
-		try {
-			Response<List<AppointmentDTO>> response = APIRestConfig.getAppointmentsService().appointmentsGetAll().execute();
-			if (response.body() != null) {
-				listAppointmentDTO = FXCollections.observableList(response.body());
-				list_view_appointments.setItems(listAppointmentDTO);
-				list_view_appointments.setCellFactory(new AppointmentCellFactory());
-			}else {
-				System.out.println("F");
-			}
-		} catch (Exception e) {
-			System.err.println("Cagaste");
-			e.printStackTrace();
-		}
+//		try {
+//			Response<List<AppointmentDTO>> response = APIRestConfig.getAppointmentsService().appointmentsGetAll().execute();
+//			if (response.body() != null) {
+//				listAppointmentDTO = FXCollections.observableList(response.body());
+//				list_view_appointments.setItems(listAppointmentDTO);
+//				list_view_appointments.setCellFactory(new AppointmentCellFactory());
+//			}else {
+//				System.out.println("F");
+//			}
+//		} catch (Exception e) {
+//			System.err.println("Cagaste");
+//			e.printStackTrace();
+//		}
 	}
 }

@@ -1,5 +1,6 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
+import ies.luisvives.peluqueriadamtpv.mapper.AppointmentListMapper;
 import ies.luisvives.peluqueriadamtpv.model.AppointmentDTO;
 import ies.luisvives.peluqueriadamtpv.model.AppointmentListDTO;
 import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
@@ -35,15 +36,16 @@ public class AppointmentTableController implements Initializable, Callback {
 
 
 	public AppointmentTableController () {
-		userColumn = new TableColumn("user");
-		serviceColumn = new TableColumn("service");
-		timeColumn = new TableColumn("time");
-		dateColumn = new TableColumn("date");
+		userColumn = new TableColumn<>("user");
+		serviceColumn = new TableColumn<>("service");
+		timeColumn = new TableColumn<>("time");
+		dateColumn = new TableColumn<>("date");
 	}
 
 	@Override
 	public void initialize(URL url, ResourceBundle resourceBundle) {
 		list_appointments.getColumns().addAll(userColumn, serviceColumn, timeColumn, dateColumn);
+		onTableItemAppointments(null);
 	}
 
 	@FXML
@@ -51,16 +53,17 @@ public class AppointmentTableController implements Initializable, Callback {
 		try {
 			Response<List<AppointmentDTO>> response = APIRestConfig.getAppointmentsService().appointmentsGetAll().execute();
 			if (response.body() != null) {
-				ObservableList<AppointmentDTO> appointments =
-						FXCollections.observableArrayList(response.body());
+				AppointmentListMapper mapper = new AppointmentListMapper();
+				ObservableList<AppointmentListDTO> appointments =
+						FXCollections.observableArrayList(mapper.toList(response.body()));
 				list_appointments.setItems(appointments);
 				userColumn.setCellValueFactory(new PropertyValueFactory<>("user"));
 				serviceColumn.setCellValueFactory(new PropertyValueFactory<>("service"));
 				timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
 				dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-				userColumn.setSortType(TableColumn.SortType.DESCENDING);
-				serviceColumn.setSortType(TableColumn.SortType.DESCENDING);
-				timeColumn.setSortType(TableColumn.SortType.DESCENDING);
+//				userColumn.setSortType(TableColumn.SortType.DESCENDING);
+//				serviceColumn.setSortType(TableColumn.SortType.DESCENDING);
+//				timeColumn.setSortType(TableColumn.SortType.DESCENDING);
 				list_appointments.setItems(appointments);
 			}
 		} catch (Exception e) {
