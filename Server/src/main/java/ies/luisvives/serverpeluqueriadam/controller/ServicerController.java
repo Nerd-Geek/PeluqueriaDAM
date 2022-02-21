@@ -79,6 +79,7 @@ public class ServicerController {
 				serviceUpdated.setImage(newService.getImage());
 				serviceUpdated.setPrice(newService.getPrice());
 				serviceUpdated.setStock(newService.getStock());
+				serviceUpdated.setAppointments(newService.getAppointments());
 				serviceUpdated = repository.save(serviceUpdated);
 
 				return ResponseEntity.ok(serviceMapper.toDTO(serviceUpdated));

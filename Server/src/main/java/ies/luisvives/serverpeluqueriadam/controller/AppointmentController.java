@@ -9,6 +9,7 @@ import ies.luisvives.serverpeluqueriadam.exceptions.appointment.AppointmentNotFo
 import ies.luisvives.serverpeluqueriadam.exceptions.appointment.AppointmentsNotFoundException;
 import ies.luisvives.serverpeluqueriadam.mapper.AppointmentMapper;
 import ies.luisvives.serverpeluqueriadam.model.Appointment;
+import ies.luisvives.serverpeluqueriadam.model.Service;
 import ies.luisvives.serverpeluqueriadam.model.User;
 import ies.luisvives.serverpeluqueriadam.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -99,6 +100,7 @@ public class AppointmentController {
                 checkAppointmentData(appointment);
                 updated.setDate(appointment.getDate());
                 updated.setUser(appointment.getUser());
+                updated.setService(appointment.getService());
                 updated.setTime(appointment.getTime());
 
                 updated = appointmentRepository.save(updated);
@@ -133,10 +135,14 @@ public class AppointmentController {
     private String token;
     private Date instance;
     private User user;
+    private Service service;
 
     private void checkAppointmentData(Appointment appointment) {
         if (appointment.getUser() == null) {
             throw new AppointmentBadRequestException("User", "El usuario es obligatorio");
+        }
+        if (appointment.getService() == null) {
+            throw new AppointmentBadRequestException("Service", "El servicio es obligatorio");
         }
         if (appointment.getDate() == null) {
             throw new AppointmentBadRequestException("Date", "La fecha es obligatoria");

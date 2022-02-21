@@ -1,4 +1,5 @@
 package ies.luisvives.serverpeluqueriadam.dto.appointment;
+import ies.luisvives.serverpeluqueriadam.dto.service.ServiceDTO;
 import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.model.Service;
 import lombok.Getter;
@@ -14,5 +15,5 @@ public class AppointmentDTO {
     private LocalDate date;
     private LocalTime time;
     private UserDTO user;
-    private Service service;
+    private ServiceDTO service;
 }

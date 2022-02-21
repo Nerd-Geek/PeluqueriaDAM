@@ -35,8 +35,8 @@ public class ServiceController implements Initializable, Callback {
 
     private final TableColumn<Service, String> name = new TableColumn("name");
     private final TableColumn<Service, String> description = new TableColumn("description");
-    private final TableColumn<Service, String> price = new TableColumn("price");
-    private final TableColumn<Service, String> stock = new TableColumn("stock");
+    private final TableColumn<Service, Double> price = new TableColumn("price");
+    private final TableColumn<Service, Integer> stock = new TableColumn("stock");
     private final TableColumn<Service, String> image = new TableColumn("image");
 
     @Override

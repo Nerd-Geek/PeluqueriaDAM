@@ -66,7 +66,7 @@
                            </VBox.margin>
                         </TextField>
                         <TextField fx:id="stockService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-                        <Button fx:id="crear_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#insertService" text="Crear" translateX="35.0" translateY="10.0">
+                        <Button fx:id="crear_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#insertService" text="Crear" translateX="20.0" translateY="10.0">
                            <VBox.margin>
                               <Insets right="35.0" />
                            </VBox.margin></Button>
