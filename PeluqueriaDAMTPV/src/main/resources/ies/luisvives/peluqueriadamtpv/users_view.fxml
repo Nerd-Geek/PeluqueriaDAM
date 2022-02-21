@@ -50,7 +50,7 @@
                            </VBox.margin></Label>
                      </children>
                   </VBox>
-                  <VBox HBox.hgrow="ALWAYS">
+                  <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                      <children>
                         <TextField fx:id="userTextFieldUsername" alignment="CENTER_RIGHT">
                            <VBox.margin>
@@ -87,6 +87,9 @@
                               <Insets top="5.0" />
                            </VBox.margin></ChoiceBox>
                      </children>
+                     <HBox.margin>
+                        <Insets top="10.0" />
+                     </HBox.margin>
                   </VBox>
                   <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS">
                      <children>
@@ -94,7 +97,10 @@
                            <VBox.margin>
                               <Insets />
                            </VBox.margin></ImageView>
-                        <TextField fx:id="userTextFieldImagePath" />
+                        <TextField fx:id="userTextFieldImagePath">
+                           <VBox.margin>
+                              <Insets top="7.0" />
+                           </VBox.margin></TextField>
                         <Button fx:id="userButtonUploadImage" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Upload image" />
                      </children>
                      <opaqueInsets>
