@@ -4,71 +4,80 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ies.luisvives.peluqueriadamtpv.controller.UsersController">
+
+<StackPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ies.luisvives.peluqueriadamtpv.controller.UsersController">
    <children>
-      <Label alignment="CENTER" contentDisplay="CENTER" text="Alta Usuario" textAlignment="CENTER" />
-      <HBox>
+      <VBox alignment="TOP_CENTER">
          <children>
-            <VBox>
+            <Label alignment="CENTER" contentDisplay="CENTER" text="Alta Usuario" textAlignment="CENTER" />
+            <HBox>
                <children>
-                  <Label contentDisplay="RIGHT" text="Username:">
-                     <graphic>
-                        <TextField fx:id="userTextFieldUsername" alignment="CENTER_RIGHT" />
-                     </graphic></Label>
-                  <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="10.0" text="Name:">
-                     <graphic>
-                        <TextField fx:id="userTextFieldName" />
-                     </graphic>
-                  </Label>
-                  <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="35.0" text="Sur Name:">
-                     <graphic>
-                        <TextField fx:id="userTextFieldSurName" />
-                     </graphic>
-                  </Label>
-                  <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="60.0" text="Password:">
-                     <graphic>
-                        <TextField fx:id="userTextFieldPassword" />
-                     </graphic>
-                  </Label>
-                  <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="85.0" text="Telephone:">
-                     <graphic>
-                        <TextField fx:id="userTextFieldTelephone" />
-                     </graphic>
-                  </Label>
-                  <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="110.0" text="E-mail:">
-                     <graphic>
-                        <TextField fx:id="userTextFieldEmail" />
-                     </graphic>
-                  </Label>
-                  <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="135.0" text="Gender:">
-                     <graphic>
-                        <ChoiceBox prefWidth="150.0" />
-                     </graphic></Label>
+                  <VBox>
+                     <children>
+                        <Label contentDisplay="RIGHT" text="Username:">
+                           <graphic>
+                              <TextField fx:id="userTextFieldUsername" alignment="CENTER_RIGHT" />
+                           </graphic>
+                        </Label>
+                        <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="10.0" text="Name:">
+                           <graphic>
+                              <TextField fx:id="userTextFieldName" />
+                           </graphic>
+                        </Label>
+                        <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="35.0" text="Sur Name:">
+                           <graphic>
+                              <TextField fx:id="userTextFieldSurName" />
+                           </graphic>
+                        </Label>
+                        <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="60.0" text="Password:">
+                           <graphic>
+                              <TextField fx:id="userTextFieldPassword" />
+                           </graphic>
+                        </Label>
+                        <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="85.0" text="Telephone:">
+                           <graphic>
+                              <TextField fx:id="userTextFieldTelephone" />
+                           </graphic>
+                        </Label>
+                        <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="110.0" text="E-mail:">
+                           <graphic>
+                              <TextField fx:id="userTextFieldEmail" />
+                           </graphic>
+                        </Label>
+                        <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="135.0" text="Gender:">
+                           <graphic>
+                              <ChoiceBox prefWidth="150.0" />
+                           </graphic>
+                        </Label>
+                     </children>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+                        <TextField fx:id="userTextFieldImagePath" />
+                        <Button fx:id="userButtonUploadImage" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Upload image" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+            </HBox>
+            <Button mnemonicParsing="false" text="Create User" />
+            <HBox prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-                  <TextField fx:id="userTextFieldImagePath" />
-                  <Button fx:id="userButtonUploadImage" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="Upload image" />
+                  <ScrollPane prefHeight="100.0" prefWidth="340.0">
+                     <content>
+                        <ListView />
+                     </content>
+                  </ScrollPane>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" text="Modify" />
+                        <Button mnemonicParsing="false" text="View" />
+                        <Button mnemonicParsing="false" text="Delete" />
+                     </children>
+                  </VBox>
                </children>
-            </VBox>
+            </HBox>
          </children>
-      </HBox>
-      <Button mnemonicParsing="false" text="Create User" />
-      <HBox prefHeight="100.0" prefWidth="200.0">
-         <children>
-            <ScrollPane prefHeight="100.0" prefWidth="340.0">
-               <content>
-                  <ListView />
-               </content></ScrollPane>
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
-               <children>
-                  <Button mnemonicParsing="false" text="Modify" />
-                  <Button mnemonicParsing="false" text="View" />
-                  <Button mnemonicParsing="false" text="Delete" />
-               </children></VBox>
-         </children>
-      </HBox>
+      </VBox>
    </children>
-</VBox>
+</StackPane>
