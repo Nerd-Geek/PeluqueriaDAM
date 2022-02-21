@@ -39,8 +39,6 @@ public class AppointmentController implements Initializable {
 	@FXML
 	private Button createAppointmentButton;
 	@FXML
-	private ListView<AppointmentListViewElement> listAppointmentView;
-	@FXML
 	private Button day_button_0_0;
 	@FXML
 	private Button day_button_0_1;
