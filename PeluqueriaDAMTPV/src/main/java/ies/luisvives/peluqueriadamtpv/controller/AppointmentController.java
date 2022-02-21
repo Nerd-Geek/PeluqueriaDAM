@@ -1,19 +1,21 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
+import ies.luisvives.peluqueriadamtpv.App;
+import ies.luisvives.peluqueriadamtpv.model.AppointmentDTO;
 import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.geometry.Orientation;
+import javafx.scene.control.*;
+import javafx.util.Callback;
+import retrofit2.Response;
 
-import java.io.IOException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.util.*;
 import java.time.LocalDate;
 
@@ -38,8 +40,6 @@ public class AppointmentController implements Initializable {
 	private Button nextServiceButton;
 	@FXML
 	private Button createAppointmentButton;
-	@FXML
-	private ListView<AppointmentListViewElement> listAppointmentView;
 	@FXML
 	private Button day_button_0_0;
 	@FXML
@@ -126,6 +126,7 @@ public class AppointmentController implements Initializable {
 	private Button day_button_5_6;
 
 	private List<List<Button>> gridButtons;
+	private ListView<Object> list_view_appointments;
 
 	public AppointmentController() {
 		calendar = Calendar.getInstance();
@@ -137,15 +138,16 @@ public class AppointmentController implements Initializable {
 			b.setDisable(true);
 		}));
 		int firstDayIndex = calculateFirstDayPosition(calendar);
+		int[] lastPosition = calculateLastDayPosition(calendar, firstDayIndex);
 		int lastDayIndex = 6;
-		int lastRow = 4;
-		if (firstDayIndex == 5 && calendar.getActualMaximum(Calendar.DATE) != 30 || firstDayIndex == 6)
-			lastRow = 5;
+//		int lastRow = 4;
+//		if (firstDayIndex == 5 && calendar.getActualMaximum(Calendar.DATE) != 30 || firstDayIndex == 6)
+//			lastRow = 5;
 		int day = 1;
-		for (int i = 0; i <=lastRow; i++) {
+		for (int i = 0; i <=lastPosition[1]; i++) {
 			if (i != 0) firstDayIndex = 0;
-			if (i == lastRow) {
-				lastDayIndex = calculateLastDayPosition(calendar);
+			if (i == lastPosition[1]) {
+				lastDayIndex = lastPosition[0];
 			}
 			for (int j = firstDayIndex; j <= lastDayIndex; j++) {
 				gridButtons.get(i).get(j).setText(day + "");
@@ -161,17 +163,21 @@ public class AppointmentController implements Initializable {
 		}
 	}
 
-	private int calculateLastDayPosition(Calendar calendar) {
+	private int[] calculateLastDayPosition(Calendar calendar, int firstDayIndex) {
 		Calendar lastDayOfMonth = Calendar.getInstance();
 		lastDayOfMonth.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.getActualMaximum(Calendar.DATE));
-		if (lastDayOfMonth.get(Calendar.DAY_OF_WEEK) == 1) return 6;
-		else return lastDayOfMonth.get(Calendar.DAY_OF_WEEK) - 2;
+		if (lastDayOfMonth.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
+			return new int[]{ 6, firstDayIndex + calendar.getActualMaximum(Calendar.DATE)/7};
+		}
+		else {
+			return new int[]{lastDayOfMonth.get(Calendar.DAY_OF_WEEK) - 2, firstDayIndex + calendar.getActualMaximum(Calendar.DATE)/7};
+		}
 	}
 
 	private int calculateFirstDayPosition(Calendar calendar) {
 		Calendar firstDayOfMonth = Calendar.getInstance();
 		firstDayOfMonth.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), 1);
-		if (firstDayOfMonth.get(Calendar.DAY_OF_WEEK) == 1) return 6;
+		if (firstDayOfMonth.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) return 6;
 		else return firstDayOfMonth.get(Calendar.DAY_OF_WEEK) - 2;
 	}
 
@@ -219,11 +225,18 @@ public class AppointmentController implements Initializable {
 		LocalDate date = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, Integer.parseInt(((Button)event.getSource()).getText()));
 		System.out.println("REST petition with date " + date);
 //		APIRestConfig.getAppointmentsService().appointmentGetAllWithDate(Date.from(Instant.from(date)));
-		try {
-			APIRestConfig.getAppointmentsService().appointmentsGetAll().execute().body().forEach(System.out::println);
-		} catch (Exception e) {
-			System.err.println("Cagaste");
-			e.printStackTrace();
-		}
+//		try {
+//			Response<List<AppointmentDTO>> response = APIRestConfig.getAppointmentsService().appointmentsGetAll().execute();
+//			if (response.body() != null) {
+//				listAppointmentDTO = FXCollections.observableList(response.body());
+//				list_view_appointments.setItems(listAppointmentDTO);
+//				list_view_appointments.setCellFactory(new AppointmentCellFactory());
+//			}else {
+//				System.out.println("F");
+//			}
+//		} catch (Exception e) {
+//			System.err.println("Cagaste");
+//			e.printStackTrace();
+//		}
 	}
 }

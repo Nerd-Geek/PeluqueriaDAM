@@ -13,7 +13,7 @@ module ies.luisvives.peluqueriadamtpv {
 
 	opens ies.luisvives.peluqueriadamtpv to javafx.fxml, com.fasterxml.jackson.databind;
 	opens ies.luisvives.peluqueriadamtpv.model to com.fasterxml.jackson.databind;
-	opens ies.luisvives.peluqueriadamtpv.controller to javafx.fxml, com.fasterxml.jackson.databind;
+	opens ies.luisvives.peluqueriadamtpv.controller to javafx.fxml, com.fasterxml.jackson.databind, javafx.controls;
 	opens ies.luisvives.peluqueriadamtpv.restcontroller to com.fasterxml.jackson.core, com.fasterxml.jackson.annotation, com.fasterxml.jackson.databind;
 	exports ies.luisvives.peluqueriadamtpv;
 	exports ies.luisvives.peluqueriadamtpv.controller;
