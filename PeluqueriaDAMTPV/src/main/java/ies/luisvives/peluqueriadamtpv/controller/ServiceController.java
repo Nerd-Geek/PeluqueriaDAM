@@ -35,17 +35,18 @@ public class ServiceController implements Initializable, Callback {
 
     private final TableColumn<Service, String> name = new TableColumn("name");
     private final TableColumn<Service, String> description = new TableColumn("description");
-    private final TableColumn<Service, String> price = new TableColumn("price");
-    private final TableColumn<Service, String> stock = new TableColumn("stock");
+    private final TableColumn<Service, Double> price = new TableColumn("price");
+    private final TableColumn<Service, Integer> stock = new TableColumn("stock");
     private final TableColumn<Service, String> image = new TableColumn("image");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listService.getColumns().addAll(name, description, price, stock, image);
+        onTableItemService();
     }
 
     @FXML
-    public void onTableItemService (ActionEvent event) {
+    public void onTableItemService () {
         try {
             Response<List<Service>> service = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());
             if (service.body() != null) {

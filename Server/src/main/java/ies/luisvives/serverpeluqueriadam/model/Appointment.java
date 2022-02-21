@@ -1,5 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -49,6 +50,7 @@ private Service service;
         this.time = time;
     }
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id")
     public User getUser() {
@@ -59,6 +61,7 @@ private Service service;
         this.user = user;
     }
 
+    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_service", referencedColumnName = "id")
     public Service getService() {

@@ -1,5 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ public class Service {
     private String description;
     private Double price;
     private Integer stock;
-    Set<Appointment> appointments;
+    private Set<Appointment> appointments;
 
     @Id
     public String getId() {
@@ -68,6 +69,7 @@ public class Service {
         this.stock = stock;
     }
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "service", cascade = CascadeType.REMOVE)
     public Set<Appointment> getAppointments() {
         return appointments;
@@ -86,6 +88,7 @@ public class Service {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
+                //", appointments=" + appointments +
                 '}';
     }
 }

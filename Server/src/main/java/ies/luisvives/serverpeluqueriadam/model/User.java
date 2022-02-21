@@ -1,8 +1,7 @@
 package ies.luisvives.serverpeluqueriadam.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -111,6 +110,7 @@ public class User {
         this.gender = genders;
     }
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.REMOVE)
     public Set<Login> getLogins() {
         return logins;
@@ -120,6 +120,7 @@ public class User {
         this.logins = logins;
     }
 
+    @JsonManagedReference
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.REMOVE)
     public Set<Appointment> getAppointments() {
         return appointments;
