@@ -10,9 +10,9 @@
    <children>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
          <children>
-            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                      <children>
                         <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Nombre:">
                            <font>
@@ -48,31 +48,31 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField fx:id="nombre_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                        <TextField fx:id="nombreService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                            <VBox.margin>
                               <Insets bottom="10.0" top="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="description_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                        <TextField fx:id="descriptionService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="price_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                        <TextField fx:id="priceService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                            <VBox.margin>
                               <Insets bottom="10.0" />
                            </VBox.margin>
                         </TextField>
-                        <TextField fx:id="stock_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-                        <Button fx:id="crear_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Crear" translateX="35.0" translateY="10.0">
+                        <TextField fx:id="stockService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
+                        <Button fx:id="crear_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#insertService" text="Crear" translateX="35.0" translateY="10.0">
                            <VBox.margin>
                               <Insets right="35.0" />
                            </VBox.margin></Button>
                      </children>
                   </VBox>
-                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
                      <children>
                         <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
                            <VBox.margin>
@@ -100,7 +100,7 @@
                <children>
                   <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
-                        <TableView fx:id="listService" prefHeight="200.0" prefWidth="447.0" />
+                        <TableView fx:id="listService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
                         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                            <children>
                               <Button fx:id="borrar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onTableItemService" text="Button">
@@ -108,7 +108,7 @@
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="buscar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button">
+                              <Button fx:id="buscar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteService" text="Button">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>

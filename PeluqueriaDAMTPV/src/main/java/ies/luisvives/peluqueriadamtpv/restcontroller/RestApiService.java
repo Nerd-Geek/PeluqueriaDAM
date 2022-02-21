@@ -22,11 +22,11 @@ public interface RestApiService {
     Call<?> serviceGetById(@Path("id")String id);
 
     @POST("services")
-    Call<?> insertService();
+    Call<Service> insertService(@Body Service service);
 
     @PUT("services/{id}")
     Call<?> updateService();
 
     @DELETE("services/{id}")
-    Call<?> deleteService();
+    Call<Service> deleteService(@Path("id")String id);
 }
