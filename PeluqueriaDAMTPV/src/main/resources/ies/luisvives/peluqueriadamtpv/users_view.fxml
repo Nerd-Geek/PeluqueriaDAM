@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-
-<StackPane xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ies.luisvives.peluqueriadamtpv.controller.UsersController">
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ies.luisvives.peluqueriadamtpv.controller.UsersController">
    <children>
-      <VBox alignment="TOP_CENTER">
+      <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" StackPane.alignment="BOTTOM_CENTER">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" text="Alta Usuario" textAlignment="CENTER" />
-            <HBox>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
                <children>
-                  <VBox>
+                  <VBox alignment="CENTER_RIGHT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
                         <Label contentDisplay="RIGHT" text="Username:">
                            <graphic>
@@ -51,7 +51,7 @@
                         </Label>
                      </children>
                   </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                      <children>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                         <TextField fx:id="userTextFieldImagePath" />
@@ -61,13 +61,22 @@
                </children>
             </HBox>
             <Button mnemonicParsing="false" text="Create User" />
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
-                  <ScrollPane prefHeight="100.0" prefWidth="340.0">
-                     <content>
-                        <ListView />
-                     </content>
-                  </ScrollPane>
+                  <TableView maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                    <columns>
+                      <TableColumn maxWidth="1.7976931348623157E308" text="Username" />
+                      <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" text="Name" />
+                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-1.0" text="SurName" />
+                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Telephone" />
+                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Email" />
+                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Gender" />
+                        <TableColumn maxWidth="1.7976931348623157E308" minWidth="-Infinity" text="Image" />
+                    </columns>
+                     <HBox.margin>
+                        <Insets bottom="10.0" left="10.0" top="10.0" />
+                     </HBox.margin>
+                  </TableView>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
                         <Button mnemonicParsing="false" text="Modify" />
