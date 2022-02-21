@@ -2,23 +2,42 @@
 #main_view_menu{
     -fx-background-color: #393b50;
 }
-.HboxMenuItem:hover{
-    -fx-background-color: #434659;
-    -fx-border-color:  #a17c28;
-    -fx-border-width: 0px 0px 0px 12px;
-}
-.HboxMenuItem:focused{
-    -fx-background-color: #434659;
+
+.toggle-button{
+    -fx-alignment: center-left;
+    -fx-border-style: hidden;
+    -fx-text-fill: white;
+    -fx-font: bold 18px 'arial';
+    -fx-background-color: transparent;
 }
 
-.HboxMenuItem:hover > .menulabel{
-    -fx-alignment: center-right;
+.toggle-button:hover{
+    -fx-background-color: #434659;
+    -fx-border-style: solid;
+    -fx-border-color:  #a17c28;
+    -fx-border-width: 0px 0px 0px 12px;
+    -fx-alignment: center;
     -fx-text-fill: #ffca3c;
 }
-.HboxMenuItem:hover > .FontIcon{
-    -fx-alignment: center-right;
+.toggle-button:hover > .FontIcon{
+    -fx-alignment: center;
     -fx-icon-color: #ffca3c;
 }
+
+.toggle-button:selected{
+    -fx-background-color: #434659;
+    -fx-border-style: solid;
+    -fx-border-color:  #a17c28;
+    -fx-border-width: 0px 0px 0px 12px;
+    -fx-alignment: center;
+    -fx-text-fill: #ffca3c;
+}
+.toggle-button:selected >.FontIcon{
+    -fx-alignment: center;
+    -fx-icon-color: #ffca3c;
+}
+
+
 .split-pane:horizontal > .split-pane-divider {
     -fx-padding: 0;
     -fx-background-color: transparent;
