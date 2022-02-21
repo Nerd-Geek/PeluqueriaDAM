@@ -19,6 +19,7 @@ public class Service {
     private String description;
     private Double price;
     private Integer stock;
+    Set<Appointment> appointments;
 
     @Id
     public String getId() {
@@ -65,6 +66,15 @@ public class Service {
 
     public void setStock(Integer stock) {
         this.stock = stock;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "service", cascade = CascadeType.REMOVE)
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
     }
 
     @Override
