@@ -20,14 +20,14 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </VBox.margin>
             </ImageView>
-            <Label style="-fx-background-color: #434659;" stylesheets="@css/css.css" text="Admin" textFill="WHITE">
+            <Label style="-fx-background-color: #434659;" stylesheets="@css/css.css" text="%title.admin" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="16.0" />
                </font>
                <padding>
                   <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
                </padding></Label>
-            <ToggleButton fx:id="mainViewSideMenuButtonAppointments" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemAppointmentsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="Citas">
+            <ToggleButton fx:id="mainViewSideMenuButtonAppointments" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemAppointmentsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.appointments">
                <graphic>
                   <FontIcon iconColor="WHITE" iconLiteral="fas-clipboard-list" iconSize="32" styleClass="FontIcon" />
                </graphic>
@@ -41,7 +41,7 @@
                   <ToggleGroup fx:id="sidemenutogglebuttons" />
                </toggleGroup>
             </ToggleButton>
-            <ToggleButton fx:id="mainViewSideMenuButtonUsers" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemUsersMouseClicked" onTouchPressed="#onMenuItemUsersMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="Usuarios" toggleGroup="$sidemenutogglebuttons">
+            <ToggleButton fx:id="mainViewSideMenuButtonUsers" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemUsersMouseClicked" onTouchPressed="#onMenuItemUsersMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.users" toggleGroup="$sidemenutogglebuttons">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -52,7 +52,7 @@
                   <FontIcon iconColor="WHITE" iconLiteral="fas-user" iconSize="32" styleClass="FontIcon" />
                </graphic>
             </ToggleButton>
-            <ToggleButton fx:id="mainViewSideMenuButtonServices" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemServicesMouseClicked" onTouchPressed="#onMenuItemServicesMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="Servicios" toggleGroup="$sidemenutogglebuttons">
+            <ToggleButton fx:id="mainViewSideMenuButtonServices" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemServicesMouseClicked" onTouchPressed="#onMenuItemServicesMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.services" toggleGroup="$sidemenutogglebuttons">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -63,7 +63,7 @@
                   <FontIcon iconColor="WHITE" iconLiteral="fas-cut" iconSize="32" styleClass="FontIcon" />
                </graphic>
             </ToggleButton>
-            <ToggleButton fx:id="mainViewSideMenuButtonReports" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemReportsMouseClicked" onTouchPressed="#onMenuItemReportsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="Informes" toggleGroup="$sidemenutogglebuttons">
+            <ToggleButton fx:id="mainViewSideMenuButtonReports" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemReportsMouseClicked" onTouchPressed="#onMenuItemReportsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.reports" toggleGroup="$sidemenutogglebuttons">
                <cursor>
                   <Cursor fx:constant="HAND" />
                 </cursor>
@@ -77,7 +77,7 @@
                   <Insets bottom="10.0" />
                </VBox.margin>
             </ToggleButton>
-            <ToggleButton fx:id="mainViewSideMenuButtonSettings" graphicTextGap="5.0" layoutX="10.0" layoutY="510.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onMenuItemSettingsMouseClicked" onTouchPressed="#onMenuItemSettingsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="Ajustes" toggleGroup="$sidemenutogglebuttons">
+            <ToggleButton fx:id="mainViewSideMenuButtonSettings" graphicTextGap="5.0" layoutX="10.0" layoutY="510.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onMenuItemSettingsMouseClicked" onTouchPressed="#onMenuItemSettingsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.settings" toggleGroup="$sidemenutogglebuttons">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -105,7 +105,7 @@
                        <Insets left="20.0" />
                     </HBox.margin>
                  </TextField>
-                 <Button fx:id="search_button" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="Search">
+                 <Button fx:id="search_button" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" text="%title.search">
                      <HBox.margin>
                         <Insets right="20.0" />
                      </HBox.margin>

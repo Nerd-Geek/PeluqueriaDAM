@@ -20,7 +20,7 @@
                         <Insets bottom="10.0" left="50.0" right="50.0" top="50.0" />
                      </VBox.margin>
                   </ImageView>
-                  <Label fx:id="picture_path" text="Service picture path">
+                  <Label fx:id="picture_path" text="%text.picturePath">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -32,7 +32,7 @@
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
                            <children>
-                              <Label text="Nombre:">
+                              <Label text="%text.name">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -40,7 +40,7 @@
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label text="Descripción:">
+                              <Label text="%text.description">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -48,7 +48,7 @@
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label text="Precio:">
+                              <Label text="%text.price">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -56,7 +56,7 @@
                                     <Insets bottom="20.0" />
                                  </VBox.margin>
                               </Label>
-                              <Label text="Stock:">
+                              <Label text="%text.stock">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

@@ -10,7 +10,7 @@
       <VBox prefHeight="200.0" prefWidth="100.0">
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <Label contentDisplay="RIGHT" text="Username:">
+            <Label contentDisplay="RIGHT" text="%text.username">
                <graphic>
                   <Label alignment="CENTER" contentDisplay="CENTER" text="Label">
                      <font>
@@ -18,27 +18,27 @@
                      </font></Label>
                </graphic>
             </Label>
-            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="160.0" text="Name:">
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="160.0" text="%text.name">
                <graphic>
                   <Label text="Label" />
                </graphic>
             </Label>
-            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="177.0" text="Sur Name:">
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="177.0" text="%text.surname">
                <graphic>
                   <Label text="Label" />
                </graphic>
             </Label>
-            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="194.0" text="Telephone:">
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="194.0" text="%text.telephone">
                <graphic>
                   <Label text="Label" />
                </graphic>
             </Label>
-            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="211.0" text="E-mail:">
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="211.0" text="%text.email">
                <graphic>
                   <Label text="Label" />
                </graphic>
             </Label>
-            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="228.0" text="Gender:">
+            <Label contentDisplay="RIGHT" layoutX="10.0" layoutY="228.0" text="%text.gender">
                <graphic>
                   <Label text="Label" />
                </graphic>
