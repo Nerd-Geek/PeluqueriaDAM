@@ -3,6 +3,7 @@ package ies.luisvives.peluqueriadamtpv.controller;
 import ies.luisvives.peluqueriadamtpv.model.UserDTO;
 import ies.luisvives.peluqueriadamtpv.model.UserGender;
 import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
+import javafx.beans.property.SimpleListProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,17 +19,15 @@ import retrofit2.Response;
 import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
-import java.util.Objects;
-import java.util.ResourceBundle;
-import java.util.UUID;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class UsersController implements Initializable, Callback {
 
     @FXML
     TextField usernameTextField, nameTextField, surnameTextField,passwordTextField, telephoneTextField, emailTextField ,imageTextField;
     @FXML
-    ChoiceBox<UserGender> genderTextField;
+    ChoiceBox<String> gender_choice_box;
     @FXML
     TableView<UserDTO> listUsers;
 
@@ -101,7 +100,7 @@ public class UsersController implements Initializable, Callback {
         user.setPassword(passwordTextField.getText());
         user.setPhoneNumber(telephoneTextField.getText());
         user.setEmail(emailTextField.getText());
-        user.setGender(genderTextField.getValue());
+        user.setGender(UserGender.valueOf(gender_choice_box.getValue()));
         user.setImage(imageTextField.getText());
 
         APIRestConfig.getUsersService().insertUsers(user).execute();
@@ -115,6 +114,9 @@ public class UsersController implements Initializable, Callback {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         listUsers.getColumns().addAll(username,name,surname,telephone,email,gender,image);
+        ObservableList<UserGender> genders = new SimpleListProperty<>(UserGender.Female.name(), UserGender.Male.name());
+        gender_choice_box.getItems().addAll(UserGender.Male.name(), UserGender.Female.name());
+        gender_choice_box.setValue(UserGender.Male.name());
         onTableItemUser();
     }
 }
