@@ -1,5 +1,6 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
+import ies.luisvives.peluqueriadamtpv.utils.Util;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -38,16 +39,16 @@ public class ReportController implements Initializable {
                 new PieChart.Data("SQL", 0.0157f));
         serviceHigher.setData(datosGraficoCircular);
         serviceHigher.setClockwise(false);
-        serviceHigher.setTitle("Distribución lenguajes");
+        serviceHigher.setTitle(Util.getString("text.programLanguageDistribution"));
     }
 
     public void genderFemale() {
         XYChart.Series male = new XYChart.Series<>();
         XYChart.Series female = new XYChart.Series<>();
-        genderFemale.setTitle("Géneros");
-        male.setName("Masculino");
+        genderFemale.setTitle(Util.getString("text.genders"));
+        male.setName(Util.getString("text.male"));
         male.getData().add(new XYChart.Data("",60));
-        female.setName("Femenino");
+        female.setName(Util.getString("text.female"));
         female.getData().add(new XYChart.Data("",80));
         genderFemale.getData().addAll(male, female);
         genderFemale.verticalGridLinesVisibleProperty();

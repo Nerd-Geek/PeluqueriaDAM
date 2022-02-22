@@ -28,7 +28,7 @@
                            <VBox.margin>
                               <Insets bottom="13.0" />
                            </VBox.margin></Label>
-                        <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Sur Name:">
+                        <Label alignment="CENTER" contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%text.surname">
                            <VBox.margin>
                               <Insets bottom="13.0" />
                            </VBox.margin></Label>

@@ -23,9 +23,16 @@ public class Util {
         resourceBundle = ResourceBundle.getBundle(PACKAGE_DIR + "i18n/strings", locale);
     }
 
-    public static Parent setAndGetLanguage(String file) throws IOException {
+    public static Parent getParentRoot(String file) throws IOException {
         setResourceBundleLanguage();
         return FXMLLoader.load(Objects.requireNonNull(Util.class.getResource(PACKAGE_DIR + file + ".fxml")),
                 resourceBundle);
+    }
+
+    public static String getString(String str){
+        if (resourceBundle == null){
+            setResourceBundleLanguage();
+        }
+        return resourceBundle.getString(str);
     }
 }
