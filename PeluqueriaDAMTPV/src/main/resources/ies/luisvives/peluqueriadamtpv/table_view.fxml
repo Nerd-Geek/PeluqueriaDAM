@@ -9,7 +9,7 @@
 			<TableView fx:id="list_appointments" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
 			<VBox>
 				<children>
-					<Button fx:id="borrar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onTableItemAppointments" text="Button" VBox.vgrow="ALWAYS">
+					<Button fx:id="borrar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteAppointment" text="Button" VBox.vgrow="ALWAYS">
 						<VBox.margin>
 							<Insets top="20.0" />
 						</VBox.margin>

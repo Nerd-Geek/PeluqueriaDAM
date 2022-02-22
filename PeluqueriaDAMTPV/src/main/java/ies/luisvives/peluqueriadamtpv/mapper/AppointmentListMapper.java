@@ -10,7 +10,8 @@ import java.util.stream.Collectors;
 public class AppointmentListMapper {
 	public AppointmentListDTO toListItem(AppointmentDTO appointmentDTO) {
 		return new AppointmentListDTO(
-				appointmentDTO.getUser().getUsername()
+				appointmentDTO.getId()
+				, appointmentDTO.getUser().getUsername()
 				, appointmentDTO.getService().getName()
 				, appointmentDTO.getTime()
 				, appointmentDTO.getDate()
