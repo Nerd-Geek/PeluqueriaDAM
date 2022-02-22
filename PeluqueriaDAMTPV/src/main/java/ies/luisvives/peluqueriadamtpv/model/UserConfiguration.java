@@ -23,15 +23,14 @@ public class UserConfiguration implements Serializable {
     }
 
     public static void loadData(){
-        //Cargar datos persistencia
+        //Cargar datos de persistencia
         try {
             FileInputStream input = new FileInputStream(UserConfiguration.SETTINGS_FILE_NAME);
             ObjectInputStream inStream = new ObjectInputStream(input);
             userConfigurationInstance = (UserConfiguration) inStream.readObject();
             userConfigurationInstance.initConfiguration();
         } catch (FileNotFoundException e){
-            e.printStackTrace();
-            //TODO: Agregar language config not found --> System.out.println(Util.getString("msg.confignotfound"));
+            System.out.println("Config not found.");
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
