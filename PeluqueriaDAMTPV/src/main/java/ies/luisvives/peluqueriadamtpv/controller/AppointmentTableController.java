@@ -4,6 +4,7 @@ import ies.luisvives.peluqueriadamtpv.mapper.AppointmentListMapper;
 import ies.luisvives.peluqueriadamtpv.model.AppointmentDTO;
 import ies.luisvives.peluqueriadamtpv.model.AppointmentListDTO;
 import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
+import ies.luisvives.peluqueriadamtpv.restcontroller.RestAPIAppointments;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -71,5 +72,13 @@ public class AppointmentTableController implements Initializable, Callback {
 		}
 	}
 
+	@FXML
+	public void deleteAppointment(ActionEvent e) {
+		if (list_appointments.getSelectionModel().getSelectedCells().size() == 1) {
+			String appointmentID = list_appointments.getItems().get(list_appointments.getSelectionModel().getFocusedIndex()).getId();
+			APIRestConfig.getAppointmentsService().deleteAppointmentById(appointmentID);
+		}
+
+	}
 
 }

@@ -25,5 +25,5 @@ public interface RestAPIAppointments {
     Call<?> updateAppointments();
 
     @DELETE("appointments/{id}")
-    Call<?> deleteAppointments();
+    Call<?> deleteAppointmentById(@Path("id")String id);
 }
