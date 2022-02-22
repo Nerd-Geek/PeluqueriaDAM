@@ -82,7 +82,7 @@
                            <VBox.margin>
                               <Insets />
                            </VBox.margin></TextField>
-                        <ChoiceBox fx:id="genderTextField" prefWidth="150.0">
+                        <ChoiceBox fx:id="gender_choice_box" prefWidth="150.0">
                            <VBox.margin>
                               <Insets top="5.0" />
                            </VBox.margin></ChoiceBox>
