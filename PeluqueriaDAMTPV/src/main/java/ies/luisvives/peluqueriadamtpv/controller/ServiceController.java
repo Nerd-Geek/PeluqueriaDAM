@@ -107,4 +107,24 @@ public class ServiceController implements Initializable, Callback {
             listService.setItems(services);
         }
     }
+
+    @FXML
+    private void updateService() {
+        ObservableList<Service> services = FXCollections.observableArrayList();
+        Service service = new Service();
+//        service.setName();
+//        service.setDescription();
+//        service.setStock();
+//        service.setPrice();
+//        APIRestConfig.getServicesService().updateService(service).execute();
+        try {
+            Response<List<Service>> serviceList = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());
+            if (serviceList.body() != null) {
+                services.addAll(serviceList.body());
+                listService.setItems(services);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
