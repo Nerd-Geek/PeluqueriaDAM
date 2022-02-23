@@ -52,14 +52,14 @@
                   </VBox>
                   <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
                      <children>
-                        <TextField fx:id="usernameTextField" alignment="CENTER_RIGHT">
+                        <TextField fx:id="usernameTextField">
                            <VBox.margin>
                               <Insets bottom="5.0" top="5.0" />
                            </VBox.margin>
                            <font>
                               <Font size="11.0" />
                            </font></TextField>
-                        <TextField fx:id="nameTextField" alignment="CENTER">
+                        <TextField fx:id="nameTextField">
                            <font>
                               <Font size="11.0" />
                            </font>
@@ -115,7 +115,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="%text.createUser" onAction="#insertUser"/>
+            <Button mnemonicParsing="false" onAction="#insertUser" text="%text.createUser" />
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
                   <TableView fx:id="listUsers" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
@@ -128,9 +128,9 @@
                   </TableView>
                   <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                      <children>
-                        <Button mnemonicParsing="false" text="%text.modify"/>
-                        <Button mnemonicParsing="false" text="%text.view" onAction="#onTableItemUser"/>
-                        <Button mnemonicParsing="false" text="%text.delete" onAction="#deleteUser"/>
+                        <Button mnemonicParsing="false" text="%text.modify" />
+                        <Button mnemonicParsing="false" onAction="#onTableItemUser" text="%text.view" />
+                        <Button mnemonicParsing="false" onAction="#deleteUser" text="%text.delete" />
                      </children>
                   </VBox>
                </children>
