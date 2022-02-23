@@ -1,5 +1,6 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
+import ies.luisvives.peluqueriadamtpv.App;
 import ies.luisvives.peluqueriadamtpv.model.UserConfiguration;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -7,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.layout.VBox;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -62,5 +64,14 @@ public class SettingsController {
         Locale loc = new Locale(lng);
         String str = loc.getDisplayLanguage(loc);
         return str.substring(0, 1).toUpperCase() + str.substring(1);
+    }
+
+    @FXML
+    protected void updateApp(){
+        try {
+            new App().reloadStage();
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 }

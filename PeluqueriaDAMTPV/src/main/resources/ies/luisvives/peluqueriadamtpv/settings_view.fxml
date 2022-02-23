@@ -47,6 +47,7 @@
                <VBox.margin>
                   <Insets bottom="40.0" />
                </VBox.margin></ChoiceBox>
+            <Button mnemonicParsing="false" onAction="#updateApp" text="%text.apply" />
          </children>
         </VBox>
     </VBox>

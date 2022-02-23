@@ -92,8 +92,7 @@ public class ServiceController implements Initializable, Callback {
     @FXML
     private void insertService() throws IOException {
 
-        ObservableList<Service> services =
-                FXCollections.observableArrayList();
+        ObservableList<Service> services = FXCollections.observableArrayList();
         Service service = new Service();
         service.setId(UUID.randomUUID().toString());
         service.setName(nombreService.getText());
