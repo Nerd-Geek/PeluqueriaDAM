@@ -10,13 +10,13 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import retrofit2.Response;
 
 import javax.security.auth.callback.Callback;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -76,9 +76,20 @@ public class AppointmentTableController implements Initializable, Callback {
 	public void deleteAppointment(ActionEvent e) {
 		if (list_appointments.getSelectionModel().getSelectedCells().size() == 1) {
 			String appointmentID = list_appointments.getItems().get(list_appointments.getSelectionModel().getFocusedIndex()).getId();
-			APIRestConfig.getAppointmentsService().deleteAppointmentById(appointmentID);
+			try {
+				APIRestConfig.getAppointmentsService().deleteAppointmentById(appointmentID).execute();
+				list_appointments.getItems().remove(list_appointments.getSelectionModel().getFocusedIndex());
+				System.out.println("delete done");
+			} catch (IOException ioException) {
+				System.err.println("Delete not done");
+			}
 		}
-
 	}
 
+	@FXML
+	public void showAppointment () {
+		if (list_appointments.getSelectionModel().getSelectedCells().size() == 1) {
+
+		}
+	}
 }
