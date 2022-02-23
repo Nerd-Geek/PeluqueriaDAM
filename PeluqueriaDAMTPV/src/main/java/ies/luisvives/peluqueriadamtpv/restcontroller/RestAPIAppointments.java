@@ -13,17 +13,17 @@ public interface RestAPIAppointments {
     Call<List<AppointmentDTO>> appointmentsGetAll();
 
     @GET("appointments/")
-    Call<?> appointmentGetAllWithDate(@Query("date") Date date);
+    Call<AppointmentDTO> appointmentGetAllWithDate(@Query("date") Date date);
 
     @GET("appointments/{id}")
-    Call<?> appointmentGetById();
+    Call<AppointmentDTO> appointmentGetById();
 
     @POST("appointments/")
-    Call<?> insertAppointments();
+    Call<AppointmentDTO> insertAppointments();
 
     @PUT("appointments/{id}")
-    Call<?> updateAppointments();
+    Call<AppointmentDTO> updateAppointments();
 
     @DELETE("appointments/{id}")
-    Call<?> deleteAppointmentById(@Path("id")String id);
+    Call<AppointmentDTO> deleteAppointmentById(@Path("id")String id);
 }
