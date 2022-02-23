@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
+import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import retrofit2.Response;
 
@@ -21,7 +22,8 @@ import java.time.LocalDate;
 
 public class AppointmentController implements Initializable {
 	private Calendar calendar;
-
+	@FXML
+	private StackPane stackPane;
 	@FXML
 	private Label month_string;
 	@FXML
