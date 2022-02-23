@@ -3,9 +3,7 @@ package ies.luisvives.serverpeluqueriadam.controller;
 import ies.luisvives.serverpeluqueriadam.dto.user.CreateUserDTO;
 import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
-import ies.luisvives.serverpeluqueriadam.exceptions.user.UserBadRequestException;
-import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundException;
-import ies.luisvives.serverpeluqueriadam.exceptions.user.UsersNotFoundException;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.*;
 import ies.luisvives.serverpeluqueriadam.mapper.UserMapper;
 import ies.luisvives.serverpeluqueriadam.model.User;
 import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
@@ -50,7 +48,26 @@ public class UserController {
     public ResponseEntity<?> findById(@PathVariable String id) {
         User user = repository.findById(id).orElse(null);
         if (user == null) {
-            throw new UserNotFoundException(id);
+            throw new UserNotFoundByIdException(id);
+        } else {
+            return ResponseEntity.ok(userMapper.toDTO(user));
+        }
+    }
+
+    @GetMapping("/users/{username}")
+    public ResponseEntity<?> findByUsername(@PathVariable String username) {
+        User user = repository.findByUsername(username);
+        if (user == null) {
+            throw new UserNotFoundByUsernameException(username);
+        } else {
+            return ResponseEntity.ok(userMapper.toDTO(user));
+        }
+    }
+    @GetMapping("/users/{email}")
+    public ResponseEntity<?> findByEmail(@PathVariable String email) {
+        User user = repository.findByEmail(email);
+        if (user == null) {
+            throw new UserNotFoundByEmailException(email);
         } else {
             return ResponseEntity.ok(userMapper.toDTO(user));
         }
@@ -72,8 +89,8 @@ public class UserController {
     public ResponseEntity<?> update(@RequestBody User newUser, @PathVariable String id) {
         try {
             User userUpdated = repository.findById(id).orElse(null);
-            if (userUpdated == null) {
-                throw new UserNotFoundException(id);
+        if (userUpdated == null) {
+                throw new UserNotFoundByIdException(id);
             } else {
                 checkUserData(newUser);
                 userUpdated.setName(newUser.getName());
@@ -100,7 +117,7 @@ public class UserController {
         try {
             User user = repository.findById(id).orElse(null);
             if (user == null) {
-                throw new UserNotFoundException(id);
+                throw new UserNotFoundByIdException(id);
             } else {
                 repository.delete(user);
                 return ResponseEntity.ok(userMapper.toDTO(user));
@@ -116,6 +133,12 @@ public class UserController {
         }
         if (user.getPassword() == null) {
             throw new UserBadRequestException("Password", "La password es obligatoria");
+        }
+        if (400==findByUsername(user.getUsername()).getStatusCodeValue()){
+            throw new UserBadRequestException("Username", "El username ya existe");
+        }
+        if (400==findByEmail(user.getEmail()).getStatusCodeValue()){
+            throw new UserBadRequestException("Email", "El email ya existe");
         }
     }
 

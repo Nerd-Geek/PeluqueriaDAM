@@ -39,6 +39,15 @@ public class UsersController implements Initializable, Callback {
     private final TableColumn<UserDTO, String> gender = new TableColumn<>("gender");
     private final TableColumn<UserDTO, String> image = new TableColumn<>("image");
 
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        listUsers.getColumns().addAll(username,name,surname,telephone,email,gender,image);
+        ObservableList<UserGender> genders = new SimpleListProperty<>(UserGender.Female.name(), UserGender.Male.name());
+        gender_choice_box.getItems().addAll(UserGender.Male.name(), UserGender.Female.name());
+        gender_choice_box.setValue(UserGender.Male.name());
+        onTableItemUser();
+    }
+
     @FXML
     public void onTableItemUser() {
         try {
@@ -111,12 +120,5 @@ public class UsersController implements Initializable, Callback {
         }
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        listUsers.getColumns().addAll(username,name,surname,telephone,email,gender,image);
-        ObservableList<UserGender> genders = new SimpleListProperty<>(UserGender.Female.name(), UserGender.Male.name());
-        gender_choice_box.getItems().addAll(UserGender.Male.name(), UserGender.Female.name());
-        gender_choice_box.setValue(UserGender.Male.name());
-        onTableItemUser();
-    }
+
 }
