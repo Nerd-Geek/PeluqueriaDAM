@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Date;
 
-public interface AppointmentRepository extends JpaRepository<Appointment,String> {
+public interface AppointmentRepository extends JpaRepository<Appointment, String> {
     Appointment findByDate(Date date);
     //Page<Appointment> findByMonth(Pageable pageable, Date date);
 }

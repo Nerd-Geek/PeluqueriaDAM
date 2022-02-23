@@ -17,14 +17,15 @@ import org.kordamp.ikonli.javafx.Icon;
 public class MainController {
 
     @FXML
-    StackPane includedViewAppointments,includedViewUsers,includedViewServices, includedViewReports, includedViewSettings;
+    StackPane includedViewAppointments, includedViewUsers, includedViewServices, includedViewReports, includedViewSettings;
     @FXML
-    ToggleButton mainViewSideMenuButtonAppointments,mainViewSideMenuButtonUsers,mainViewSideMenuButtonServices,mainViewSideMenuButtonReports,mainViewSideMenuButtonSettings;
+    ToggleButton mainViewSideMenuButtonAppointments, mainViewSideMenuButtonUsers, mainViewSideMenuButtonServices, mainViewSideMenuButtonReports, mainViewSideMenuButtonSettings;
 
     public void initialize() {
     }
+
     @FXML
-    public void onMenuItemAppointmentsMouseClicked(){
+    public void onMenuItemAppointmentsMouseClicked() {
         includedViewAppointments.setVisible(true);
         includedViewAppointments.setDisable(false);
         includedViewUsers.setVisible(false);
@@ -36,8 +37,9 @@ public class MainController {
         includedViewSettings.setVisible(false);
         includedViewSettings.setDisable(true);
     }
+
     @FXML
-    public void onMenuItemUsersMouseClicked(){
+    public void onMenuItemUsersMouseClicked() {
         includedViewAppointments.setVisible(false);
         includedViewAppointments.setDisable(true);
         includedViewUsers.setVisible(true);
@@ -49,8 +51,9 @@ public class MainController {
         includedViewSettings.setVisible(false);
         includedViewSettings.setDisable(true);
     }
+
     @FXML
-    public void onMenuItemServicesMouseClicked(){
+    public void onMenuItemServicesMouseClicked() {
         includedViewAppointments.setVisible(false);
         includedViewAppointments.setDisable(true);
         includedViewUsers.setVisible(false);
@@ -62,8 +65,9 @@ public class MainController {
         includedViewSettings.setVisible(false);
         includedViewSettings.setDisable(true);
     }
+
     @FXML
-    public void onMenuItemReportsMouseClicked(){
+    public void onMenuItemReportsMouseClicked() {
         includedViewAppointments.setVisible(false);
         includedViewAppointments.setDisable(true);
         includedViewUsers.setVisible(false);
@@ -75,8 +79,9 @@ public class MainController {
         includedViewSettings.setVisible(false);
         includedViewSettings.setDisable(true);
     }
+
     @FXML
-    public void onMenuItemSettingsMouseClicked(){
+    public void onMenuItemSettingsMouseClicked() {
         includedViewAppointments.setVisible(false);
         includedViewAppointments.setDisable(true);
         includedViewUsers.setVisible(false);

@@ -22,13 +22,13 @@ public class UserController {
     private final UserMapper userMapper;
 
     @Autowired
-    public UserController (UserRepository repository, UserMapper userMapper) {
+    public UserController(UserRepository repository, UserMapper userMapper) {
         this.repository = repository;
         this.userMapper = userMapper;
     }
 
     @GetMapping("/users")
-    public ResponseEntity<?> findAll(@RequestParam(name = "limit")Optional<String> limit) {
+    public ResponseEntity<?> findAll(@RequestParam(name = "limit") Optional<String> limit) {
         List<User> users = null;
         try {
             users = repository.findAll();
@@ -72,7 +72,7 @@ public class UserController {
     public ResponseEntity<?> update(@RequestBody User newUser, @PathVariable String id) {
         try {
             User userUpdated = repository.findById(id).orElse(null);
-        if (userUpdated == null) {
+            if (userUpdated == null) {
                 throw new UserNotFoundException(id);
             } else {
                 checkUserData(newUser);

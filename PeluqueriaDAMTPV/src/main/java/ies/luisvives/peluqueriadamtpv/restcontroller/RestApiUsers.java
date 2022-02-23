@@ -17,7 +17,7 @@ public interface RestApiUsers {
     Call<?> getByUserName();
 
     @GET("users/{id}")
-    Call<?> usersGetById(@Path("id")String id);
+    Call<?> usersGetById(@Path("id") String id);
 
     @POST("users")
     Call<UserDTO> insertUsers(@Body UserDTO userDTO);
@@ -26,6 +26,6 @@ public interface RestApiUsers {
     Call<?> updateUsers();
 
     @DELETE("users/{id}")
-    Call<UserDTO> deleteUser(@Path("id")String id);
+    Call<UserDTO> deleteUser(@Path("id") String id);
 
 }

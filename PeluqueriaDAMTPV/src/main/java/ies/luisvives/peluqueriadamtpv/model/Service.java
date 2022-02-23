@@ -64,11 +64,11 @@ public class Service {
     public String toString() {
         return
                 "id='" + id + '\'' +
-                ", image='" + image + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", stock=" + stock +
-                '}';
+                        ", image='" + image + '\'' +
+                        ", name='" + name + '\'' +
+                        ", description='" + description + '\'' +
+                        ", price=" + price +
+                        ", stock=" + stock +
+                        '}';
     }
 }

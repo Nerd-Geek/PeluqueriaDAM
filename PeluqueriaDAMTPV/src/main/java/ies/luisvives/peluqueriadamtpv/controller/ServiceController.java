@@ -46,7 +46,7 @@ public class ServiceController implements Initializable, Callback {
     }
 
     @FXML
-    public void onTableItemService () {
+    public void onTableItemService() {
         try {
             Response<List<Service>> service = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());
             if (service.body() != null) {
@@ -72,7 +72,7 @@ public class ServiceController implements Initializable, Callback {
     }
 
     @FXML
-    public void deleteService (ActionEvent event) {
+    public void deleteService(ActionEvent event) {
         try {
             Service service = APIRestConfig.getServicesService().deleteService(listService.getSelectionModel().getSelectedItem().getId()).execute().body();
             Response<List<Service>> serviceList = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-public class RetrofitClient{
+public class RetrofitClient {
     private static Retrofit instance;
 
     private RetrofitClient() {

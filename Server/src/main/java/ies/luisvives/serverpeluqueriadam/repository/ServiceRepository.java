@@ -9,5 +9,6 @@ import java.util.List;
 
 public interface ServiceRepository extends JpaRepository<Service, String> {
     List<Service> findByName(String name);
+
     List<Service> findByOrderByPriceAsc(Sort sort);
 }

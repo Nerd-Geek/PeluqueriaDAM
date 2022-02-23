@@ -17,6 +17,7 @@ public class Login {
     private String token;
     private Date instance;
     private User user;
+
     @Id
     public String getId() {
         return id;

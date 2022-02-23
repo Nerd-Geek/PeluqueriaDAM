@@ -13,7 +13,7 @@ public class APIRestConfig {
     public static RestAPIAppointments getAppointmentsService() {
         return RetrofitClient.getClient(API_URL).create(RestAPIAppointments.class);
     }
-    
+
     public static RestApiUsers getUsersService() {
         return RetrofitClient.getClient(API_URL).create(RestApiUsers.class);
     }

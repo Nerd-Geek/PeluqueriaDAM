@@ -19,7 +19,7 @@ public interface RestApiService {
     Call<?> getByNameByOrderByPriceAsc();
 
     @GET("services/{id}")
-    Call<?> serviceGetById(@Path("id")String id);
+    Call<?> serviceGetById(@Path("id") String id);
 
     @POST("services")
     Call<Service> insertService(@Body Service service);
@@ -28,5 +28,5 @@ public interface RestApiService {
     Call<?> updateService();
 
     @DELETE("services/{id}")
-    Call<Service> deleteService(@Path("id")String id);
+    Call<Service> deleteService(@Path("id") String id);
 }

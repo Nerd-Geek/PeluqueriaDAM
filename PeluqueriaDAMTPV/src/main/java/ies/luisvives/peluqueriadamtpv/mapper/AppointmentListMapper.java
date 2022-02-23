@@ -18,7 +18,7 @@ public class AppointmentListMapper {
 		);
 	}
 
-	public List<AppointmentListDTO> toList(List<AppointmentDTO> list) {
-		return list.stream().map(this::toListItem).collect(Collectors.toList());
-	}
+    public List<AppointmentListDTO> toList(List<AppointmentDTO> list) {
+        return list.stream().map(this::toListItem).collect(Collectors.toList());
+    }
 }

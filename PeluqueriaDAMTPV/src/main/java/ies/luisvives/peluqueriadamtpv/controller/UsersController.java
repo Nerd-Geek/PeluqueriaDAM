@@ -25,7 +25,7 @@ import java.util.stream.Collectors;
 public class UsersController implements Initializable, Callback {
 
     @FXML
-    TextField usernameTextField, nameTextField, surnameTextField,passwordTextField, telephoneTextField, emailTextField ,imageTextField;
+    TextField usernameTextField, nameTextField, surnameTextField, passwordTextField, telephoneTextField, emailTextField, imageTextField;
     @FXML
     ChoiceBox<String> gender_choice_box;
     @FXML
