@@ -7,6 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Colores del diseño -->
     <color name="palecream">#F9D5BD</color>
     <color name="paledarkcream">#E4C7AC</color>
     <color name="paleorange">#FBB488</color>

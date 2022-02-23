@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PeluqueriaAndroid</string>
+    <string name="main_view_label_username">Username</string>
+    <string name="main_view_button_make_appointment">Pedir Cita</string>
+    <string name="main_view_button_view_appointments">Ver Citas</string>
+</resources>
