@@ -70,10 +70,10 @@
                            <VBox.margin>
                               <Insets bottom="5.0" />
                            </VBox.margin></TextField>
-                        <TextField fx:id="passwordTextField">
+                        <PasswordField fx:id="passwordTextField">
                            <VBox.margin>
                               <Insets bottom="5.0" />
-                           </VBox.margin></TextField>
+                           </VBox.margin></PasswordField>
                         <TextField fx:id="telephoneTextField">
                            <VBox.margin>
                               <Insets bottom="5.0" />
@@ -115,7 +115,7 @@
                   </VBox>
                </children>
             </HBox>
-            <Button mnemonicParsing="false" onAction="#insertUser" text="%text.createUser" />
+            <Button mnemonicParsing="false" onAction="#insertUser" onMouseClicked="#insertUser" onTouchPressed="#insertUser" text="%text.createUser" />
             <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                <children>
                   <TableView fx:id="listUsers" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
@@ -126,11 +126,11 @@
                         <Insets bottom="10.0" left="10.0" top="10.0" />
                      </HBox.margin>
                   </TableView>
-                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="20.0">
                      <children>
-                        <Button mnemonicParsing="false" text="%text.modify" />
-                        <Button mnemonicParsing="false" onAction="#onTableItemUser" text="%text.view" />
-                        <Button mnemonicParsing="false" onAction="#deleteUser" text="%text.delete" />
+                        <Button mnemonicParsing="false" text="%text.modify" VBox.vgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#onTableItemUser" onMouseClicked="#onTableItemUser" onTouchPressed="#onTableItemUser" text="%text.view" VBox.vgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#deleteUser" onMouseClicked="#deleteUser" onTouchPressed="#deleteUser" text="%text.delete" VBox.vgrow="ALWAYS" />
                      </children>
                   </VBox>
                </children>
