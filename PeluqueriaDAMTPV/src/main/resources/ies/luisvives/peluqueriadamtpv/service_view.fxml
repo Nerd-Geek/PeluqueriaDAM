@@ -106,17 +106,17 @@
                         <TableView fx:id="listService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@css/css.css" HBox.hgrow="ALWAYS" />
                         <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                            <children>
-                              <Button fx:id="borrar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onTableItemService" text="Button">
+                              <Button fx:id="borrar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onTableItemService" text="%button.buscar">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="buscar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteService" text="Button">
+                              <Button fx:id="buscar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteService" text="%button.borrar">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="modificar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button">
+                              <Button fx:id="modificar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="%button.modificar">
                                  <VBox.margin>
                                     <Insets top="20.0" />
                                  </VBox.margin>

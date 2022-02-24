@@ -18,10 +18,10 @@
                maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Label" textAlignment="CENTER"
                HBox.hgrow="ALWAYS"/>
         <Button fx:id="appointment_list_element_modify_button" alignment="CENTER" contentDisplay="CENTER"
-                mnemonicParsing="false" textAlignment="CENTER" HBox.hgrow="ALWAYS"/>
+                mnemonicParsing="false" textAlignment="CENTER" HBox.hgrow="ALWAYS" text="%button.modificar"/>
         <Button fx:id="appointment_list_element_details_button" alignment="CENTER" contentDisplay="CENTER"
-                mnemonicParsing="false" textAlignment="CENTER" HBox.hgrow="ALWAYS"/>
+                mnemonicParsing="false" textAlignment="CENTER" HBox.hgrow="ALWAYS" text="%button.buscar"/>
         <Button fx:id="appointment_list_element_delete_button" alignment="CENTER" contentDisplay="CENTER"
-                mnemonicParsing="false" textAlignment="CENTER" HBox.hgrow="ALWAYS"/>
+                mnemonicParsing="false" textAlignment="CENTER" HBox.hgrow="ALWAYS" text="%button.borrar"/>
     </children>
 </HBox>
