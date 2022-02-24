@@ -11,7 +11,7 @@ import java.util.ResourceBundle;
 
 public class Util {
     private static ResourceBundle resourceBundle;
-    private static final String PACKAGE_DIR = "/ies/luisvives/peluqueriadamtpv/";
+    public static final String PACKAGE_DIR = "/ies/luisvives/peluqueriadamtpv/";
 
     private Util() {
     }

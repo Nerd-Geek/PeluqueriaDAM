@@ -9,12 +9,12 @@
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.*?>
 <SplitPane dividerPositions="0.2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-           minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/css.css"
+           minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@themes/style_white.css"
            xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="ies.luisvives.peluqueriadamtpv.controller.MainController">
+           fx:controller="ies.luisvives.peluqueriadamtpv.controller.MainController" fx:id="mainPane">
     <items>
         <VBox fx:id="main_view_menu" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
-              minWidth="-Infinity" prefWidth="250.0" stylesheets="@css/css.css" SplitPane.resizableWithParent="false">
+              minWidth="-Infinity" prefWidth="250.0" stylesheets="@themes/style_white.css" SplitPane.resizableWithParent="false">
             <children>
                 <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -24,7 +24,7 @@
                         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
                     </VBox.margin>
                 </ImageView>
-                <Label style="-fx-background-color: #434659;" stylesheets="@css/css.css" text="%title.admin"
+                <Label style="-fx-background-color: #434659;" stylesheets="@themes/style_white.css" text="%title.admin"
                        textFill="WHITE">
                     <font>
                         <Font name="Calibri Bold" size="16.0"/>
@@ -36,7 +36,7 @@
                 <ToggleButton fx:id="mainViewSideMenuButtonAppointments" graphicTextGap="5.0"
                               maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                               mnemonicParsing="false" onMouseClicked="#onMenuItemAppointmentsMouseClicked"
-                              prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css"
+                              prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@themes/style_white.css"
                               text="%title.appointments">
                     <graphic>
                         <FontIcon iconColor="WHITE" iconLiteral="fas-clipboard-list" iconSize="32"
@@ -56,7 +56,7 @@
                               maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                               mnemonicParsing="false" onMouseClicked="#onMenuItemUsersMouseClicked"
                               onTouchPressed="#onMenuItemUsersMouseClicked" prefHeight="100.0" prefWidth="250.0"
-                              styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.users"
+                              styleClass="sidemenuitem" stylesheets="@themes/style_white.css" text="%title.users"
                               toggleGroup="$sidemenutogglebuttons">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
@@ -72,7 +72,7 @@
                               maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                               mnemonicParsing="false" onMouseClicked="#onMenuItemServicesMouseClicked"
                               onTouchPressed="#onMenuItemServicesMouseClicked" prefHeight="100.0" prefWidth="250.0"
-                              styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.services"
+                              styleClass="sidemenuitem" stylesheets="@themes/style_white.css" text="%title.services"
                               toggleGroup="$sidemenutogglebuttons">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
@@ -88,7 +88,7 @@
                               maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
                               mnemonicParsing="false" onMouseClicked="#onMenuItemReportsMouseClicked"
                               onTouchPressed="#onMenuItemReportsMouseClicked" prefHeight="100.0" prefWidth="250.0"
-                              styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.reports"
+                              styleClass="sidemenuitem" stylesheets="@themes/style_white.css" text="%title.reports"
                               toggleGroup="$sidemenutogglebuttons">
                     <cursor>
                         <Cursor fx:constant="HAND"/>
@@ -108,7 +108,7 @@
                               minWidth="-Infinity" mnemonicParsing="false"
                               onMouseClicked="#onMenuItemSettingsMouseClicked"
                               onTouchPressed="#onMenuItemSettingsMouseClicked" prefHeight="100.0" prefWidth="250.0"
-                              styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.settings"
+                              styleClass="sidemenuitem" stylesheets="@themes/style_white.css" text="%title.settings"
                               toggleGroup="$sidemenutogglebuttons">
                     <cursor>
                         <Cursor fx:constant="HAND"/>

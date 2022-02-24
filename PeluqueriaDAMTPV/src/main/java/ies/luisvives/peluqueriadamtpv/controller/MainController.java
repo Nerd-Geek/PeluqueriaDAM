@@ -1,17 +1,27 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
+import ies.luisvives.peluqueriadamtpv.model.UserConfiguration;
+import ies.luisvives.peluqueriadamtpv.utils.Util;
 import javafx.fxml.FXML;
+import javafx.scene.control.SplitPane;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.StackPane;
 
-public class MainController {
+import java.util.Objects;
 
+public class MainController {
+    @FXML
+    public SplitPane mainPane;
     @FXML
     StackPane includedViewAppointments, includedViewUsers, includedViewServices, includedViewReports, includedViewSettings;
     @FXML
     ToggleButton mainViewSideMenuButtonAppointments, mainViewSideMenuButtonUsers, mainViewSideMenuButtonServices, mainViewSideMenuButtonReports, mainViewSideMenuButtonSettings;
 
     public void initialize() {
+        mainPane.getStylesheets().add(Objects.requireNonNull(this.getClass()
+                .getResource(Util.PACKAGE_DIR + "themes/style_" +
+                        UserConfiguration.getInstance().getActualTheme().toLowerCase()
+                        + ".css")).toExternalForm());
     }
 
     @FXML
