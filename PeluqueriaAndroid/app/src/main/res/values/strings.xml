@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">PeluqueriaAndroid</string>
+    <string name="main_view_label_username">Username</string>
+    <string name="main_view_button_make_appointment">Make a Appointment</string>
+    <string name="main_view_button_view_appointments">View Appointment</string>
+    <string name="user_label_name">Name:</string>
+    <string name="user_label_surname">Surname:</string>
+    <string name="user_label_gender">Gender:</string>
+    <string name="user_label_telephone">Telephone:</string>
+    <string name="user_label_email">E-mail:</string>
 </resources>
