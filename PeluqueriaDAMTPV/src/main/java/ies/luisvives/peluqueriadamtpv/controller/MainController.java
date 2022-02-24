@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
@@ -20,6 +21,14 @@ public class MainController {
     StackPane includedViewAppointments,includedViewUsers,includedViewServices, includedViewReports, includedViewSettings;
     @FXML
     ToggleButton mainViewSideMenuButtonAppointments,mainViewSideMenuButtonUsers,mainViewSideMenuButtonServices,mainViewSideMenuButtonReports,mainViewSideMenuButtonSettings;
+
+    @FXML
+    TextField search_field;
+
+    @FXML
+    AppointmentController includedViewAppointmentsController;
+    @FXML
+    private Button search_button;
 
     public void initialize() {
     }
@@ -87,5 +96,10 @@ public class MainController {
         includedViewReports.setDisable(true);
         includedViewSettings.setVisible(true);
         includedViewSettings.setDisable(false);
+    }
+
+    @FXML
+    public void onSearchButtonClick() {
+        includedViewAppointmentsController.setUserSearch(search_field.getText());
     }
 }

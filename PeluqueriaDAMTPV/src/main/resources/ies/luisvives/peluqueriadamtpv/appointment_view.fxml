@@ -285,7 +285,7 @@
                </children>
             </HBox>
             <Separator prefWidth="200.0" />
-            <fx:include fx:id="includedViewAppointments" source="table_view.fxml" />
+            <fx:include fx:id="appointmentsTableView" source="table_view.fxml" />
          </children>
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />

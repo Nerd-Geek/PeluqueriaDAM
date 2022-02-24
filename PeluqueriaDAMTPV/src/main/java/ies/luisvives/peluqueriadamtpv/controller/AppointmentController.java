@@ -10,6 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Orientation;
 import javafx.scene.control.*;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.util.Callback;
 import retrofit2.Response;
@@ -28,10 +29,6 @@ public class AppointmentController implements Initializable {
 	private Label month_string;
 	@FXML
 	private Label year_string;
-	@FXML
-	private TextField userSearchField;
-	@FXML
-	private Button searchUserButton;
 	@FXML
 	private Button prev_month_button;
 	@FXML
@@ -130,10 +127,24 @@ public class AppointmentController implements Initializable {
 	private List<List<Button>> gridButtons;
 	private ListView<Object> list_view_appointments;
 
+	@FXML
+	private HBox appointmentsTableView;
+	@FXML
+	private AppointmentTableController appointmentsTableViewController;
+
+	private String userSearch;
+
 	public AppointmentController() {
 		calendar = Calendar.getInstance();
 		gridButtons = new ArrayList<>();
+		userSearch = "";
 	}
+
+	@FXML
+	protected void initialize() {
+		appointmentsTableViewController.setSearchUser(this.userSearch);
+	}
+
 	private void setButtonNamesForMonthYear(Calendar calendar) {
 		gridButtons.forEach(l -> l.forEach(b -> {
 			b.setText("");
@@ -226,6 +237,12 @@ public class AppointmentController implements Initializable {
 			calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) - 1, calendar.get(Calendar.DAY_OF_MONTH));
 		setButtonNamesForMonthYear(calendar);
 		updateMonthYearLabel();
+	}
+
+	public void setUserSearch(String userSearch) {
+		this.userSearch = userSearch;
+		appointmentsTableViewController.setSearchUser(userSearch);
+		appointmentsTableViewController.refreshTable();
 	}
 
 	@FXML

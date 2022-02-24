@@ -4,7 +4,6 @@ import ies.luisvives.peluqueriadamtpv.mapper.AppointmentListMapper;
 import ies.luisvives.peluqueriadamtpv.model.AppointmentDTO;
 import ies.luisvives.peluqueriadamtpv.model.AppointmentListDTO;
 import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
-import ies.luisvives.peluqueriadamtpv.restcontroller.RestAPIAppointments;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,7 +11,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import retrofit2.Response;
 
 import javax.security.auth.callback.Callback;
@@ -35,12 +33,15 @@ public class AppointmentTableController implements Initializable, Callback {
 	@FXML
 	private Button delete_button;
 
+	private String searchUser;
+
 
 	public AppointmentTableController () {
 		userColumn = new TableColumn<>("user");
 		serviceColumn = new TableColumn<>("service");
 		timeColumn = new TableColumn<>("time");
 		dateColumn = new TableColumn<>("date");
+		searchUser = "";
 	}
 
 	@Override
@@ -52,7 +53,7 @@ public class AppointmentTableController implements Initializable, Callback {
 	@FXML
 	public void onTableItemAppointments (ActionEvent event) {
 		try {
-			Response<List<AppointmentDTO>> response = APIRestConfig.getAppointmentsService().appointmentsGetAll().execute();
+			Response<List<AppointmentDTO>> response = APIRestConfig.getAppointmentsService().appointmentGetAllWithUser_Username(searchUser).execute();
 			if (response.body() != null) {
 				AppointmentListMapper mapper = new AppointmentListMapper();
 				ObservableList<AppointmentListDTO> appointments =
@@ -91,5 +92,13 @@ public class AppointmentTableController implements Initializable, Callback {
 		if (list_appointments.getSelectionModel().getSelectedCells().size() == 1) {
 
 		}
+	}
+
+	public void setSearchUser(String searchUser) {
+		this.searchUser = searchUser;
+	}
+
+	public void refreshTable() {
+		onTableItemAppointments(null);
 	}
 }
