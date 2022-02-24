@@ -141,8 +141,7 @@
                         </VBox>
                     </children>
                 </HBox>
-                <Button mnemonicParsing="false" onAction="#insertUser" onMouseClicked="#insertUser"
-                        onTouchPressed="#insertUser" text="%text.createUser"/>
+                <Button mnemonicParsing="false" onAction="#insertUser"  text="%text.createUser"/>
                 <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
                     <children>
                         <TableView fx:id="listUsers" maxHeight="1.7976931348623157E308"

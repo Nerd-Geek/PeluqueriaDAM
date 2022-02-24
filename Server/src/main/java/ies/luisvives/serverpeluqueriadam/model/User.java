@@ -53,6 +53,7 @@ public class User {
         this.superUser = superUser;
     }
 
+    @Column(unique = true)
     public String getUsername() {
         return username;
     }
@@ -93,6 +94,7 @@ public class User {
         this.phoneNumber = phoneNumber;
     }
 
+    @Column(unique = true)
     public String getEmail() {
         return email;
     }

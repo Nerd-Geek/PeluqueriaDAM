@@ -134,12 +134,6 @@ public class UserController {
         if (user.getPassword() == null) {
             throw new UserBadRequestException("Password", "La password es obligatoria");
         }
-        if (400==findByUsername(user.getUsername()).getStatusCodeValue()){
-            throw new UserBadRequestException("Username", "El username ya existe");
-        }
-        if (400==findByEmail(user.getEmail()).getStatusCodeValue()){
-            throw new UserBadRequestException("Email", "El email ya existe");
-        }
     }
 
 }

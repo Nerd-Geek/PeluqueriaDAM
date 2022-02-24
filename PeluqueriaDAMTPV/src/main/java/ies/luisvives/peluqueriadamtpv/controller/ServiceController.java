@@ -73,38 +73,35 @@ public class ServiceController implements Initializable, Callback {
 
     @FXML
     public void deleteService(ActionEvent event) {
-        try {
-            Service service = APIRestConfig.getServicesService().deleteService(listService.getSelectionModel().getSelectedItem().getId()).execute().body();
-            Response<List<Service>> serviceList = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());
-            ObservableList<Service> services =
-                    FXCollections.observableArrayList();
-            if (serviceList.body() != null) {
-                services.addAll(serviceList.body());
-            } else {
-                services.remove(service);
+        if (listService.getSelectionModel().getSelectedCells().size() == 1) {
+            String serviceID = listService.getItems().get(listService.getSelectionModel().getFocusedIndex()).getId();
+            try {
+                APIRestConfig.getServicesService().deleteService(serviceID).execute();
+                listService.getItems().remove(listService.getSelectionModel().getFocusedIndex());
+                System.out.println("delete done");
+            } catch (IOException ioException) {
+                System.err.println("Delete not done");
             }
-            listService.setItems(services);
-        } catch (Exception e) {
-            e.printStackTrace();
         }
     }
 
     @FXML
     private void insertService() throws IOException {
-
         ObservableList<Service> services = FXCollections.observableArrayList();
         Service service = new Service();
-        service.setId(UUID.randomUUID().toString());
-        service.setName(nombreService.getText());
-        service.setDescription(descriptionService.getText());
-        service.setStock(Integer.valueOf(stockService.getText()));
-        service.setPrice(Double.valueOf(priceService.getText()));
+        if (!nombreService.getText().equals("")) {
+            service.setId(UUID.randomUUID().toString());
+            service.setName(nombreService.getText());
+            service.setDescription(descriptionService.getText());
+            service.setStock(Integer.valueOf(stockService.getText()));
+            service.setPrice(Double.valueOf(priceService.getText()));
 
-        APIRestConfig.getServicesService().insertService(service).execute();
-        Response<List<Service>> serviceList = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());
-        if (serviceList.body() != null) {
-            services.addAll(serviceList.body());
-            listService.setItems(services);
+            APIRestConfig.getServicesService().insertService(service).execute();
+            Response<List<Service>> serviceList = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());
+            if (serviceList.body() != null) {
+                services.addAll(serviceList.body());
+                listService.setItems(services);
+            }
         }
     }
 
