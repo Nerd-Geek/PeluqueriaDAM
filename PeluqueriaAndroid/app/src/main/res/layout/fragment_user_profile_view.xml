@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/paledarkblue"
+    tools:context=".UserProfileView">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="306dp"
+            android:src="@drawable/user_defaulta_vatar_foreground" />
+
+        <TextView
+            android:id="@+id/userProfileTextUsernameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/main_view_label_username"
+            android:textAlignment="center"
+            android:textColor="@color/palelightred"
+            android:textSize="34sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextNameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="@string/user_label_name"
+            android:textColor="@color/paleorange"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextNameValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="TextView"
+            android:textColor="@color/palecream"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextSurnameLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="@string/user_label_surname"
+            android:textColor="@color/paleorange"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextSurnameValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="TextView"
+            android:textColor="@color/palecream"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextGenderLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="@string/user_label_gender"
+            android:textColor="@color/paleorange"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextGenderValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="TextView"
+            android:textColor="@color/palecream"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextTelephoneLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="@string/user_label_telephone"
+            android:textColor="@color/paleorange"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextTelephoneValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="TextView"
+            android:textColor="@color/palecream"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextEmailLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="@string/user_label_email"
+            android:textColor="@color/paleorange"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/userProfileTextEmailValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10"
+            android:layout_marginTop="10"
+            android:layout_marginRight="10"
+            android:text="TextView"
+            android:textColor="@color/palecream"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+</FrameLayout>
