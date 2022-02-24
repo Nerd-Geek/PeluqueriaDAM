@@ -8,160 +8,120 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
 <?import org.kordamp.ikonli.javafx.*?>
-<SplitPane dividerPositions="0.2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-           minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@themes/style_white.css"
-           xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="ies.luisvives.peluqueriadamtpv.controller.MainController" fx:id="mainPane">
-    <items>
-        <VBox fx:id="main_view_menu" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity"
-              minWidth="-Infinity" prefWidth="250.0" stylesheets="@themes/style_white.css" SplitPane.resizableWithParent="false">
-            <children>
-                <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                    <image>
-                        <Image url="@images/avatar_default.png"/>
-                    </image>
-                    <VBox.margin>
-                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
-                    </VBox.margin>
-                </ImageView>
-                <Label style="-fx-background-color: #434659;" stylesheets="@themes/style_white.css" text="%title.admin"
-                       textFill="WHITE">
-                    <font>
-                        <Font name="Calibri Bold" size="16.0"/>
-                    </font>
-                    <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0"/>
-                    </padding>
-                </Label>
-                <ToggleButton fx:id="mainViewSideMenuButtonAppointments" graphicTextGap="5.0"
-                              maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                              mnemonicParsing="false" onMouseClicked="#onMenuItemAppointmentsMouseClicked"
-                              prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@themes/style_white.css"
-                              text="%title.appointments">
-                    <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="fas-clipboard-list" iconSize="32"
-                                  styleClass="FontIcon"/>
-                    </graphic>
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                    <toggleGroup>
-                        <ToggleGroup fx:id="sidemenutogglebuttons"/>
-                    </toggleGroup>
-                </ToggleButton>
-                <ToggleButton fx:id="mainViewSideMenuButtonUsers" graphicTextGap="5.0"
-                              maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                              mnemonicParsing="false" onMouseClicked="#onMenuItemUsersMouseClicked"
-                              onTouchPressed="#onMenuItemUsersMouseClicked" prefHeight="100.0" prefWidth="250.0"
-                              styleClass="sidemenuitem" stylesheets="@themes/style_white.css" text="%title.users"
-                              toggleGroup="$sidemenutogglebuttons">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                    <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="fas-user" iconSize="32" styleClass="FontIcon"/>
-                    </graphic>
-                </ToggleButton>
-                <ToggleButton fx:id="mainViewSideMenuButtonServices" graphicTextGap="5.0"
-                              maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                              mnemonicParsing="false" onMouseClicked="#onMenuItemServicesMouseClicked"
-                              onTouchPressed="#onMenuItemServicesMouseClicked" prefHeight="100.0" prefWidth="250.0"
-                              styleClass="sidemenuitem" stylesheets="@themes/style_white.css" text="%title.services"
-                              toggleGroup="$sidemenutogglebuttons">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                    <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="fas-cut" iconSize="32" styleClass="FontIcon"/>
-                    </graphic>
-                </ToggleButton>
-                <ToggleButton fx:id="mainViewSideMenuButtonReports" graphicTextGap="5.0"
-                              maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                              mnemonicParsing="false" onMouseClicked="#onMenuItemReportsMouseClicked"
-                              onTouchPressed="#onMenuItemReportsMouseClicked" prefHeight="100.0" prefWidth="250.0"
-                              styleClass="sidemenuitem" stylesheets="@themes/style_white.css" text="%title.reports"
-                              toggleGroup="$sidemenutogglebuttons">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                    <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="fas-chart-pie" iconSize="32" styleClass="FontIcon"/>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets bottom="10.0"/>
-                    </VBox.margin>
-                </ToggleButton>
-                <ToggleButton fx:id="mainViewSideMenuButtonSettings" graphicTextGap="5.0" layoutX="10.0" layoutY="510.0"
-                              maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-                              minWidth="-Infinity" mnemonicParsing="false"
-                              onMouseClicked="#onMenuItemSettingsMouseClicked"
-                              onTouchPressed="#onMenuItemSettingsMouseClicked" prefHeight="100.0" prefWidth="250.0"
-                              styleClass="sidemenuitem" stylesheets="@themes/style_white.css" text="%title.settings"
-                              toggleGroup="$sidemenutogglebuttons">
-                    <cursor>
-                        <Cursor fx:constant="HAND"/>
-                    </cursor>
-                    <opaqueInsets>
-                        <Insets/>
-                    </opaqueInsets>
-                    <graphic>
-                        <FontIcon iconColor="WHITE" iconLiteral="fas-cog" iconSize="32" styleClass="FontIcon"/>
-                    </graphic>
-                    <VBox.margin>
-                        <Insets top="100.0"/>
-                    </VBox.margin>
-                </ToggleButton>
-            </children>
-            <padding>
-                <Insets bottom="10.0"/>
-            </padding>
-        </VBox>
-        <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-                   minWidth="-Infinity">
-            <children>
-                <HBox alignment="TOP_CENTER" fillHeight="false" maxHeight="1.7976931348623157E308"
-                      maxWidth="1.7976931348623157E308" StackPane.alignment="TOP_CENTER">
-                    <children>
-                        <TextField fx:id="search_field" maxHeight="-Infinity" maxWidth="1.7976931348623157E308"
-                                   minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS">
-                            <HBox.margin>
-                                <Insets left="20.0"/>
-                            </HBox.margin>
-                        </TextField>
-                        <Button fx:id="search_button" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false"
-                                text="%title.search">
-                            <HBox.margin>
-                                <Insets right="20.0"/>
-                            </HBox.margin>
-                        </Button>
-                    </children>
-                    <StackPane.margin>
-                        <Insets/>
-                    </StackPane.margin>
-                </HBox>
-                <fx:include fx:id="includedViewAppointments" maxHeight="760.0" maxWidth="1.7976931348623157E308"
-                            source="appointment_view.fxml" StackPane.alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS"/>
-                <fx:include fx:id="includedViewUsers" disable="true" maxHeight="760.0" source="users_view.fxml"
-                            visible="false" StackPane.alignment="BOTTOM_CENTER"/>
-                <fx:include fx:id="includedViewServices" disable="true" maxHeight="760.0" source="service_view.fxml"
-                            visible="false" StackPane.alignment="BOTTOM_CENTER"/>
-                <fx:include fx:id="includedViewReports" disable="true" maxHeight="760.0" source="report_view.fxml"
-                            visible="false" StackPane.alignment="BOTTOM_CENTER"/>
-                <fx:include fx:id="includedViewSettings" disable="true" maxHeight="760.0" source="settings_view.fxml"
-                            visible="false" StackPane.alignment="BOTTOM_CENTER"/>
-            </children>
-        </StackPane>
-    </items>
+
+<SplitPane dividerPositions="0.2" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ies.luisvives.peluqueriadamtpv.controller.MainController">
+  <items>
+      <VBox fx:id="main_view_menu" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="250.0" stylesheets="@css/css.css" SplitPane.resizableWithParent="false">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/avatar_default.png" />
+               </image>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </ImageView>
+            <Label style="-fx-background-color: #434659;" stylesheets="@css/css.css" text="%title.admin" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Bold" size="16.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+               </padding></Label>
+            <ToggleButton fx:id="mainViewSideMenuButtonAppointments" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemAppointmentsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.appointments">
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-clipboard-list" iconSize="32" styleClass="FontIcon" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <toggleGroup>
+                  <ToggleGroup fx:id="sidemenutogglebuttons" />
+               </toggleGroup>
+            </ToggleButton>
+            <ToggleButton fx:id="mainViewSideMenuButtonUsers" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemUsersMouseClicked" onTouchPressed="#onMenuItemUsersMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.users" toggleGroup="$sidemenutogglebuttons">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-user" iconSize="32" styleClass="FontIcon" />
+               </graphic>
+            </ToggleButton>
+            <ToggleButton fx:id="mainViewSideMenuButtonServices" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemServicesMouseClicked" onTouchPressed="#onMenuItemServicesMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.services" toggleGroup="$sidemenutogglebuttons">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-cut" iconSize="32" styleClass="FontIcon" />
+               </graphic>
+            </ToggleButton>
+            <ToggleButton fx:id="mainViewSideMenuButtonReports" graphicTextGap="5.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onMouseClicked="#onMenuItemReportsMouseClicked" onTouchPressed="#onMenuItemReportsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.reports" toggleGroup="$sidemenutogglebuttons">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+                </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-chart-pie" iconSize="32" styleClass="FontIcon" />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </ToggleButton>
+            <ToggleButton fx:id="mainViewSideMenuButtonSettings" graphicTextGap="5.0" layoutX="10.0" layoutY="510.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#onMenuItemSettingsMouseClicked" onTouchPressed="#onMenuItemSettingsMouseClicked" prefHeight="100.0" prefWidth="250.0" styleClass="sidemenuitem" stylesheets="@css/css.css" text="%title.settings" toggleGroup="$sidemenutogglebuttons">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <graphic>
+                  <FontIcon iconColor="WHITE" iconLiteral="fas-cog" iconSize="32" styleClass="FontIcon" />
+               </graphic>
+               <VBox.margin>
+                  <Insets top="100.0" />
+               </VBox.margin>
+            </ToggleButton>
+         </children>
+         <padding>
+            <Insets bottom="10.0" />
+         </padding>
+      </VBox>
+      <StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
+         <children>
+           <HBox alignment="TOP_CENTER" fillHeight="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" StackPane.alignment="TOP_CENTER">
+              <children>
+                 <TextField fx:id="search_field" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS">
+                    <HBox.margin>
+                       <Insets left="20.0" />
+                    </HBox.margin>
+                 </TextField>
+                 <Button fx:id="search_button" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#onSearchButtonClick" text="%title.search">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+              </children>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
+           </HBox>
+           <fx:include fx:id="includedViewAppointments" maxHeight="760.0" maxWidth="1.7976931348623157E308" source="appointment_view.fxml" StackPane.alignment="BOTTOM_CENTER" VBox.vgrow="ALWAYS" />
+           <fx:include fx:id="includedViewUsers" disable="true" maxHeight="760.0" source="users_view.fxml" visible="false" StackPane.alignment="BOTTOM_CENTER" />
+           <fx:include fx:id="includedViewServices" disable="true" maxHeight="760.0" source="service_view.fxml" visible="false" StackPane.alignment="BOTTOM_CENTER" />
+           <fx:include fx:id="includedViewReports" disable="true" maxHeight="760.0" source="report_view.fxml" visible="false" StackPane.alignment="BOTTOM_CENTER" />
+            <fx:include fx:id="includedViewSettings" disable="true" maxHeight="760.0" source="settings_view.fxml" visible="false" StackPane.alignment="BOTTOM_CENTER" />
+         </children>
+      </StackPane>
+  </items>
 </SplitPane>

@@ -38,3 +38,31 @@
         </VBox>
     </children>
 </HBox>
+
+<HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ies.luisvives.peluqueriadamtpv.controller.AppointmentTableController">
+		<children>
+			<TableView fx:id="list_appointments" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS" />
+			<VBox>
+				<children>
+					<Button fx:id="delete_appointment_button" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteAppointment" text="Delete" VBox.vgrow="ALWAYS">
+						<VBox.margin>
+							<Insets top="20.0" />
+						</VBox.margin>
+					</Button>
+					<Button fx:id="details_button" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Details" VBox.vgrow="ALWAYS">
+						<VBox.margin>
+							<Insets top="20.0" />
+						</VBox.margin>
+					</Button>
+					<Button fx:id="modify_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Modify" VBox.vgrow="ALWAYS">
+						<VBox.margin>
+							<Insets top="20.0" />
+						</VBox.margin>
+					</Button>
+				</children>
+				<HBox.margin>
+					<Insets left="4.0" />
+				</HBox.margin>
+			</VBox>
+		</children>
+	</HBox>

@@ -508,87 +508,19 @@
                                 <Insets bottom="20.0" top="20.0"/>
                             </HBox.margin>
                         </VBox>
-                        <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                                   orientation="VERTICAL"/>
-                        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                              HBox.hgrow="ALWAYS">
-                            <children>
-                                <Label alignment="CENTER" maxHeight="1.7976931348623157E308"
-                                       maxWidth="1.7976931348623157E308" text="%text.selectService" VBox.vgrow="ALWAYS">
-                                    <VBox.margin>
-                                        <Insets/>
-                                    </VBox.margin>
-                                </Label>
-                                <HBox alignment="CENTER" maxHeight="1.7976931348623157E308"
-                                      maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                                    <children>
-                                        <Button fx:id="prev_service_button" maxHeight="1.7976931348623157E308"
-                                                maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-                                                minWidth="-Infinity" mnemonicParsing="false" prefWidth="30.0"
-                                                text="&lt;-" HBox.hgrow="ALWAYS">
-                                            <HBox.margin>
-                                                <Insets bottom="20.0" left="20.0" right="5.0" top="20.0"/>
-                                            </HBox.margin>
-                                        </Button>
-                                        <VBox alignment="CENTER" maxHeight="1.7976931348623157E308"
-                                              maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                                            <HBox.margin>
-                                                <Insets bottom="20.0" left="5.0" right="5.0" top="20.0"/>
-                                            </HBox.margin>
-                                            <children>
-                                                <ImageView fx:id="service_icon_view" fitHeight="100.0" fitWidth="100.0"
-                                                           pickOnBounds="true" preserveRatio="true" VBox.vgrow="ALWAYS">
-                                                    <viewport>
-                                                        <Rectangle2D/>
-                                                    </viewport>
-                                                    <VBox.margin>
-                                                        <Insets top="20.0"/>
-                                                    </VBox.margin>
-                                                </ImageView>
-                                                <Label alignment="TOP_CENTER" maxHeight="1.7976931348623157E308"
-                                                       maxWidth="1.7976931348623157E308" text="Label"
-                                                       VBox.vgrow="ALWAYS">
-                                                    <padding>
-                                                        <Insets top="20.0"/>
-                                                    </padding>
-                                                </Label>
-                                            </children>
-                                        </VBox>
-                                        <Button fx:id="next_service_button" maxHeight="1.7976931348623157E308"
-                                                maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-                                                minWidth="-Infinity" mnemonicParsing="false" prefWidth="30.0"
-                                                text="-&gt;" HBox.hgrow="ALWAYS">
-                                            <HBox.margin>
-                                                <Insets bottom="20.0" left="5.0" right="20.0" top="20.0"/>
-                                            </HBox.margin>
-                                        </Button>
-                                    </children>
-                                </HBox>
-                                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-                                      VBox.vgrow="ALWAYS">
-                                    <children>
-                                        <Button fx:id="create_appointment_button" maxHeight="1.7976931348623157E308"
-                                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
-                                                text="%text.createAppointment" VBox.vgrow="ALWAYS">
-                                            <VBox.margin>
-                                                <Insets top="10.0"/>
-                                            </VBox.margin>
-                                        </Button>
-                                    </children>
-                                </VBox>
-                            </children>
-                            <HBox.margin>
-                                <Insets bottom="20.0" top="20.0"/>
-                            </HBox.margin>
-                        </VBox>
-                    </children>
-                </HBox>
-                <Separator prefWidth="200.0"/>
-                <fx:include fx:id="includedViewAppointments" source="table_view.fxml"/>
-            </children>
-            <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
-            </padding>
-        </VBox>
-    </children>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" top="20.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <Separator prefWidth="200.0" />
+            <fx:include fx:id="appointmentsTableView" source="table_view.fxml" />
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+   </children>
 </StackPane>

@@ -35,13 +35,16 @@ public class AppointmentTableController implements Initializable, Callback {
     @FXML
     private Button delete_button;
 
+	private String searchUser;
 
-    public AppointmentTableController() {
-        userColumn = new TableColumn<>("user");
-        serviceColumn = new TableColumn<>("service");
-        timeColumn = new TableColumn<>("time");
-        dateColumn = new TableColumn<>("date");
-    }
+
+	public AppointmentTableController () {
+		userColumn = new TableColumn<>("user");
+		serviceColumn = new TableColumn<>("service");
+		timeColumn = new TableColumn<>("time");
+		dateColumn = new TableColumn<>("date");
+		searchUser = "";
+	}
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -90,6 +93,14 @@ public class AppointmentTableController implements Initializable, Callback {
     public void showAppointment() {
         if (list_appointments.getSelectionModel().getSelectedCells().size() == 1) {
 
-        }
-    }
+		}
+	}
+
+	public void setSearchUser(String searchUser) {
+		this.searchUser = searchUser;
+	}
+
+	public void refreshTable() {
+		onTableItemAppointments(null);
+	}
 }

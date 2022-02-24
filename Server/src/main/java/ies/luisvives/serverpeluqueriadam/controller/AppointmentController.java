@@ -38,19 +38,21 @@ public class AppointmentController {
 
     @CrossOrigin(origins = "http://localhost:3306")
     @GetMapping("/")
-    public ResponseEntity<?> findAll(@RequestParam(name = "limit") Optional<String> limit) {
+    public ResponseEntity<?> findAll(
+            @RequestParam(name = "limit") Optional<String> limit
+            , @RequestParam(name = "username") Optional<String> username
+    ) {
         List<Appointment> appointments = null;
         try {
-            appointments = appointmentRepository.findAll();
-
+            if (username.isPresent()) {
+                appointments = appointmentRepository.findByUser_UsernameContains(username);
+            }else {
+                appointments = appointmentRepository.findAll();
+            }
             if (limit.isPresent() && !appointments.isEmpty() && appointments.size() > Integer.parseInt(limit.get())) {
                 return ResponseEntity.ok(appointmentMapper.toDTO(appointments.subList(0, Integer.parseInt(limit.get()))));
             } else {
-                if (!appointments.isEmpty()) {
-                    return ResponseEntity.ok(appointmentMapper.toDTO(appointments));
-                } else {
-                    throw new AppointmentsNotFoundException();
-                }
+                return ResponseEntity.ok(appointmentMapper.toDTO(appointments));
             }
         } catch (Exception e) {
             throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");

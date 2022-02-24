@@ -3,7 +3,10 @@ package ies.luisvives.peluqueriadamtpv.controller;
 import ies.luisvives.peluqueriadamtpv.model.UserConfiguration;
 import ies.luisvives.peluqueriadamtpv.utils.Util;
 import javafx.fxml.FXML;
-import javafx.scene.control.SplitPane;
+import javafx.scene.Node;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.StackPane;
 
@@ -16,6 +19,14 @@ public class MainController {
     StackPane includedViewAppointments, includedViewUsers, includedViewServices, includedViewReports, includedViewSettings;
     @FXML
     ToggleButton mainViewSideMenuButtonAppointments, mainViewSideMenuButtonUsers, mainViewSideMenuButtonServices, mainViewSideMenuButtonReports, mainViewSideMenuButtonSettings;
+
+    @FXML
+    TextField search_field;
+
+    @FXML
+    AppointmentController includedViewAppointmentsController;
+    @FXML
+    private Button search_button;
 
     public void initialize() {
         mainPane.getStylesheets().add(Objects.requireNonNull(this.getClass()
@@ -92,5 +103,10 @@ public class MainController {
         includedViewReports.setDisable(true);
         includedViewSettings.setVisible(true);
         includedViewSettings.setDisable(false);
+    }
+
+    @FXML
+    public void onSearchButtonClick() {
+        includedViewAppointmentsController.setUserSearch(search_field.getText());
     }
 }
