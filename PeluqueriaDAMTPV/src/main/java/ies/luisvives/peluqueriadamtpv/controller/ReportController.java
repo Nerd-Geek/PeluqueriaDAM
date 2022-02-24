@@ -1,6 +1,6 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
-import ies.luisvives.peluqueriadamtpv.model.AppointmentDTO;
+import ies.luisvives.peluqueriadamtpv.model.Appointment;
 import ies.luisvives.peluqueriadamtpv.model.Service;
 import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
 import ies.luisvives.peluqueriadamtpv.utils.Util;
@@ -13,7 +13,6 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.chart.XYChart;
 import retrofit2.Response;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Objects;
@@ -35,9 +34,9 @@ public class ReportController implements Initializable {
 
     public void setServiceHigher() {
 
-        ObservableList<AppointmentDTO> datosLista = FXCollections.observableArrayList();
+        ObservableList<Appointment> datosLista = FXCollections.observableArrayList();
         try {
-            Response<List<AppointmentDTO>> serviceList = Objects.requireNonNull(APIRestConfig.getAppointmentsService().appointmentsGetAll().execute());
+            Response<List<Appointment>> serviceList = Objects.requireNonNull(APIRestConfig.getAppointmentsService().appointmentsGetAll().execute());
             if (serviceList.body() != null) {
                 datosLista.addAll(serviceList.body());
             }
@@ -46,14 +45,14 @@ public class ReportController implements Initializable {
         }
 
         int contadorMale = 0;
-        for (AppointmentDTO male : datosLista) {
+        for (Appointment male : datosLista) {
             if (male.getUser().getGender().toString().equals("Male")) {
                 contadorMale++;
             }
         }
 
         int contadorFemale = 0;
-        for (AppointmentDTO female : datosLista) {
+        for (Appointment female : datosLista) {
             if (female.getUser().getGender().toString().equals("Female")) {
                 contadorFemale++;
             }
@@ -62,9 +61,9 @@ public class ReportController implements Initializable {
         XYChart.Series female = new XYChart.Series<>();
         genderFemale.setTitle(Util.getString("text.genders"));
         male.setName(Util.getString("text.male"));
-        male.getData().add(new XYChart.Data("",contadorMale));
+        male.getData().add(new XYChart.Data("", contadorMale));
         female.setName(Util.getString("text.female"));
-        female.getData().add(new XYChart.Data("",contadorFemale));
+        female.getData().add(new XYChart.Data("", contadorFemale));
         genderFemale.getData().addAll(male, female);
         genderFemale.verticalGridLinesVisibleProperty();
     }
@@ -136,21 +135,20 @@ public class ReportController implements Initializable {
         }
 
         ObservableList<PieChart.Data> datosGraficoCircular = FXCollections.observableArrayList(
-        new PieChart.Data("Corte pelo Hombre", contadorPeloHombres),
-        new PieChart.Data("Corte Niños", contadorNinos),
-        new PieChart.Data("Corte pelo Mujer", contadorMujer),
-        new PieChart.Data("Peinado Especial", contadorEspecial),
-        new PieChart.Data("Tinte Color Completo", contadorTinte),
-        new PieChart.Data("Mechas", contadorMechas),
-        new PieChart.Data("Californianas", contadorCalifornianas),
-        new PieChart.Data("Decoloración", contadorDecoloracion),
-        new PieChart.Data("Alisado de Keratina", contadorAlisado));
+                new PieChart.Data("Corte pelo Hombre", contadorPeloHombres),
+                new PieChart.Data("Corte Niños", contadorNinos),
+                new PieChart.Data("Corte pelo Mujer", contadorMujer),
+                new PieChart.Data("Peinado Especial", contadorEspecial),
+                new PieChart.Data("Tinte Color Completo", contadorTinte),
+                new PieChart.Data("Mechas", contadorMechas),
+                new PieChart.Data("Californianas", contadorCalifornianas),
+                new PieChart.Data("Decoloración", contadorDecoloracion),
+                new PieChart.Data("Alisado de Keratina", contadorAlisado));
         serviceHigher.setData(datosGraficoCircular);
         serviceHigher.setClockwise(false);
         serviceHigher.setTitle(Util.getString("text.programLanguageDistribution"));
     }
 
-    public void cargarDatosPieChart(ObservableList<AppointmentDTO> listaDatos) {
-
+    public void cargarDatosPieChart(ObservableList<Appointment> listaDatos) {
     }
 }

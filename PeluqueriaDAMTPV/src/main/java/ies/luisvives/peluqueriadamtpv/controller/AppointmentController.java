@@ -1,131 +1,126 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
-import ies.luisvives.peluqueriadamtpv.App;
-import ies.luisvives.peluqueriadamtpv.model.AppointmentDTO;
-import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.StackPane;
-import javafx.util.Callback;
-import retrofit2.Response;
 
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.*;
 import java.time.LocalDate;
+import java.util.*;
 
 public class AppointmentController implements Initializable {
-	private Calendar calendar;
-	@FXML
-	private StackPane stackPane;
-	@FXML
-	private Label month_string;
-	@FXML
-	private Label year_string;
-	@FXML
-	private TextField userSearchField;
-	@FXML
-	private Button searchUserButton;
-	@FXML
-	private Button prev_month_button;
-	@FXML
-	private Button next_month_button;
-	@FXML
-	private Button prevServiceButton;
-	@FXML
-	private Button nextServiceButton;
-	@FXML
-	private Button createAppointmentButton;
-	@FXML
-	private Button day_button_0_0;
-	@FXML
-	private Button day_button_0_1;
-	@FXML
-	private Button day_button_0_2;
-	@FXML
-	private Button day_button_0_3;
-	@FXML
-	private Button day_button_0_4;
-	@FXML
-	private Button day_button_0_5;
-	@FXML
-	private Button day_button_0_6;
-	@FXML
-	private Button day_button_1_0;
-	@FXML
-	private Button day_button_1_1;
-	@FXML
-	private Button day_button_1_2;
-	@FXML
-	private Button day_button_1_3;
-	@FXML
-	private Button day_button_1_4;
-	@FXML
-	private Button day_button_1_5;
-	@FXML
-	private Button day_button_1_6;
-	@FXML
-	private Button day_button_2_0;
-	@FXML
-	private Button day_button_2_1;
-	@FXML
-	private Button day_button_2_2;
-	@FXML
-	private Button day_button_2_3;
-	@FXML
-	private Button day_button_2_4;
-	@FXML
-	private Button day_button_2_5;
-	@FXML
-	private Button day_button_2_6;
-	@FXML
-	private Button day_button_3_0;
-	@FXML
-	private Button day_button_3_1;
-	@FXML
-	private Button day_button_3_2;
-	@FXML
-	private Button day_button_3_3;
-	@FXML
-	private Button day_button_3_4;
-	@FXML
-	private Button day_button_3_5;
-	@FXML
-	private Button day_button_3_6;
-	@FXML
-	private Button day_button_4_0;
-	@FXML
-	private Button day_button_4_1;
-	@FXML
-	private Button day_button_4_2;
-	@FXML
-	private Button day_button_4_3;
-	@FXML
-	private Button day_button_4_4;
-	@FXML
-	private Button day_button_4_5;
-	@FXML
-	private Button day_button_4_6;
-	@FXML
-	private Button day_button_5_0;
-	@FXML
-	private Button day_button_5_1;
-	@FXML
-	private Button day_button_5_2;
-	@FXML
-	private Button day_button_5_3;
-	@FXML
-	private Button day_button_5_4;
-	@FXML
-	private Button day_button_5_5;
-	@FXML
-	private Button day_button_5_6;
+    private Calendar calendar;
+    @FXML
+    private StackPane stackPane;
+    @FXML
+    private Label month_string;
+    @FXML
+    private Label year_string;
+    @FXML
+    private TextField userSearchField;
+    @FXML
+    private Button searchUserButton;
+    @FXML
+    private Button prev_month_button;
+    @FXML
+    private Button next_month_button;
+    @FXML
+    private Button prevServiceButton;
+    @FXML
+    private Button nextServiceButton;
+    @FXML
+    private Button createAppointmentButton;
+    @FXML
+    private Button day_button_0_0;
+    @FXML
+    private Button day_button_0_1;
+    @FXML
+    private Button day_button_0_2;
+    @FXML
+    private Button day_button_0_3;
+    @FXML
+    private Button day_button_0_4;
+    @FXML
+    private Button day_button_0_5;
+    @FXML
+    private Button day_button_0_6;
+    @FXML
+    private Button day_button_1_0;
+    @FXML
+    private Button day_button_1_1;
+    @FXML
+    private Button day_button_1_2;
+    @FXML
+    private Button day_button_1_3;
+    @FXML
+    private Button day_button_1_4;
+    @FXML
+    private Button day_button_1_5;
+    @FXML
+    private Button day_button_1_6;
+    @FXML
+    private Button day_button_2_0;
+    @FXML
+    private Button day_button_2_1;
+    @FXML
+    private Button day_button_2_2;
+    @FXML
+    private Button day_button_2_3;
+    @FXML
+    private Button day_button_2_4;
+    @FXML
+    private Button day_button_2_5;
+    @FXML
+    private Button day_button_2_6;
+    @FXML
+    private Button day_button_3_0;
+    @FXML
+    private Button day_button_3_1;
+    @FXML
+    private Button day_button_3_2;
+    @FXML
+    private Button day_button_3_3;
+    @FXML
+    private Button day_button_3_4;
+    @FXML
+    private Button day_button_3_5;
+    @FXML
+    private Button day_button_3_6;
+    @FXML
+    private Button day_button_4_0;
+    @FXML
+    private Button day_button_4_1;
+    @FXML
+    private Button day_button_4_2;
+    @FXML
+    private Button day_button_4_3;
+    @FXML
+    private Button day_button_4_4;
+    @FXML
+    private Button day_button_4_5;
+    @FXML
+    private Button day_button_4_6;
+    @FXML
+    private Button day_button_5_0;
+    @FXML
+    private Button day_button_5_1;
+    @FXML
+    private Button day_button_5_2;
+    @FXML
+    private Button day_button_5_3;
+    @FXML
+    private Button day_button_5_4;
+    @FXML
+    private Button day_button_5_5;
+    @FXML
+    private Button day_button_5_6;
 
     private List<List<Button>> gridButtons;
     private ListView<Object> list_view_appointments;
@@ -145,7 +140,7 @@ public class AppointmentController implements Initializable {
         int lastDayIndex = 6;
 //		int lastRow = 4;
 //		if (firstDayIndex == 5 && calendar.getActualMaximum(Calendar.DATE) != 30 || firstDayIndex == 6)
-//			lastRow = 5;
+//			lastRow = 5; //TODO: why commented?
         int day = 1;
         System.out.println(lastPosition[0] + " " + lastPosition[1]);
         for (int i = 0; i < lastPosition[1]; i++) {
@@ -246,6 +241,6 @@ public class AppointmentController implements Initializable {
 //		} catch (Exception e) {
 //			System.err.println("Cagaste");
 //			e.printStackTrace();
-//		}
+//		} //TODO: why commented?
     }
 }

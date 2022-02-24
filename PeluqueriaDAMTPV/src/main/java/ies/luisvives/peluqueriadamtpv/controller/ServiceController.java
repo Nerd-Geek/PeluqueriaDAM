@@ -74,9 +74,9 @@ public class ServiceController implements Initializable, Callback {
     @FXML
     public void deleteService(ActionEvent event) {
         if (listService.getSelectionModel().getSelectedCells().size() == 1) {
-            String appointmentID = listService.getItems().get(listService.getSelectionModel().getFocusedIndex()).getId();
+            String serviceID = listService.getItems().get(listService.getSelectionModel().getFocusedIndex()).getId();
             try {
-                APIRestConfig.getAppointmentsService().deleteAppointmentById(appointmentID).execute();
+                APIRestConfig.getServicesService().deleteService(serviceID).execute();
                 listService.getItems().remove(listService.getSelectionModel().getFocusedIndex());
                 System.out.println("delete done");
             } catch (IOException ioException) {
@@ -114,6 +114,7 @@ public class ServiceController implements Initializable, Callback {
 //        service.setStock();
 //        service.setPrice();
 //        APIRestConfig.getServicesService().updateService(service).execute();
+        //TODO: why commented?
         try {
             Response<List<Service>> serviceList = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());
             if (serviceList.body() != null) {

@@ -6,134 +6,159 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@css/css.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ies.luisvives.peluqueriadamtpv.controller.ServiceController">
-   <children>
-      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-         <children>
-            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-               <children>
-                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%text.name">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%text.description">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%text.price">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="5.0" />
-                           </VBox.margin>
-                        </Label>
-                        <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="%text.stock">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </Label>
-                     </children>
-                  </VBox>
-                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="ALWAYS">
-                     <children>
-                        <TextField fx:id="nombreService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                           <VBox.margin>
-                              <Insets bottom="10.0" top="10.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="descriptionService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="priceService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                           <VBox.margin>
-                              <Insets bottom="10.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <TextField fx:id="stockService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" />
-                        <Button fx:id="crear_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#insertService" text="%text.create" translateX="20.0" translateY="10.0">
-                           <VBox.margin>
-                              <Insets right="35.0" />
-                           </VBox.margin></Button>
-                     </children>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </VBox>
-                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                     <children>
-                        <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
-                           <VBox.margin>
-                              <Insets />
-                           </VBox.margin>
-                        </ImageView>
-                        <TextField fx:id="imagen_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                           <VBox.margin>
-                              <Insets top="5.0" />
-                           </VBox.margin>
-                        </TextField>
-                        <Button fx:id="subir_image_service" contentDisplay="TOP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="%text.upload" translateX="-33.0">
-                           <VBox.margin>
-                              <Insets left="70.0" top="5.0" />
-                           </VBox.margin>
-                        </Button>
-                     </children>
-                     <HBox.margin>
-                        <Insets left="90.0" />
-                     </HBox.margin>
-                  </VBox>
-               </children>
-            </HBox>
-            <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-               <children>
-                  <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                     <children>
-                        <TableView fx:id="listService" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@css/css.css" HBox.hgrow="ALWAYS" />
-                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-                           <children>
-                              <Button fx:id="borrar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onTableItemService" text="%button.buscar">
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button fx:id="buscar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#deleteService" text="%button.borrar">
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </Button>
-                              <Button fx:id="modificar_service" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="%button.modificar">
-                                 <VBox.margin>
-                                    <Insets top="20.0" />
-                                 </VBox.margin>
-                              </Button>
-                           </children>
-                           <HBox.margin>
-                              <Insets left="4.0" />
-                           </HBox.margin>
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@css/css.css"
+           xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="ies.luisvives.peluqueriadamtpv.controller.ServiceController">
+    <children>
+        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+            <children>
+                <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                       text="%text.name">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" top="10.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                       text="%text.description">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" top="5.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                       text="%text.price">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" top="5.0"/>
+                                    </VBox.margin>
+                                </Label>
+                                <Label maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                       text="%text.stock">
+                                    <font>
+                                        <Font size="14.0"/>
+                                    </font>
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </Label>
+                            </children>
                         </VBox>
-                     </children>
-                  </HBox>
-               </children>
-               <VBox.margin>
-                  <Insets top="20.0" />
-               </VBox.margin>
-            </VBox>
-         </children>
-      </VBox>
-   </children>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
+                              minWidth="-Infinity" HBox.hgrow="ALWAYS">
+                            <children>
+                                <TextField fx:id="nombreService" maxHeight="1.7976931348623157E308"
+                                           maxWidth="1.7976931348623157E308">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" top="10.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="descriptionService" maxHeight="1.7976931348623157E308"
+                                           maxWidth="1.7976931348623157E308">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="priceService" maxHeight="1.7976931348623157E308"
+                                           maxWidth="1.7976931348623157E308">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                                <TextField fx:id="stockService" maxHeight="1.7976931348623157E308"
+                                           maxWidth="1.7976931348623157E308"/>
+                                <Button fx:id="crear_service" maxHeight="1.7976931348623157E308"
+                                        maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                        onAction="#insertService" text="%text.create" translateX="20.0"
+                                        translateY="10.0">
+                                    <VBox.margin>
+                                        <Insets right="35.0"/>
+                                    </VBox.margin>
+                                </Button>
+                            </children>
+                            <HBox.margin>
+                                <Insets/>
+                            </HBox.margin>
+                        </VBox>
+                        <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
+                            <children>
+                                <ImageView fitHeight="114.0" fitWidth="141.0" pickOnBounds="true" preserveRatio="true">
+                                    <VBox.margin>
+                                        <Insets/>
+                                    </VBox.margin>
+                                </ImageView>
+                                <TextField fx:id="imagen_service" maxHeight="1.7976931348623157E308"
+                                           maxWidth="1.7976931348623157E308">
+                                    <VBox.margin>
+                                        <Insets top="5.0"/>
+                                    </VBox.margin>
+                                </TextField>
+                                <Button fx:id="subir_image_service" contentDisplay="TOP"
+                                        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
+                                        mnemonicParsing="false" text="%text.upload" translateX="-33.0">
+                                    <VBox.margin>
+                                        <Insets left="70.0" top="5.0"/>
+                                    </VBox.margin>
+                                </Button>
+                            </children>
+                            <HBox.margin>
+                                <Insets left="90.0"/>
+                            </HBox.margin>
+                        </VBox>
+                    </children>
+                </HBox>
+                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                    <children>
+                        <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                            <children>
+                                <TableView fx:id="listService" maxHeight="1.7976931348623157E308"
+                                           maxWidth="1.7976931348623157E308" stylesheets="@css/css.css"
+                                           HBox.hgrow="ALWAYS"/>
+                                <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+                                    <children>
+                                        <Button fx:id="borrar_service" maxHeight="1.7976931348623157E308"
+                                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                                onAction="#onTableItemService" text="%button.buscar">
+                                            <VBox.margin>
+                                                <Insets top="20.0"/>
+                                            </VBox.margin>
+                                        </Button>
+                                        <Button fx:id="buscar_service" maxHeight="1.7976931348623157E308"
+                                                maxWidth="1.7976931348623157E308" mnemonicParsing="false"
+                                                onAction="#deleteService" text="%button.borrar">
+                                            <VBox.margin>
+                                                <Insets top="20.0"/>
+                                            </VBox.margin>
+                                        </Button>
+                                        <Button fx:id="modificar_service" maxHeight="1.7976931348623157E308"
+                                                maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="%button.modificar">
+                                            <VBox.margin>
+                                                <Insets top="20.0"/>
+                                            </VBox.margin>
+                                        </Button>
+                                    </children>
+                                    <HBox.margin>
+                                        <Insets left="4.0"/>
+                                    </HBox.margin>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                    <VBox.margin>
+                        <Insets top="20.0"/>
+                    </VBox.margin>
+                </VBox>
+            </children>
+        </VBox>
+    </children>
 </StackPane>

@@ -1,18 +1,18 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
 import ies.luisvives.peluqueriadamtpv.mapper.AppointmentListMapper;
-import ies.luisvives.peluqueriadamtpv.model.AppointmentDTO;
-import ies.luisvives.peluqueriadamtpv.model.AppointmentListDTO;
+import ies.luisvives.peluqueriadamtpv.model.Appointment;
+import ies.luisvives.peluqueriadamtpv.model.AppointmentList;
 import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
-import ies.luisvives.peluqueriadamtpv.restcontroller.RestAPIAppointments;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.stage.Stage;
 import retrofit2.Response;
 
 import javax.security.auth.callback.Callback;
@@ -23,11 +23,11 @@ import java.util.ResourceBundle;
 
 public class AppointmentTableController implements Initializable, Callback {
     @FXML
-    TableView<AppointmentListDTO> list_appointments;
-    private final TableColumn<AppointmentListDTO, String> userColumn;
-    private final TableColumn<AppointmentListDTO, String> serviceColumn;
-    private final TableColumn<AppointmentListDTO, String> timeColumn;
-    private final TableColumn<AppointmentListDTO, String> dateColumn;
+    TableView<AppointmentList> list_appointments;
+    private final TableColumn<AppointmentList, String> userColumn;
+    private final TableColumn<AppointmentList, String> serviceColumn;
+    private final TableColumn<AppointmentList, String> timeColumn;
+    private final TableColumn<AppointmentList, String> dateColumn;
     @FXML
     private Button details_button;
     @FXML
@@ -52,10 +52,10 @@ public class AppointmentTableController implements Initializable, Callback {
     @FXML
     public void onTableItemAppointments(ActionEvent event) {
         try {
-            Response<List<AppointmentDTO>> response = APIRestConfig.getAppointmentsService().appointmentsGetAll().execute();
+            Response<List<Appointment>> response = APIRestConfig.getAppointmentsService().appointmentsGetAll().execute();
             if (response.body() != null) {
                 AppointmentListMapper mapper = new AppointmentListMapper();
-                ObservableList<AppointmentListDTO> appointments =
+                ObservableList<AppointmentList> appointments =
                         FXCollections.observableArrayList(mapper.toList(response.body()));
                 list_appointments.setItems(appointments);
                 userColumn.setCellValueFactory(new PropertyValueFactory<>("user"));
@@ -63,7 +63,7 @@ public class AppointmentTableController implements Initializable, Callback {
                 timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
                 dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
 //				userColumn.setSortType(TableColumn.SortType.DESCENDING);
-//				serviceColumn.setSortType(TableColumn.SortType.DESCENDING);
+//				serviceColumn.setSortType(TableColumn.SortType.DESCENDING); //TODO: why commented?
 //				timeColumn.setSortType(TableColumn.SortType.DESCENDING);
                 list_appointments.setItems(appointments);
             }
@@ -72,24 +72,24 @@ public class AppointmentTableController implements Initializable, Callback {
         }
     }
 
-	@FXML
-	public void deleteAppointment(ActionEvent e) {
-		if (list_appointments.getSelectionModel().getSelectedCells().size() == 1) {
-			String appointmentID = list_appointments.getItems().get(list_appointments.getSelectionModel().getFocusedIndex()).getId();
-			try {
-				APIRestConfig.getAppointmentsService().deleteAppointmentById(appointmentID).execute();
-				list_appointments.getItems().remove(list_appointments.getSelectionModel().getFocusedIndex());
-				System.out.println("delete done");
-			} catch (IOException ioException) {
-				System.err.println("Delete not done");
-			}
-		}
-	}
+    @FXML
+    public void deleteAppointment(ActionEvent e) {
+        if (list_appointments.getSelectionModel().getSelectedCells().size() == 1) {
+            String appointmentID = list_appointments.getItems().get(list_appointments.getSelectionModel().getFocusedIndex()).getId();
+            try {
+                APIRestConfig.getAppointmentsService().deleteAppointmentById(appointmentID).execute();
+                list_appointments.getItems().remove(list_appointments.getSelectionModel().getFocusedIndex());
+                System.out.println("delete done");
+            } catch (IOException ioException) {
+                System.err.println("Delete not done");
+            }
+        }
+    }
 
-	@FXML
-	public void showAppointment () {
-		if (list_appointments.getSelectionModel().getSelectedCells().size() == 1) {
+    @FXML
+    public void showAppointment() {
+        if (list_appointments.getSelectionModel().getSelectedCells().size() == 1) {
 
-		}
-	}
+        }
+    }
 }

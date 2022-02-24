@@ -1,7 +1,6 @@
 package ies.luisvives.peluqueriadamtpv.restcontroller;
 
 import ies.luisvives.peluqueriadamtpv.model.Service;
-import javafx.collections.ObservableList;
 import retrofit2.Call;
 import retrofit2.http.*;
 

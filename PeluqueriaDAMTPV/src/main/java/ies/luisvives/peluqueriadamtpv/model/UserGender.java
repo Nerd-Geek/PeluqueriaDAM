@@ -4,4 +4,3 @@ public enum UserGender {
     Male,
     Female
 }
-
