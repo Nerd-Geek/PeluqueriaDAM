@@ -4,10 +4,7 @@ import ies.luisvives.peluqueriadamtpv.model.UserConfiguration;
 import ies.luisvives.peluqueriadamtpv.utils.Util;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 import javafx.scene.layout.StackPane;
 
 import java.util.Objects;
@@ -25,8 +22,6 @@ public class MainController {
 
     @FXML
     AppointmentController includedViewAppointmentsController;
-    @FXML
-    private Button search_button;
 
     public void initialize() {
         mainPane.getStylesheets().add(Objects.requireNonNull(this.getClass()

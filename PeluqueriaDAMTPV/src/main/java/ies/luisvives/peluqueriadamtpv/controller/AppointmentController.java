@@ -1,5 +1,10 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
+import ies.luisvives.peluqueriadamtpv.App;
+import ies.luisvives.peluqueriadamtpv.model.Appointment;
+import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -7,12 +12,14 @@ import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.util.Callback;
+import retrofit2.Response;
 
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
+import java.time.LocalDate;
 
 public class AppointmentController implements Initializable {
     private Calendar calendar;
@@ -22,10 +29,6 @@ public class AppointmentController implements Initializable {
     private Label month_string;
     @FXML
     private Label year_string;
-    @FXML
-    private TextField userSearchField;
-    @FXML
-    private Button searchUserButton;
     @FXML
     private Button prev_month_button;
     @FXML
@@ -120,140 +123,39 @@ public class AppointmentController implements Initializable {
     private Button day_button_5_5;
     @FXML
     private Button day_button_5_6;
-	private Calendar calendar;
-	@FXML
-	private StackPane stackPane;
-	@FXML
-	private Label month_string;
-	@FXML
-	private Label year_string;
-	@FXML
-	private Button prev_month_button;
-	@FXML
-	private Button next_month_button;
-	@FXML
-	private Button prevServiceButton;
-	@FXML
-	private Button nextServiceButton;
-	@FXML
-	private Button createAppointmentButton;
-	@FXML
-	private Button day_button_0_0;
-	@FXML
-	private Button day_button_0_1;
-	@FXML
-	private Button day_button_0_2;
-	@FXML
-	private Button day_button_0_3;
-	@FXML
-	private Button day_button_0_4;
-	@FXML
-	private Button day_button_0_5;
-	@FXML
-	private Button day_button_0_6;
-	@FXML
-	private Button day_button_1_0;
-	@FXML
-	private Button day_button_1_1;
-	@FXML
-	private Button day_button_1_2;
-	@FXML
-	private Button day_button_1_3;
-	@FXML
-	private Button day_button_1_4;
-	@FXML
-	private Button day_button_1_5;
-	@FXML
-	private Button day_button_1_6;
-	@FXML
-	private Button day_button_2_0;
-	@FXML
-	private Button day_button_2_1;
-	@FXML
-	private Button day_button_2_2;
-	@FXML
-	private Button day_button_2_3;
-	@FXML
-	private Button day_button_2_4;
-	@FXML
-	private Button day_button_2_5;
-	@FXML
-	private Button day_button_2_6;
-	@FXML
-	private Button day_button_3_0;
-	@FXML
-	private Button day_button_3_1;
-	@FXML
-	private Button day_button_3_2;
-	@FXML
-	private Button day_button_3_3;
-	@FXML
-	private Button day_button_3_4;
-	@FXML
-	private Button day_button_3_5;
-	@FXML
-	private Button day_button_3_6;
-	@FXML
-	private Button day_button_4_0;
-	@FXML
-	private Button day_button_4_1;
-	@FXML
-	private Button day_button_4_2;
-	@FXML
-	private Button day_button_4_3;
-	@FXML
-	private Button day_button_4_4;
-	@FXML
-	private Button day_button_4_5;
-	@FXML
-	private Button day_button_4_6;
-	@FXML
-	private Button day_button_5_0;
-	@FXML
-	private Button day_button_5_1;
-	@FXML
-	private Button day_button_5_2;
-	@FXML
-	private Button day_button_5_3;
-	@FXML
-	private Button day_button_5_4;
-	@FXML
-	private Button day_button_5_5;
-	@FXML
-	private Button day_button_5_6;
 
     private List<List<Button>> gridButtons;
     private ListView<Object> list_view_appointments;
 
-	@FXML
-	private HBox appointmentsTableView;
-	@FXML
-	private AppointmentTableController appointmentsTableViewController;
+    @FXML
+    private HBox appointmentsTableView;
+    @FXML
+    private AppointmentTableController appointmentsTableViewController;
 
-	private String userSearch;
+    private String userSearch;
 
-	public AppointmentController() {
-		calendar = Calendar.getInstance();
-		gridButtons = new ArrayList<>();
-		userSearch = "";
-	}
+    public AppointmentController() {
+        calendar = Calendar.getInstance();
+        gridButtons = new ArrayList<>();
+        userSearch = "";
+    }
 
-	@FXML
-	protected void initialize() {
-		appointmentsTableViewController.setSearchUser(this.userSearch);
-	}
+    @FXML
+    protected void initialize() {
+        appointmentsTableViewController.setSearchUser(this.userSearch);
+    }
 
-	private void setButtonNamesForMonthYear(Calendar calendar) {
-		gridButtons.forEach(l -> l.forEach(b -> {
-			b.setText("");
-			b.setDisable(true);
-		}));
-		int firstDayIndex = calculateFirstDayPosition(calendar);
-		int[] lastPosition = calculateLastDayPosition(calendar, firstDayIndex);
-		int lastDayIndex = 6;
+    private void setButtonNamesForMonthYear(Calendar calendar) {
+        gridButtons.forEach(l -> l.forEach(b -> {
+            b.setText("");
+            b.setDisable(true);
+        }));
+        int firstDayIndex = calculateFirstDayPosition(calendar);
+        int[] lastPosition = calculateLastDayPosition(calendar, firstDayIndex);
+        int lastDayIndex = 6;
 //		int lastRow = 4;
 //		if (firstDayIndex == 5 && calendar.getActualMaximum(Calendar.DATE) != 30 || firstDayIndex == 6)
-//			lastRow = 5; //TODO: why commented?
+//			lastRow = 5;
         int day = 1;
         System.out.println(lastPosition[0] + " " + lastPosition[1]);
         for (int i = 0; i < lastPosition[1]; i++) {
@@ -279,14 +181,15 @@ public class AppointmentController implements Initializable {
         Calendar lastDayOfMonth = Calendar.getInstance();
         lastDayOfMonth.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH), calendar.getActualMaximum(Calendar.DATE));
         int nRows = 0;
-        if ((firstDayIndex + calendar.getActualMaximum(Calendar.DATE)) % 7 == 0)
-            nRows = (firstDayIndex + calendar.getActualMaximum(Calendar.DATE)) / 7;
+        if ((firstDayIndex + calendar.getActualMaximum(Calendar.DATE))%7 == 0)
+            nRows = (firstDayIndex + calendar.getActualMaximum(Calendar.DATE))/7;
         else
-            nRows = (firstDayIndex + calendar.getActualMaximum(Calendar.DATE)) / 7 + 1;
+            nRows = (firstDayIndex + calendar.getActualMaximum(Calendar.DATE))/7 + 1;
 
         if (lastDayOfMonth.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-            return new int[]{6, nRows};
-        } else {
+            return new int[]{ 6, nRows};
+        }
+        else {
             return new int[]{lastDayOfMonth.get(Calendar.DAY_OF_WEEK) - 2, nRows};
         }
     }
@@ -318,7 +221,7 @@ public class AppointmentController implements Initializable {
 
     @FXML
     public void nextMonthButtonAction() {
-        if (calendar.get(Calendar.MONTH) == Calendar.DECEMBER)
+        if (calendar.get(Calendar.MONTH)== Calendar.DECEMBER)
             calendar.set(calendar.get(Calendar.YEAR) + 1, Calendar.JANUARY, calendar.get(Calendar.DAY_OF_MONTH));
         else
             calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DAY_OF_MONTH));
@@ -326,17 +229,27 @@ public class AppointmentController implements Initializable {
         updateMonthYearLabel();
     }
 
-	public void setUserSearch(String userSearch) {
-		this.userSearch = userSearch;
-		appointmentsTableViewController.setSearchUser(userSearch);
-		appointmentsTableViewController.refreshTable();
-	}
+    @FXML
+    public void prevMonthButtonAction() {
+        if (calendar.get(Calendar.MONTH)== Calendar.JANUARY)
+            calendar.set(calendar.get(Calendar.YEAR) - 1, Calendar.DECEMBER, calendar.get(Calendar.DAY_OF_MONTH));
+        else
+            calendar.set(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) - 1, calendar.get(Calendar.DAY_OF_MONTH));
+        setButtonNamesForMonthYear(calendar);
+        updateMonthYearLabel();
+    }
 
-	@FXML
-	public void onCalendarDayAction (ActionEvent event) {
-		System.out.println("Button pressed");
-		LocalDate date = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, Integer.parseInt(((Button)event.getSource()).getText()));
-		System.out.println("REST petition with date " + date);
+    public void setUserSearch(String userSearch) {
+        this.userSearch = userSearch;
+        appointmentsTableViewController.setSearchUser(userSearch);
+        appointmentsTableViewController.refreshTable();
+    }
+
+    @FXML
+    public void onCalendarDayAction (ActionEvent event) {
+        System.out.println("Button pressed");
+        LocalDate date = LocalDate.of(calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, Integer.parseInt(((Button)event.getSource()).getText()));
+        System.out.println("REST petition with date " + date);
 //		APIRestConfig.getAppointmentsService().appointmentGetAllWithDate(Date.from(Instant.from(date)));
 //		try {
 //			Response<List<AppointmentDTO>> response = APIRestConfig.getAppointmentsService().appointmentsGetAll().execute();
@@ -350,6 +263,6 @@ public class AppointmentController implements Initializable {
 //		} catch (Exception e) {
 //			System.err.println("Cagaste");
 //			e.printStackTrace();
-//		} //TODO: why commented?
+//		}
     }
 }

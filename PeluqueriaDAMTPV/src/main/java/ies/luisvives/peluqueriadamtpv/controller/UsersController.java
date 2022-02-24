@@ -83,16 +83,19 @@ public class UsersController implements Initializable, Callback {
     @FXML
     public void deleteUser(ActionEvent event) {
         try {
-            User user = APIRestConfig.getUsersService().deleteUser(listUsers.getSelectionModel().getSelectedItem().getId()).execute().body();
-            Response<List<User>> usersList = Objects.requireNonNull(APIRestConfig.getUsersService().usersGetAll().execute());
-            ObservableList<User> users =
-                    FXCollections.observableArrayList();
-            if (usersList.body() != null) {
-                users.addAll(usersList.body());
-            } else {
-                users.remove(user);
+            User toBeDelete = listUsers.getSelectionModel().getSelectedItem();
+            if (toBeDelete != null) {
+                User user = APIRestConfig.getUsersService().deleteUser(toBeDelete.getId()).execute().body();
+                Response<List<User>> usersList = Objects.requireNonNull(APIRestConfig.getUsersService().usersGetAll().execute());
+                ObservableList<User> users =
+                        FXCollections.observableArrayList();
+                if (usersList.body() != null) {
+                    users.addAll(usersList.body());
+                } else {
+                    users.remove(user);
+                }
+                listUsers.setItems(users);
             }
-            listUsers.setItems(users);
         } catch (Exception e) {
             e.printStackTrace();
         }

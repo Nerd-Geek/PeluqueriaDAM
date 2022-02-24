@@ -55,7 +55,7 @@ public class AppointmentTableController implements Initializable, Callback {
     @FXML
     public void onTableItemAppointments(ActionEvent event) {
         try {
-            Response<List<Appointment>> response = APIRestConfig.getAppointmentsService().appointmentsGetAll().execute();
+            Response<List<Appointment>> response = APIRestConfig.getAppointmentsService().appointmentGetAllWithUser_Username(searchUser).execute();
             if (response.body() != null) {
                 AppointmentListMapper mapper = new AppointmentListMapper();
                 ObservableList<AppointmentList> appointments =
@@ -65,9 +65,10 @@ public class AppointmentTableController implements Initializable, Callback {
                 serviceColumn.setCellValueFactory(new PropertyValueFactory<>("service"));
                 timeColumn.setCellValueFactory(new PropertyValueFactory<>("time"));
                 dateColumn.setCellValueFactory(new PropertyValueFactory<>("date"));
-//				userColumn.setSortType(TableColumn.SortType.DESCENDING);
-//				serviceColumn.setSortType(TableColumn.SortType.DESCENDING); //TODO: why commented?
-//				timeColumn.setSortType(TableColumn.SortType.DESCENDING);
+				userColumn.setSortType(TableColumn.SortType.DESCENDING);
+				serviceColumn.setSortType(TableColumn.SortType.DESCENDING);
+				timeColumn.setSortType(TableColumn.SortType.DESCENDING);
+				dateColumn.setSortType(TableColumn.SortType.DESCENDING);
                 list_appointments.setItems(appointments);
             }
         } catch (Exception e) {

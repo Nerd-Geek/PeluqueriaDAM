@@ -1,120 +1,121 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
-<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity"
-           minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
-    <children>
-        <VBox prefHeight="200.0" prefWidth="100.0">
-            <children>
-                <VBox prefHeight="200.0" prefWidth="100.0">
-                    <children>
-                        <ImageView fx:id="picture_service" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <VBox.margin>
-                                <Insets bottom="10.0" left="50.0" right="50.0" top="50.0"/>
-                            </VBox.margin>
-                        </ImageView>
-                        <Label fx:id="picture_path" text="%text.picturePath">
-                            <font>
-                                <Font size="18.0"/>
-                            </font>
-                            <VBox.margin>
-                                <Insets left="70.0" right="20.0"/>
-                            </VBox.margin>
-                        </Label>
-                        <HBox prefHeight="100.0" prefWidth="200.0">
-                            <children>
-                                <VBox prefHeight="200.0" prefWidth="100.0">
-                                    <children>
-                                        <Label text="%text.name">
-                                            <font>
-                                                <Font size="18.0"/>
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets bottom="20.0"/>
-                                            </VBox.margin>
-                                        </Label>
-                                        <Label text="%text.description">
-                                            <font>
-                                                <Font size="18.0"/>
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets bottom="20.0"/>
-                                            </VBox.margin>
-                                        </Label>
-                                        <Label text="%text.price">
-                                            <font>
-                                                <Font size="18.0"/>
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets bottom="20.0"/>
-                                            </VBox.margin>
-                                        </Label>
-                                        <Label text="%text.stock">
-                                            <font>
-                                                <Font size="18.0"/>
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets bottom="20.0"/>
-                                            </VBox.margin>
-                                        </Label>
-                                    </children>
-                                    <HBox.margin>
-                                        <Insets left="20.0"/>
-                                    </HBox.margin>
-                                </VBox>
-                                <VBox prefHeight="200.0" prefWidth="100.0">
-                                    <children>
-                                        <Label fx:id="name_service" text="Label">
-                                            <font>
-                                                <Font size="18.0"/>
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets bottom="20.0"/>
-                                            </VBox.margin>
-                                        </Label>
-                                        <Label fx:id="description_service" text="Label">
-                                            <font>
-                                                <Font size="18.0"/>
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets bottom="20.0"/>
-                                            </VBox.margin>
-                                        </Label>
-                                        <Label fx:id="price_service" text="Label">
-                                            <font>
-                                                <Font size="18.0"/>
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets bottom="20.0"/>
-                                            </VBox.margin>
-                                        </Label>
-                                        <Label fx:id="stock_service" text="Label">
-                                            <font>
-                                                <Font size="18.0"/>
-                                            </font>
-                                            <VBox.margin>
-                                                <Insets bottom="20.0"/>
-                                            </VBox.margin>
-                                        </Label>
-                                    </children>
-                                    <HBox.margin>
-                                        <Insets left="10.0"/>
-                                    </HBox.margin>
-                                </VBox>
-                            </children>
-                            <VBox.margin>
-                                <Insets left="20.0" top="50.0"/>
-                            </VBox.margin>
-                        </HBox>
-                    </children>
-                </VBox>
-            </children>
-        </VBox>
-    </children>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <ImageView fx:id="picture_service" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     <VBox.margin>
+                        <Insets bottom="10.0" left="50.0" right="50.0" top="50.0" />
+                     </VBox.margin>
+                  </ImageView>
+                  <Label fx:id="picture_path" text="%text.picturePath">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets left="70.0" right="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="%text.name">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="%text.description">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="%text.price">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="%text.stock">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="20.0" />
+                           </HBox.margin>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label fx:id="name_service" text="Label">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="description_service" text="Label">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="price_service" text="Label">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Label fx:id="stock_service" text="Label">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets bottom="20.0" />
+                                 </VBox.margin>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets left="20.0" top="50.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
 </StackPane>

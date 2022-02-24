@@ -16,7 +16,7 @@ public interface RestAPIAppointments {
     Call<Appointment> appointmentGetAllWithDate(@Query("date") Date date);
 
     @GET("appointments/")
-    Call<List<AppointmentDTO>> appointmentGetAllWithUser_Username(@Query("username") String username);
+    Call<List<Appointment>> appointmentGetAllWithUser_Username(@Query("username") String username);
 
     @GET("appointments/{id}")
     Call<Appointment> appointmentGetById();
