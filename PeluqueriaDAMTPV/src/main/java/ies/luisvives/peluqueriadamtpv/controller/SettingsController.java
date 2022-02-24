@@ -40,7 +40,7 @@ public class SettingsController {
 
         cbLanguage.setOnAction(event -> {
             for (int n = 0; n < languageNames.length; n++) {
-                if (languageNames[n].equalsIgnoreCase(cbLanguage.getValue().toString())){
+                if (languageNames[n].equalsIgnoreCase(cbLanguage.getValue().toString())) {
                     config.setActualLanguage(langs.get(n));
                 }
             }
@@ -67,7 +67,7 @@ public class SettingsController {
     }
 
     @FXML
-    protected void updateApp(){
+    protected void updateApp() {
         try {
             new App().reloadStage();
         } catch (IOException ex) {

@@ -1,6 +1,6 @@
 package ies.luisvives.peluqueriadamtpv.controller;
 
-import ies.luisvives.peluqueriadamtpv.model.UserDTO;
+import ies.luisvives.peluqueriadamtpv.model.User;
 import ies.luisvives.peluqueriadamtpv.model.UserGender;
 import ies.luisvives.peluqueriadamtpv.restcontroller.APIRestConfig;
 import javafx.beans.property.SimpleListProperty;
@@ -19,8 +19,10 @@ import retrofit2.Response;
 import javax.security.auth.callback.Callback;
 import java.io.IOException;
 import java.net.URL;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.List;
+import java.util.Objects;
+import java.util.ResourceBundle;
+import java.util.UUID;
 
 public class UsersController implements Initializable, Callback {
 
@@ -29,19 +31,19 @@ public class UsersController implements Initializable, Callback {
     @FXML
     ChoiceBox<String> gender_choice_box;
     @FXML
-    TableView<UserDTO> listUsers;
+    TableView<User> listUsers;
 
-    private final TableColumn<UserDTO, String> username = new TableColumn<>("username");
-    private final TableColumn<UserDTO, String> name = new TableColumn<>("name");
-    private final TableColumn<UserDTO, String> surname = new TableColumn<>("surname");
-    private final TableColumn<UserDTO, String> telephone = new TableColumn<>("telephone");
-    private final TableColumn<UserDTO, String> email = new TableColumn<>("email");
-    private final TableColumn<UserDTO, String> gender = new TableColumn<>("gender");
-    private final TableColumn<UserDTO, String> image = new TableColumn<>("image");
+    private final TableColumn<User, String> username = new TableColumn<>("username");
+    private final TableColumn<User, String> name = new TableColumn<>("name");
+    private final TableColumn<User, String> surname = new TableColumn<>("surname");
+    private final TableColumn<User, String> telephone = new TableColumn<>("telephone");
+    private final TableColumn<User, String> email = new TableColumn<>("email");
+    private final TableColumn<User, String> gender = new TableColumn<>("gender");
+    private final TableColumn<User, String> image = new TableColumn<>("image");
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        listUsers.getColumns().addAll(username,name,surname,telephone,email,gender,image);
+        listUsers.getColumns().addAll(username, name, surname, telephone, email, gender, image);
         ObservableList<UserGender> genders = new SimpleListProperty<>(UserGender.Female.name(), UserGender.Male.name());
         gender_choice_box.getItems().addAll(UserGender.Male.name(), UserGender.Female.name());
         gender_choice_box.setValue(UserGender.Male.name());
@@ -51,9 +53,9 @@ public class UsersController implements Initializable, Callback {
     @FXML
     public void onTableItemUser() {
         try {
-            Response<List<UserDTO>> users = Objects.requireNonNull(APIRestConfig.getUsersService().usersGetAll().execute());
+            Response<List<User>> users = Objects.requireNonNull(APIRestConfig.getUsersService().usersGetAll().execute());
             if (users.body() != null) {
-                ObservableList<UserDTO> observableListUsers =
+                ObservableList<User> observableListUsers =
                         FXCollections.observableArrayList();
                 observableListUsers.addAll(users.body());
                 username.setCellValueFactory(new PropertyValueFactory<>("username"));
@@ -81,14 +83,14 @@ public class UsersController implements Initializable, Callback {
     @FXML
     public void deleteUser(ActionEvent event) {
         try {
-            UserDTO userDTO = APIRestConfig.getUsersService().deleteUser(listUsers.getSelectionModel().getSelectedItem().getId()).execute().body();
-            Response<List<UserDTO>> usersList = Objects.requireNonNull(APIRestConfig.getUsersService().usersGetAll().execute());
-            ObservableList<UserDTO> users =
+            User user = APIRestConfig.getUsersService().deleteUser(listUsers.getSelectionModel().getSelectedItem().getId()).execute().body();
+            Response<List<User>> usersList = Objects.requireNonNull(APIRestConfig.getUsersService().usersGetAll().execute());
+            ObservableList<User> users =
                     FXCollections.observableArrayList();
             if (usersList.body() != null) {
                 users.addAll(usersList.body());
             } else {
-                users.remove(userDTO);
+                users.remove(user);
             }
             listUsers.setItems(users);
         } catch (Exception e) {
@@ -99,9 +101,9 @@ public class UsersController implements Initializable, Callback {
     @FXML
     private void insertUser() throws IOException {
 
-        ObservableList<UserDTO> users =
+        ObservableList<User> users =
                 FXCollections.observableArrayList();
-        UserDTO user = new UserDTO();
+        User user = new User();
         user.setId(UUID.randomUUID().toString());
         user.setUsername(usernameTextField.getText());
         user.setName(nameTextField.getText());
@@ -113,12 +115,10 @@ public class UsersController implements Initializable, Callback {
         user.setImage(imageTextField.getText());
 
         APIRestConfig.getUsersService().insertUsers(user).execute();
-        Response<List<UserDTO>> usersList = Objects.requireNonNull(APIRestConfig.getUsersService().usersGetAll().execute());
+        Response<List<User>> usersList = Objects.requireNonNull(APIRestConfig.getUsersService().usersGetAll().execute());
         if (usersList.body() != null) {
             users.addAll(usersList.body());
             listUsers.setItems(users);
         }
     }
-
-
 }

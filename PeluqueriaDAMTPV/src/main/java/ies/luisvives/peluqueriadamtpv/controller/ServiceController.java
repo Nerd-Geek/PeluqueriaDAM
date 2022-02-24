@@ -117,6 +117,7 @@ public class ServiceController implements Initializable, Callback {
 //        service.setStock();
 //        service.setPrice();
 //        APIRestConfig.getServicesService().updateService(service).execute();
+        //TODO: why commented?
         try {
             Response<List<Service>> serviceList = Objects.requireNonNull(APIRestConfig.getServicesService().serviceGetAll().execute());
             if (serviceList.body() != null) {

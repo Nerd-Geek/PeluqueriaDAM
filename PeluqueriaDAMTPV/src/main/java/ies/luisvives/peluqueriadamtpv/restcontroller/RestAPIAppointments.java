@@ -1,6 +1,6 @@
 package ies.luisvives.peluqueriadamtpv.restcontroller;
 
-import ies.luisvives.peluqueriadamtpv.model.AppointmentDTO;
+import ies.luisvives.peluqueriadamtpv.model.Appointment;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -10,20 +10,20 @@ import java.util.List;
 public interface RestAPIAppointments {
 
     @GET("appointments/")
-    Call<List<AppointmentDTO>> appointmentsGetAll();
+    Call<List<Appointment>> appointmentsGetAll();
 
     @GET("appointments/")
-    Call<AppointmentDTO> appointmentGetAllWithDate(@Query("date") Date date);
+    Call<Appointment> appointmentGetAllWithDate(@Query("date") Date date);
 
     @GET("appointments/{id}")
-    Call<AppointmentDTO> appointmentGetById();
+    Call<Appointment> appointmentGetById();
 
     @POST("appointments/")
-    Call<AppointmentDTO> insertAppointments();
+    Call<Appointment> insertAppointments();
 
     @PUT("appointments/{id}")
-    Call<AppointmentDTO> updateAppointments();
+    Call<Appointment> updateAppointments();
 
     @DELETE("appointments/{id}")
-    Call<AppointmentDTO> deleteAppointmentById(@Path("id")String id);
+    Call<Appointment> deleteAppointmentById(@Path("id") String id);
 }
