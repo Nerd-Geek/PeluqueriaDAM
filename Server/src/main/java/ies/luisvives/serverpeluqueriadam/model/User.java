@@ -27,6 +27,7 @@ public class User {
     private String name;
     private String surname;
     private String phoneNumber;
+    @Column(unique = true)
     private String email;
     private Set<Login> logins;
     private Set<Appointment> appointments;
