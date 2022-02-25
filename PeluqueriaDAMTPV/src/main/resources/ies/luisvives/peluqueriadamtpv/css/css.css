@@ -1,8 +1,4 @@
-.label{
-    -fx-font-size: 16px;
-    -fx-font-family: 'arial';
-    -fx-font-weight: bold;
-}
+
 
 #main_view_menu{
     -fx-background-color: #393b50;
@@ -10,8 +6,12 @@
 
 .table-view{
     -fx-background-color: transparent;
-}
+    -fx-fill-height: true;
 
+}
+.table-view >.hbox.margin{
+    -fx-border-insets: 10px;
+}
 .table-view .column-header{
     -fx-size: 50;
 }
@@ -46,6 +46,7 @@
     -fx-border-width: 0px 0px 0px 12px;
     -fx-alignment: center;
     -fx-text-fill: #ffca3c;
+    -fx-cursor: hand;
 }
 .toggle-button:hover > .FontIcon{
     -fx-alignment: center;
@@ -80,8 +81,17 @@
     -fx-border-color: #595b79;
     -fx-border-width: 3;
     -fx-font-weight: bold;
+    -fx-cursor: hand;
 }
-
+.label{
+    -fx-font-size: 16px;
+    -fx-font-family: 'arial';
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}
+.text-field{
+    -fx-alignment: center-left;
+}
 #subir_image_service {
     -fx-background-color: #3a3c51;
     -fx-text-fill: #ffce3c;
