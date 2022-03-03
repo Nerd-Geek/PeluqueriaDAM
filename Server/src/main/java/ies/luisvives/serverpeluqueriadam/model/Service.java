@@ -6,6 +6,9 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
@@ -36,6 +39,7 @@ public class Service {
     public void setImage(String image) {this.image = image;}
 
     @Column(unique = true)
+    @NotBlank(message = "El nombre del servicio no puede estar vacío")
     public String getName() {
         return name;
     }
@@ -52,6 +56,8 @@ public class Service {
         this.description = description;
     }
 
+    @NotNull(message = "El precio no puede ser nulo")
+    @Min(value = 0, message = "El precio no puede ser negativo")
     public Double getPrice() {
         return price;
     }
@@ -60,7 +66,8 @@ public class Service {
         this.price = price;
     }
 
-    //@Min
+    @NotNull(message = "El stock no puede ser nulo")
+    @Min(value = 0, message = "El stock no puede ser negativo")
     public Integer getStock() {
         return stock;
     }

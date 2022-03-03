@@ -92,7 +92,7 @@ public class UserController {
                 checkUserData(newUser);
                 userUpdated.setName(newUser.getName());
                 userUpdated.setImage(newUser.getImage());
-                userUpdated.setSuperUser(newUser.isSuperUser());
+                userUpdated.setRoles(newUser.getRoles());
                 userUpdated.setUsername(newUser.getUsername());
                 userUpdated.setPassword(newUser.getPassword());
                 userUpdated.setSurname(newUser.getSurname());

@@ -9,6 +9,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Builder
@@ -19,8 +22,6 @@ public class User {
     //todo UUID
     private String id;
     private String image;
-    // Sustituir por UserRole
-    private boolean superUser;
     @Column(unique = true)
     private String username;
     private String password;
@@ -31,6 +32,7 @@ public class User {
     private String email;
     private Set<Login> logins;
     private Set<Appointment> appointments;
+    private Set<UserRole> roles;
     private UserGender gender;
 
     @Id
@@ -46,15 +48,8 @@ public class User {
 
     public void setImage(String image) {this.image = image;}
 
-    public boolean isSuperUser() {
-        return superUser;
-    }
-
-    public void setSuperUser(boolean superUser) {
-        this.superUser = superUser;
-    }
-
     @Column(unique = true)
+    @NotBlank(message = "El nombre del usuario no puede estar vacío")
     public String getUsername() {
         return username;
     }
@@ -63,6 +58,7 @@ public class User {
         this.username = username;
     }
 
+    @NotBlank(message = "La password no puede estar vacía")
     public String getPassword() {
         return password;
     }
@@ -71,6 +67,7 @@ public class User {
         this.password = password;
     }
 
+    @NotBlank(message = "El nombre no puede estar vacío")
     public String getName() {
         return name;
     }
@@ -79,6 +76,7 @@ public class User {
         this.name = name;
     }
 
+    @NotBlank(message = "El apellido no puede estar vacío")
     public String getSurname() {
         return surname;
     }
@@ -87,6 +85,7 @@ public class User {
         this.surname = surname;
     }
 
+    @NotBlank(message = "El número de teléfono no puede estar vacío")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -96,6 +95,7 @@ public class User {
     }
 
     @Column(unique = true)
+    @Email(regexp = ".*@.*\\..*", message = "Email debe ser un email valido")
     public String getEmail() {
         return email;
     }
@@ -105,6 +105,7 @@ public class User {
     }
 
     @Enumerated(EnumType.STRING)
+    @NotNull(message = "El género no puede ser nulo")
     public UserGender getGender() {
         return gender;
     }
@@ -133,12 +134,22 @@ public class User {
         this.appointments = appointments;
     }
 
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    public Set<UserRole> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<UserRole> roles) {
+        this.roles = roles;
+    }
+
     @Override
     public String toString() {
         return "User{" +
                 "id='" + id + '\'' +
                 ", image='" + image + '\'' +
-                ", superUser=" + superUser +
+                //", userRole=" +  roles +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +

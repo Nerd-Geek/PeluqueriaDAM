@@ -5,6 +5,7 @@ import ies.luisvives.serverpeluqueriadam.model.Service;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -12,8 +13,12 @@ import java.time.LocalTime;
 @Setter
 public class AppointmentDTO {
     private String id;
+    @NotNull(message = "La fecha no puede ser nula")
     private LocalDate date;
+    @NotNull(message = "El tiempo no puede ser nulo")
     private LocalTime time;
+    @NotNull(message = "El usuario no puede ser nulo")
     private UserDTO user;
+    @NotNull(message = "El servicio no puede ser nulo")
     private ServiceDTO service;
 }

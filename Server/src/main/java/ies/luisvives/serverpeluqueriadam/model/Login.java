@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 @Entity
@@ -27,6 +29,7 @@ public class Login {
         this.id = id;
     }
 
+    @NotBlank(message = "EL token no puede estar vacío")
     public String getToken() {
         return token;
     }
@@ -35,6 +38,7 @@ public class Login {
         this.token = token;
     }
 
+    @NotNull(message = "La instancia no puede estar nula")
     public Date getInstance() {
         return instance;
     }
@@ -45,6 +49,7 @@ public class Login {
 
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id", nullable = false)
+    @NotNull(message = "El usuario no puede estar nulo")
     public User getUser() {
         return user;
     }

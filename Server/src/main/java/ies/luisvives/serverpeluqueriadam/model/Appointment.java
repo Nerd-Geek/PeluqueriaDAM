@@ -6,10 +6,9 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.sql.Time;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.Date;
 
 @Entity
 @NoArgsConstructor
@@ -33,6 +32,7 @@ private Service service;
     }
 
     @Column(name = "appointmentDate")
+    @NotNull(message = "La fecha no puede ser nula")
     public LocalDate getDate() {
         return date;
     }
@@ -42,6 +42,7 @@ private Service service;
     }
 
     @Column(name = "appointmentTime")
+    @NotNull(message = "El tiempo no puede ser nulo")
     public LocalTime getTime() {
         return time;
     }
@@ -53,6 +54,7 @@ private Service service;
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_user", referencedColumnName = "id")
+    @NotNull(message = "El usuario no puede ser nulo")
     public User getUser() {
         return user;
     }
@@ -64,6 +66,7 @@ private Service service;
     @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "id_service", referencedColumnName = "id")
+    @NotNull(message = "EL servicio no puede ser nulo")
     public Service getService() {
         return service;
     }
