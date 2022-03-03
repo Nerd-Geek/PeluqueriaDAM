@@ -26,19 +26,16 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    public ResponseEntity<?> findAll(@RequestParam(name = "limit") Optional<String> limit) {
-        List<User> users = null;
+    public ResponseEntity<?> findAll(
+            @RequestParam("searchQuery") Optional<String> searchQuery
+    ) {
+        List<User> users;
         try {
-            users = repository.findAll();
-            if (limit.isPresent() && !users.isEmpty() && users.size() > Integer.parseInt(limit.get())) {
-                return ResponseEntity.ok(userMapper.toDTO(users.subList(0, Integer.parseInt(limit.get()))));
-            } else {
-                if (!users.isEmpty()) {
-                    return ResponseEntity.ok(userMapper.toDTO(users));
-                } else {
-                    throw new UsersNotFoundException();
-                }
-            }
+            if (searchQuery.isPresent())
+                users = repository.findByUsernameContainsIgnoreCase(searchQuery.get());
+            else
+                users = repository.findAll();
+            return ResponseEntity.ok(userMapper.toDTO(users));
         } catch (Exception e) {
             throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
         }

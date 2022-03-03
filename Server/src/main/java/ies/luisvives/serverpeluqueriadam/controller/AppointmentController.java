@@ -40,12 +40,12 @@ public class AppointmentController {
     @GetMapping("/")
     public ResponseEntity<?> findAll(
             @RequestParam(name = "limit") Optional<String> limit
-            , @RequestParam(name = "username") Optional<String> username
+            , @RequestParam(name = "searchQuery") Optional<String> searchQuery
     ) {
         List<Appointment> appointments = null;
         try {
-            if (username.isPresent()) {
-                appointments = appointmentRepository.findByUser_UsernameContains(username);
+            if (searchQuery.isPresent()) {
+                appointments = appointmentRepository.findByUser_UsernameContains(searchQuery);
             }else {
                 appointments = appointmentRepository.findAll();
             }
