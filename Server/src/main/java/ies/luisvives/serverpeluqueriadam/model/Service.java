@@ -4,12 +4,14 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Builder
@@ -23,7 +25,18 @@ public class Service {
     private String description;
     private Double price;
     private Integer stock;
+    @ToString.Exclude
     private Set<Appointment> appointments;
+
+    public Service(String image, String name, String description, Double price, Integer stock, Set<Appointment> appointments) {
+        this.id = UUID.randomUUID().toString();
+        this.image = image;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.stock = stock;
+        this.appointments = appointments;
+    }
 
     @Id
     public String getId() {
@@ -95,7 +108,7 @@ public class Service {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", stock=" + stock +
-                //", appointments=" + appointments +
+                ", appointments=" + appointments +
                 '}';
     }
 }

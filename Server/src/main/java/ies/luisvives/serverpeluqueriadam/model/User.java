@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
+import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -19,7 +20,6 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Table(name = "users")
 public class User {
-    //todo UUID
     private String id;
     private String image;
     @Column(unique = true)
@@ -30,10 +30,26 @@ public class User {
     private String phoneNumber;
     @Column(unique = true)
     private String email;
+    @ToString.Exclude
     private Set<Login> logins;
     private Set<Appointment> appointments;
     private Set<UserRole> roles;
     private UserGender gender;
+
+    public User(String image, String username, String password, String name, String surname, String phoneNumber, String email, Set<Login> logins, Set<Appointment> appointments, Set<UserRole> roles, UserGender gender) {
+        this.id = UUID.randomUUID().toString();
+        this.image = image;
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.surname = surname;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.logins = logins;
+        this.appointments = appointments;
+        this.roles = roles;
+        this.gender = gender;
+    }
 
     @Id
     public String getId() {
@@ -149,7 +165,7 @@ public class User {
         return "User{" +
                 "id='" + id + '\'' +
                 ", image='" + image + '\'' +
-                //", userRole=" +  roles +
+                ", userRole=" +  roles +
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", name='" + name + '\'' +
@@ -157,9 +173,8 @@ public class User {
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", gender=" + gender +
-                // TODO: RECUSRSIVIDAD COMENTARLA
-                //", logins=" + logins +
-                //", appointments=" + appointments +
+                ", logins=" + logins +
+                ", appointments=" + appointments +
                 '}';
     }
 }
