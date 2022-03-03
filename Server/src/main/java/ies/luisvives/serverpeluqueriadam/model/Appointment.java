@@ -4,23 +4,35 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.UUID;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Table(name="appointment")
+
 public class Appointment {
 private String id;
 private LocalDate date;
 private LocalTime time;
+@ToString.Exclude
 private User user;
 private Service service;
+
+    public Appointment(LocalDate date, LocalTime time, User user, Service service) {
+        this.id = UUID.randomUUID().toString();
+        this.date = date;
+        this.time = time;
+        this.user = user;
+        this.service = service;
+    }
 
     @Id
     public String getId() {
@@ -82,7 +94,8 @@ private Service service;
                 "id='" + id + '\'' +
                 ", date=" + date +
                 ", time=" + time +
-//                ", user=" + user + TODO Recursividad
+                ", user=" + user +
+                ", service= " + service +
                 '}';
     }
 }

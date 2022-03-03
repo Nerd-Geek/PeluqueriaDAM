@@ -94,7 +94,7 @@ public class LoginController {
                 throw new LoginNotFoundException(id);
             } else {
                 checkLoginData(login);
-                updated.setInstance(login.getInstance());
+                updated.setInstant(login.getInstant());
                 updated.setToken(login.getToken());
                 updated.setUser(login.getUser());
 
@@ -127,7 +127,7 @@ public class LoginController {
      * @param login DAO de Login
      */
     private void checkLoginData(Login login) {
-        if (login.getToken() == null || login.getInstance() == null) {
+        if (login.getToken() == null || login.getInstant() == null) {
             throw new LoginBadRequestException("Token", "El token es obligatorio");
         }
         if (login.getUser() == null) {

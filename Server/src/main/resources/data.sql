@@ -19,6 +19,51 @@ insert into users values ('d8425a3b-c57c-4577-80e2-59a2397db67e','kgertrayh@grav
 insert into users values ('a12ce02c-4f2e-4cbf-86b1-db5e1e95fba1','fcawderyi@nbcnews.com','Female',null, 'Filomena', 'fhifh1', '698443227', 'Casimiro', 'fcasimiro27');
 insert into users values ('4d047ef1-206f-43be-a1c3-d5578c3846d3','tfigurej@163.com','Female',null, 'Tamara', 'feuhfihf1', '684339226', 'Figueroa', 'tfigueroa26');
 
+insert into user_roles (user_id, roles)
+values ('c1334d57-120b-437b-baef-cf5b5f68cc3e', 'USER');
+insert into user_roles (user_id, roles)
+values ('c1334d57-120b-437b-baef-cf5b5f68cc3e', 'ADMIN');
+insert into user_roles (user_id, roles)
+values ('76b2071a-3f97-4666-bd76-3d3d38ca677d', 'USER');
+insert into user_roles (user_id, roles)
+values ('76b2071a-3f97-4666-bd76-3d3d38ca677d', 'USER');
+insert into user_roles (user_id, roles)
+values ('a049aff3-d439-4e77-9e3b-e6ffa59d9119', 'USER');
+insert into user_roles (user_id, roles)
+values ('8c2e01c4-7bbb-4f65-bee5-410df2fa429d', 'USER');
+insert into user_roles (user_id, roles)
+values ('40eb045d-1b22-469e-9014-0bc4bbe4a3c1', 'USER');
+insert into user_roles (user_id, roles)
+values ('436eecf5-ca23-4650-8da6-71a9c7a8f99d', 'USER');
+insert into user_roles (user_id, roles)
+values ('4b1d3ee3-0baf-4d0e-9aaa-72418b723d3e', 'USER');
+insert into user_roles (user_id, roles)
+values ('0b1810ec-6191-492c-91b6-04ea0c93dab8', 'USER');
+insert into user_roles (user_id, roles)
+values ('9dccf8c2-8a7f-4117-a2ca-ae14c35c9abf', 'USER');
+insert into user_roles (user_id, roles)
+values ('bff28d7f-869a-4f0f-ae7e-2c74c23d4746', 'USER');
+insert into user_roles (user_id, roles)
+values ('3a49cf85-3bfa-40e7-9c54-7db0518696ca', 'USER');
+insert into user_roles (user_id, roles)
+values ('b778d509-c6ee-40b0-9320-93b4601e7f9c', 'USER');
+insert into user_roles (user_id, roles)
+values ('a6894032-abf6-4f93-b70e-030bb07dc45a', 'USER');
+insert into user_roles (user_id, roles)
+values ('2e9f78be-6563-42ee-83bb-e8f72c938646', 'USER');
+insert into user_roles (user_id, roles)
+values ('7ee77bd1-1563-4937-bb14-ecd3d2503a05', 'USER');
+insert into user_roles (user_id, roles)
+values ('6c3607d4-21c9-4137-a49e-83383b6277ee', 'USER');
+insert into user_roles (user_id, roles)
+values ('d6381995-0703-4da7-8206-4c31392b4e9b', 'USER');
+insert into user_roles (user_id, roles)
+values ('d8425a3b-c57c-4577-80e2-59a2397db67e', 'USER');
+insert into user_roles (user_id, roles)
+values ('a12ce02c-4f2e-4cbf-86b1-db5e1e95fba1', 'USER');
+insert into user_roles (user_id, roles)
+values ('4d047ef1-206f-43be-a1c3-d5578c3846d3', 'USER');
+
 insert into services values ('7dafe5fd-976b-450a-9bab-17ab450a4fff', 'Corte de pelo para hombres', null, 'Corte pelo Hombre', 15, 4);
 insert into services values ('e4813d9c-cbb1-4f50-b997-3467ea5ace3e', 'Corte de pelo para niños y niñas', null, 'Corte Niños', 11, 4);
 insert into services values ('a6bc5b80-213c-4579-8335-f104d1bbfbb6', 'Corte de pelo basico para mujeres', null, 'Corte pelo Mujer', 16, 4);
