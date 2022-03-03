@@ -20,9 +20,13 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/appointments")
@@ -41,14 +45,21 @@ public class AppointmentController {
     public ResponseEntity<?> findAll(
             @RequestParam(name = "limit") Optional<String> limit
             , @RequestParam(name = "searchQuery") Optional<String> searchQuery
+            , @RequestParam(name = "date") Optional<String> date
+            , @RequestParam(name = "service_id") Optional<String> service_id
     ) {
         List<Appointment> appointments = null;
         try {
+            appointments = appointmentRepository.findAll();
             if (searchQuery.isPresent()) {
-                appointments = appointmentRepository.findByUser_UsernameContains(searchQuery);
-            }else {
-                appointments = appointmentRepository.findAll();
+                appointments = appointments.stream().filter(a -> a.getUser().getUsername().contains(searchQuery.get())).collect(Collectors.toList());
             }
+            if (date.isPresent()) {
+                LocalDate parsedDate = LocalDate.parse(date.get());
+                appointments = appointments.stream().filter(a -> a.getDate().equals(parsedDate)).collect(Collectors.toList());
+            }
+            if (service_id.isPresent())
+                appointments = appointments.stream().filter(a -> a.getService().getId().equals(service_id.get())).collect(Collectors.toList());
             if (limit.isPresent() && !appointments.isEmpty() && appointments.size() > Integer.parseInt(limit.get())) {
                 return ResponseEntity.ok(appointmentMapper.toDTO(appointments.subList(0, Integer.parseInt(limit.get()))));
             } else {
@@ -68,17 +79,6 @@ public class AppointmentController {
             return ResponseEntity.ok(appointmentMapper.toDTO(appointment));
         }
     }
-
-    // TODO: ¿Deberíamos de agregar findByUserId para que retorne las citas del usuario?
-//    @GetMapping("/user/{id}")
-//    public ResponseEntity<?> findByUserId(@PathVariable String id) {
-//        Appointment appointment = appointmentRepository.findById(id).orElse(null);
-//        if (appointment == null) {
-//            throw new AppointmentNotFoundException(id);
-//        } else {
-//            return ResponseEntity.ok(appointmentMapper.toDTO(appointment));
-//        }
-//    }
 
     @PostMapping("/")
     public ResponseEntity<?> save(@RequestBody AppointmentDTO appointmentDTO) {
@@ -127,17 +127,6 @@ public class AppointmentController {
             throw new GeneralBadRequestException("Eliminar", "Error al borrar la cita");
         }
     }
-
-    /**
-     * Comprueba los campos obligatorios (requisitos)
-     *
-     * @param appointment DAO de Appointment
-     */
-    private String image;
-    private String token;
-    private Date instance;
-    private User user;
-    private Service service;
 
     private void checkAppointmentData(Appointment appointment) {
         if (appointment.getUser() == null) {
