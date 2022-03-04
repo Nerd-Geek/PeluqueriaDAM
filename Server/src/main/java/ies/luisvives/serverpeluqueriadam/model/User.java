@@ -10,9 +10,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Entity
 @Builder
@@ -27,6 +25,7 @@ public class User {
     private String password;
     private String name;
     private String surname;
+    @Column(unique = true)
     private String phoneNumber;
     @Column(unique = true)
     private String email;
@@ -52,6 +51,7 @@ public class User {
     }
 
     @Id
+    @NotBlank(message = "El id no puede estar vacio")
     public String getId() {
         return id;
     }
@@ -101,6 +101,7 @@ public class User {
         this.surname = surname;
     }
 
+    @Size(min = 9, max = 15)
     @NotBlank(message = "El número de teléfono no puede estar vacío")
     public String getPhoneNumber() {
         return phoneNumber;
