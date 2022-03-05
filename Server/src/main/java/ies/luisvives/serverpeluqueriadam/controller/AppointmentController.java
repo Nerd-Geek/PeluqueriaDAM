@@ -76,12 +76,16 @@ public class AppointmentController {
     @CrossOrigin(origins = "http://localhost:3306")
     @GetMapping("/mobile")
     public ResponseEntity<?> findAllUserless(
-            @RequestParam(required  = false, name = "date") Optional<String> date
+            @RequestParam(required  = false, name = "searchQuery") Optional<String> searchQuery
+            , @RequestParam(required  = false, name = "date") Optional<String> date
             , @RequestParam(required  = false, name = "service_id") Optional<String> service_id
     ) {
         List<Appointment> appointments = null;
         try {
             appointments = appointmentService.findAllAppointments();
+            if (searchQuery.isPresent()) {
+                appointments = appointments.stream().filter(a -> a.getUser().getUsername().contains(searchQuery.get())).collect(Collectors.toList());
+            }
             if (date.isPresent()) {
                 LocalDate parsedDate = LocalDate.parse(date.get());
                 appointments = appointments.stream().filter(a -> a.getDate().equals(parsedDate)).collect(Collectors.toList());
