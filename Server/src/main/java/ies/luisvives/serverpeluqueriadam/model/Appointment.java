@@ -17,12 +17,11 @@ import java.util.UUID;
 @AllArgsConstructor
 @Builder
 @Table(name="appointment")
-
+@ToString
 public class Appointment {
 private String id;
 private LocalDate date;
 private LocalTime time;
-@ToString.Exclude
 private User user;
 private Service service;
 
@@ -87,15 +86,15 @@ private Service service;
         this.service = service;
     }
 
-
-    @Override
-    public String toString() {
-        return "Appointment{" +
-                "id='" + id + '\'' +
-                ", date=" + date +
-                ", time=" + time +
-                ", user=" + user +
-                ", service= " + service +
-                '}';
-    }
+//
+//    @Override
+//    public String toString() {
+//        return "Appointment{" +
+//                "id='" + id + '\'' +
+//                ", date=" + date +
+//                ", time=" + time +
+//                ", user=" + user +
+//                ", service= " + service +
+//                '}';
+//    }
 }

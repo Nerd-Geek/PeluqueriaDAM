@@ -1,17 +1,22 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
-import ies.luisvives.serverpeluqueriadam.config.APIConfig;
 import ies.luisvives.serverpeluqueriadam.dto.appointment.AppointmentDTO;
+import ies.luisvives.serverpeluqueriadam.dto.appointment.CreateAppointmentDTO;
 import ies.luisvives.serverpeluqueriadam.dto.appointment.ListAppointmentPageDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
+import ies.luisvives.serverpeluqueriadam.exceptions.ServiceNotFoundException;
 import ies.luisvives.serverpeluqueriadam.exceptions.appointment.AppointmentBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.appointment.AppointmentNotFoundException;
-import ies.luisvives.serverpeluqueriadam.exceptions.appointment.AppointmentsNotFoundException;
+import ies.luisvives.serverpeluqueriadam.exceptions.appointment.OutOfStockException;
+import ies.luisvives.serverpeluqueriadam.exceptions.appointment.UserDuplicatedAppointment;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByIdException;
 import ies.luisvives.serverpeluqueriadam.mapper.AppointmentMapper;
 import ies.luisvives.serverpeluqueriadam.model.Appointment;
 import ies.luisvives.serverpeluqueriadam.model.Service;
 import ies.luisvives.serverpeluqueriadam.model.User;
-import ies.luisvives.serverpeluqueriadam.repository.AppointmentRepository;
+import ies.luisvives.serverpeluqueriadam.repository.ServiceRepository;
+import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
+import ies.luisvives.serverpeluqueriadam.services.appointments.AppointmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -20,37 +25,38 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/appointments")
 public class AppointmentController {
-    private final AppointmentRepository appointmentRepository;
+    private final AppointmentService appointmentService;
+    private final UserRepository userRepository;
+    private final ServiceRepository serviceRepository;
     private final AppointmentMapper appointmentMapper;
 
     @Autowired
-    public AppointmentController(AppointmentRepository appointmentRepository, AppointmentMapper appointmentMapper) {
-        this.appointmentRepository = appointmentRepository;
+    public AppointmentController(AppointmentService appointmentService, UserRepository userRepository, ies.luisvives.serverpeluqueriadam.repository.ServiceRepository serviceRepository, AppointmentMapper appointmentMapper) {
+        this.appointmentService = appointmentService;
+        this.userRepository = userRepository;
+        this.serviceRepository = serviceRepository;
         this.appointmentMapper = appointmentMapper;
     }
 
     @CrossOrigin(origins = "http://localhost:3306")
     @GetMapping("/")
     public ResponseEntity<?> findAll(
-            @RequestParam(name = "limit") Optional<String> limit
-            , @RequestParam(name = "searchQuery") Optional<String> searchQuery
-            , @RequestParam(name = "date") Optional<String> date
-            , @RequestParam(name = "service_id") Optional<String> service_id
+            @RequestParam(required  = false, name = "searchQuery") Optional<String> searchQuery
+            , @RequestParam(required  = false, name = "date") Optional<String> date
+            , @RequestParam(required  = false, name = "service_id") Optional<String> service_id
     ) {
         List<Appointment> appointments = null;
         try {
-            appointments = appointmentRepository.findAll();
+            appointments = appointmentService.findAllAppointments();
             if (searchQuery.isPresent()) {
                 appointments = appointments.stream().filter(a -> a.getUser().getUsername().contains(searchQuery.get())).collect(Collectors.toList());
             }
@@ -60,11 +66,30 @@ public class AppointmentController {
             }
             if (service_id.isPresent())
                 appointments = appointments.stream().filter(a -> a.getService().getId().equals(service_id.get())).collect(Collectors.toList());
-            if (limit.isPresent() && !appointments.isEmpty() && appointments.size() > Integer.parseInt(limit.get())) {
-                return ResponseEntity.ok(appointmentMapper.toDTO(appointments.subList(0, Integer.parseInt(limit.get()))));
-            } else {
-                return ResponseEntity.ok(appointmentMapper.toDTO(appointments));
+
+            return ResponseEntity.ok(appointmentMapper.toDTO(appointments));
+        } catch (Exception e) {
+            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
+        }
+    }
+
+    @CrossOrigin(origins = "http://localhost:3306")
+    @GetMapping("/mobile")
+    public ResponseEntity<?> findAllUserless(
+            @RequestParam(required  = false, name = "date") Optional<String> date
+            , @RequestParam(required  = false, name = "service_id") Optional<String> service_id
+    ) {
+        List<Appointment> appointments = null;
+        try {
+            appointments = appointmentService.findAllAppointments();
+            if (date.isPresent()) {
+                LocalDate parsedDate = LocalDate.parse(date.get());
+                appointments = appointments.stream().filter(a -> a.getDate().equals(parsedDate)).collect(Collectors.toList());
             }
+            if (service_id.isPresent())
+                appointments = appointments.stream().filter(a -> a.getService().getId().equals(service_id.get())).collect(Collectors.toList());
+
+            return ResponseEntity.ok(appointmentMapper.toUserlessDTO(appointments));
         } catch (Exception e) {
             throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
         }
@@ -72,7 +97,7 @@ public class AppointmentController {
 
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable String id) {
-        Appointment appointment = appointmentRepository.findById(id).orElse(null);
+        Appointment appointment = appointmentService.findAppointmentById(id).orElse(null);
         if (appointment == null) {
             throw new AppointmentNotFoundException(id);
         } else {
@@ -81,50 +106,61 @@ public class AppointmentController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> save(@RequestBody AppointmentDTO appointmentDTO) {
+    public ResponseEntity<?> save(@RequestBody CreateAppointmentDTO appointmentDTO) {
         try {
-            Appointment appointment = appointmentMapper.fromDTO(appointmentDTO);
+            Appointment appointment = buildAppointmentFromCreateDTO(appointmentDTO);
             checkAppointmentData(appointment);
-            Appointment inserted = appointmentRepository.save(appointment);
+            Appointment inserted = appointmentService.saveAppointment(appointment);
             return ResponseEntity.ok(appointmentMapper.toDTO(inserted));
         } catch (Exception e) {
-            throw new GeneralBadRequestException("Insertar", "Error al insertar la cita. Campos incorrectos.");
+            throw new GeneralBadRequestException("Insertar", "Error al insertar la cita." + e.getMessage());
         }
     }
 
+    private Appointment buildAppointmentFromCreateDTO(CreateAppointmentDTO appointmentDTO) {
+        Service service = serviceRepository.findById(appointmentDTO.getServiceId()).orElseThrow(() -> new ServiceNotFoundException(appointmentDTO.getServiceId()));
+        User user = userRepository.findById(appointmentDTO.getUserId()).orElseThrow(() -> new UserNotFoundByIdException(appointmentDTO.getUserId()));
+        Appointment appointment = Appointment.builder()
+                .id(UUID.randomUUID().toString())
+                .time(appointmentDTO.getTime())
+                .date(appointmentDTO.getDate())
+                .user(user)
+                .service(service)
+                .build();
+        return appointment;
+    }
+
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable String id, @RequestBody Appointment appointment) {
+    public ResponseEntity<?> update(@PathVariable String id, @RequestBody CreateAppointmentDTO createAppointmentDTO) {
         try {
-            Appointment updated = appointmentRepository.findById(id).orElse(null);
+
+            Appointment updated = appointmentService.findAppointmentById(id).orElse(null);
             if (updated == null) {
                 throw new AppointmentNotFoundException(id);
             } else {
-                checkAppointmentData(appointment);
-                updated.setDate(appointment.getDate());
-                updated.setUser(appointment.getUser());
-                updated.setService(appointment.getService());
-                updated.setTime(appointment.getTime());
-
-                updated = appointmentRepository.save(updated);
-                return ResponseEntity.ok(appointmentMapper.toDTO(updated));
+                Appointment created = buildAppointmentFromCreateDTO(createAppointmentDTO);
+                created.setId(updated.getId());
+                checkAppointmentData(created);
+                created = appointmentService.updateAppointment(created);
+                return ResponseEntity.ok(appointmentMapper.toDTO(created));
             }
         } catch (Exception e) {
-            throw new GeneralBadRequestException("Actualizar", "Error al actualizar la cita. Campos incorrectos.");
+            throw new GeneralBadRequestException("Actualizar", "Error al actualizar la cita." + e.getMessage());
         }
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable String id) {
         try {
-            Appointment appointment = appointmentRepository.findById(id).orElse(null);
+            Appointment appointment = appointmentService.findAppointmentById(id).orElse(null);
             if (appointment == null) {
                 throw new AppointmentNotFoundException(id);
             } else {
-                appointmentRepository.delete(appointment);
+                appointmentService.deleteAppointment(appointment);
                 return ResponseEntity.ok(appointmentMapper.toDTO(appointment));
             }
         } catch (Exception e) {
-            throw new GeneralBadRequestException("Eliminar", "Error al borrar la cita");
+            throw new GeneralBadRequestException("Eliminar", "Error al borrar la cita" + e.getMessage());
         }
     }
 
@@ -148,7 +184,7 @@ public class AppointmentController {
         try {
             Appointment appointment = appointmentMapper.fromDTO(appointmentDTO);
             checkAppointmentData(appointment);
-            Appointment inserted = appointmentRepository.save(appointment);
+            Appointment inserted = appointmentService.saveAppointment(appointment);
             return ResponseEntity.ok(appointmentMapper.toDTO(inserted));
         } catch (AppointmentNotFoundException ex) {
             throw new GeneralBadRequestException("Insertar", "Error al insertar la cita. Campos incorrectos");
@@ -163,7 +199,7 @@ public class AppointmentController {
         Pageable paging = PageRequest.of(page, size);
         Page<Appointment> pagedResult;
         try {
-            pagedResult = appointmentRepository.findAll(paging);
+            pagedResult = appointmentService.findAllAppointments(paging);
 
             ListAppointmentPageDTO listAppointmentPageDTO = ListAppointmentPageDTO.builder()
                     .data(appointmentMapper.toDTO(pagedResult.getContent()))
