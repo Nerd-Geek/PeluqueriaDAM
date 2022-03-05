@@ -17,6 +17,7 @@ import javax.validation.constraints.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
+@ToString
 public class User {
     private String id;
     private String image;
@@ -31,6 +32,7 @@ public class User {
     private String email;
     @ToString.Exclude
     private Set<Login> logins;
+    @ToString.Exclude
     private Set<Appointment> appointments;
     private Set<UserRole> roles;
     private UserGender gender;
@@ -161,21 +163,20 @@ public class User {
         this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", image='" + image + '\'' +
-                ", userRole=" +  roles +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", gender=" + gender +
-                ", logins=" + logins +
-                ", appointments=" + appointments +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id='" + id + '\'' +
+//                ", image='" + image + '\'' +
+//                ", userRole=" +  roles +
+//                ", username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+//                ", name='" + name + '\'' +
+//                ", surname='" + surname + '\'' +
+//                ", phoneNumber='" + phoneNumber + '\'' +
+//                ", email='" + email + '\'' +
+//                ", gender=" + gender +
+//                ", appointments=" + appointments +
+//                '}';
+//    }
 }

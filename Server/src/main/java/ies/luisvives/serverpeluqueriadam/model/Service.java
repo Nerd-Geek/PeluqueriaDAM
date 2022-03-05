@@ -18,6 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "services")
+@ToString
 public class Service {
     private String id;
     private String image;
@@ -99,16 +100,16 @@ public class Service {
         this.appointments = appointments;
     }
 
-    @Override
-    public String toString() {
-        return "Service{" +
-                "id='" + id + '\'' +
-                ", image='" + image + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", price=" + price +
-                ", stock=" + stock +
-                ", appointments=" + appointments +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Service{" +
+//                "id='" + id + '\'' +
+//                ", image='" + image + '\'' +
+//                ", name='" + name + '\'' +
+//                ", description='" + description + '\'' +
+//                ", price=" + price +
+//                ", stock=" + stock +
+//                ", appointments=" + appointments +
+//                '}';
+//    }
 }
