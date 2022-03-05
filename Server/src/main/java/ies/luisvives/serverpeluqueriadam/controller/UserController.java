@@ -1,136 +1,80 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
+import ies.luisvives.serverpeluqueriadam.config.APIConfig;
+import ies.luisvives.serverpeluqueriadam.config.security.jwt.JwtTokenProvider;
+import ies.luisvives.serverpeluqueriadam.config.security.jwt.model.JwtUserResponse;
+import ies.luisvives.serverpeluqueriadam.config.security.jwt.model.LoginRequest;
 import ies.luisvives.serverpeluqueriadam.dto.user.CreateUserDTO;
 import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.*;
 import ies.luisvives.serverpeluqueriadam.mapper.UserMapper;
 import ies.luisvives.serverpeluqueriadam.model.User;
+import ies.luisvives.serverpeluqueriadam.model.UserRole;
 import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
+import ies.luisvives.serverpeluqueriadam.services.users.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
+@RequestMapping(APIConfig.API_PATH + "/usuarios")
+@RequiredArgsConstructor
 public class UserController {
-    private final UserRepository repository;
+    private final UserService userService;
     private final UserMapper userMapper;
 
-    @Autowired
-    public UserController(UserRepository repository, UserMapper userMapper) {
-        this.repository = repository;
-        this.userMapper = userMapper;
+    private final AuthenticationManager authenticationManager;
+    private final JwtTokenProvider tokenProvider;
+
+    @PostMapping("/")
+    public UserDTO nuevoUsuario(@RequestBody CreateUserDTO newUser) {
+        return userMapper.toDTO(userService.save(newUser));
+    }
+    @GetMapping("/me")
+    public UserDTO me(@AuthenticationPrincipal User user) {
+        return userMapper.toDTO(user);
     }
 
-    @GetMapping("/users")
-    public ResponseEntity<?> findAll(
-            @RequestParam("searchQuery") Optional<String> searchQuery
-    ) {
-        List<User> users;
-        try {
-            if (searchQuery.isPresent())
-                users = repository.findByUsernameContainsIgnoreCase(searchQuery.get());
-            else
-                users = repository.findAll();
-            return ResponseEntity.ok(userMapper.toDTO(users));
-        } catch (Exception e) {
-            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
-        }
+    @PostMapping("/login")
+    public JwtUserResponse login(@Valid @RequestBody LoginRequest loginRequest) {
+        Authentication authentication =
+                authenticationManager.authenticate(
+                        new UsernamePasswordAuthenticationToken(
+                                loginRequest.getUsername(),
+                                loginRequest.getPassword()
+
+                        )
+                );
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        User user = (User) authentication.getPrincipal();
+        String jwtToken = tokenProvider.generateToken(authentication);
+        return convertUserEntityAndTokenToJwtUserResponse(user, jwtToken);
     }
 
-    @GetMapping("/users/{id}")
-    public ResponseEntity<?> findById(@PathVariable String id) {
-        User user = repository.findById(id).orElse(null);
-        if (user == null) {
-            throw new UserNotFoundByIdException(id);
-        } else {
-            return ResponseEntity.ok(userMapper.toDTO(user));
-        }
+    private JwtUserResponse convertUserEntityAndTokenToJwtUserResponse(User user, String jwtToken) {
+        return JwtUserResponse
+                .jwtUserResponseBuilder()
+                .name(user.getName())
+                .image(user.getImage())
+                .userRoles(user.getRoles().stream().map(UserRole::name).collect(Collectors.toSet()))
+                .username(user.getUsername())
+                .surname(user.getSurname())
+                .phoneNumber(user.getPhoneNumber())
+                .email(user.getEmail())
+                .gender(user.getGender())
+                .token(jwtToken)
+                .build();
     }
-
-    @GetMapping("/users/{username}")
-    public ResponseEntity<?> findByUsername(@PathVariable String username) {
-        User user = repository.findByUsernameIgnoreCase(username);
-        if (user == null) {
-            throw new UserNotFoundByUsernameException(username);
-        } else {
-            return ResponseEntity.ok(userMapper.toDTO(user));
-        }
-    }
-    @GetMapping("/users/{email}")
-    public ResponseEntity<?> findByEmail(@PathVariable String email) {
-        User user = repository.findByEmail(email);
-        if (user == null) {
-            throw new UserNotFoundByEmailException(email);
-        } else {
-            return ResponseEntity.ok(userMapper.toDTO(user));
-        }
-    }
-
-    @PostMapping("/users")
-    public ResponseEntity<?> save(@RequestBody CreateUserDTO userDTO) {
-        try {
-            User user = userMapper.fromDTOCreate(userDTO);
-            checkUserData(user);
-            User inserted = repository.save(user);
-            return ResponseEntity.ok(userMapper.toDTO(inserted));
-        } catch (Exception e) {
-            throw new GeneralBadRequestException("Insertar", "Error al insertar el usuario. Campos incorrectos.");
-        }
-    }
-
-    @PutMapping("/users/{id}")
-    public ResponseEntity<?> update(@RequestBody User newUser, @PathVariable String id) {
-        try {
-            User userUpdated = repository.findById(id).orElse(null);
-        if (userUpdated == null) {
-                throw new UserNotFoundByIdException(id);
-            } else {
-                checkUserData(newUser);
-                userUpdated.setName(newUser.getName());
-                userUpdated.setImage(newUser.getImage());
-                userUpdated.setRoles(newUser.getRoles());
-                userUpdated.setUsername(newUser.getUsername());
-                userUpdated.setPassword(newUser.getPassword());
-                userUpdated.setSurname(newUser.getSurname());
-                userUpdated.setPhoneNumber(newUser.getPhoneNumber());
-                userUpdated.setEmail(newUser.getEmail());
-                userUpdated.setGender(newUser.getGender());
-                userUpdated.setLogins(newUser.getLogins());
-                userUpdated.setAppointments(newUser.getAppointments());
-                userUpdated = repository.save(userUpdated);
-                return ResponseEntity.ok(userMapper.toDTO(userUpdated));
-            }
-        } catch (Exception e) {
-            throw new GeneralBadRequestException("Actualizar", "Error al actualizar el usuario. Campos incorrectos.");
-        }
-    }
-
-    @DeleteMapping("/users/{id}")
-    public ResponseEntity<UserDTO> delete(@PathVariable String id) {
-        try {
-            User user = repository.findById(id).orElse(null);
-            if (user == null) {
-                throw new UserNotFoundByIdException(id);
-            } else {
-                repository.delete(user);
-                return ResponseEntity.ok(userMapper.toDTO(user));
-            }
-        } catch (Exception e) {
-            throw new GeneralBadRequestException("Eliminar", "Error al borrar el usuario");
-        }
-    }
-
-    private void checkUserData(User user) {
-        if (user.getUsername() == null || user.getUsername().isEmpty()) {
-            throw new UserBadRequestException("Username", "El username es obligatorio");
-        }
-        if (user.getPassword() == null) {
-            throw new UserBadRequestException("Password", "La password es obligatoria");
-        }
-    }
-
 }

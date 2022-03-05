@@ -1,8 +1,7 @@
 package ies.luisvives.serverpeluqueriadam.dto.user;
 
 import ies.luisvives.serverpeluqueriadam.model.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -12,6 +11,9 @@ import java.util.Set;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UserDTO {
     @NotBlank(message = "El id no puede estar vacio")
     private String id;
@@ -30,5 +32,5 @@ public class UserDTO {
     @NotNull(message = "El género no puede ser nulo")
     private UserGender gender;
     @NotNull(message = "Los roles no pueden ser nulos")
-    private Set<UserRole> userRoles;
+    private Set<String> userRoles;
 }
