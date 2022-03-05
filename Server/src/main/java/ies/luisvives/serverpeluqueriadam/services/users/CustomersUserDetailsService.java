@@ -12,7 +12,7 @@ import java.util.List;
 @Service("userDetailsService")
 @RequiredArgsConstructor
 public class CustomersUserDetailsService implements UserDetailsService {
-    private UserService usuarioService;
+    private final UserService usuarioService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -18,6 +18,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "login")
+@ToString
 public class Login {
     private String id;
     private String token;
@@ -77,13 +78,13 @@ public class Login {
         this.user = user;
     }
 
-    @Override
-    public String toString() {
-        return "Login{" +
-                "id='" + id + '\'' +
-                ", token='" + token + '\'' +
-                ", instant=" + instant +
-                ", user=" + user +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Login{" +
+//                "id='" + id + '\'' +
+//                ", token='" + token + '\'' +
+//                ", instant=" + instant +
+//                ", user=" + user +
+//                '}';
+//    }
 }

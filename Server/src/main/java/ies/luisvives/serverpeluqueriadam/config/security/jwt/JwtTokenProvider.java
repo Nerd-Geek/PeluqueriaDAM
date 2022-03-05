@@ -14,9 +14,6 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 import java.util.stream.Collectors;
 
-
-import java.util.Date;
-
 @Log
 @Component
 public class JwtTokenProvider {
@@ -24,7 +21,9 @@ public class JwtTokenProvider {
     public static final String TOKEN_PREFIX = "Bearer";
     public static final String TOKEN_TYPE = "JWT";
 
-    @Value("${jwt.secret:EsteEsElSecreto}")
+    @Value("${jwt.secret:Allávanconelbalónenlospiesyningunolospodrádetenerelestadiovibraconlaemociódeverjugar" +
+            "alosdosalosdossolamentejueganparaganarperosiemprecondeportividadynohaynadiemejorparalaaficiónOliver" +
+            "BenjilosmagosdelbalónBenjiOliversueñosdecampeónBenjiOliverelfutbolessupasión}")
     private String jwtSecreto;
     @Value("${jwt.token-expiration:86400}")
     private int jwtDuracionTokenEnSegundos;

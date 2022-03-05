@@ -1,5 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
+import ies.luisvives.serverpeluqueriadam.config.APIConfig;
 import ies.luisvives.serverpeluqueriadam.dto.appointment.AppointmentDTO;
 import ies.luisvives.serverpeluqueriadam.dto.appointment.CreateAppointmentDTO;
 import ies.luisvives.serverpeluqueriadam.dto.appointment.ListAppointmentPageDTO;
@@ -32,7 +33,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/appointments")
+@RequestMapping(APIConfig.API_PATH + "/appointments")
 public class AppointmentController {
     private final AppointmentService appointmentService;
     private final UserRepository userRepository;

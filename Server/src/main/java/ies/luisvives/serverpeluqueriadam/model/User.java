@@ -22,9 +22,8 @@ import javax.validation.constraints.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "users")
-public class User implements UserDetails {
 @ToString
-public class User {
+public class User implements UserDetails {
     private String id;
     private String image;
     @Column(unique = true)
@@ -169,23 +168,23 @@ public class User {
         this.roles = roles;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", image='" + image + '\'' +
-                ", userRole=" +  roles +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
-                ", email='" + email + '\'' +
-                ", gender=" + gender +
-                ", logins=" + logins +
-                ", appointments=" + appointments +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "User{" +
+//                "id='" + id + '\'' +
+//                ", image='" + image + '\'' +
+//                ", userRole=" +  roles +
+//                ", username='" + username + '\'' +
+//                ", password='" + password + '\'' +
+//                ", name='" + name + '\'' +
+//                ", surname='" + surname + '\'' +
+//                ", phoneNumber='" + phoneNumber + '\'' +
+//                ", email='" + email + '\'' +
+//                ", gender=" + gender +
+//                ", logins=" + logins +
+//                ", appointments=" + appointments +
+//                '}';
+//    }
 
     @Transient
     @Override

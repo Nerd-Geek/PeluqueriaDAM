@@ -1,4 +1,4 @@
-insert into users values ('c1334d57-120b-437b-baef-cf5b5f68cc3e','porofernandez@freljorld.com','Male',null, 'Admin', 'Godlike', '234567890', 'freljorld', 'Admin');
+insert into users values ('c1334d57-120b-437b-baef-cf5b5f68cc3e','porofernandez@freljorld.com','Male',null, 'Admin', '$2a$12$tkmFeFcSZ4CLCgjbNhgrO.1D3izDlrNjidrkOZZlOvPlJm2D/oBYq', '234567890', 'freljorld', 'Admin');
 insert into users values ('76b2071a-3f97-4666-bd76-3d3d38ca677d','aocrigane0@slideshare.net','Male',null, 'Juan', 't6YsKgG', '678429049', 'Batista', 'jbatista49');
 insert into users values ('a049aff3-d439-4e77-9e3b-e6ffa59d9119','lmorsom1@merriam-webster.com','Male',null, 'Miguel', 'y1hi24h', '643424231', 'Montero', 'mmontero31');
 insert into users values ('8c2e01c4-7bbb-4f65-bee5-410df2fa429d','mkimbury2@wp.com','Male',null, 'Lorenzo', 'u3jf2oj', '647293745', 'Castillo', 'lcastillo45');

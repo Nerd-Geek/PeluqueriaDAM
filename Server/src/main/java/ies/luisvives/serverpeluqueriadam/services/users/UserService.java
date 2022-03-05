@@ -28,6 +28,14 @@ public class UserService {
         return userRepository.findByUsernameContainsIgnoreCase(username);
     }
 
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
+    public Optional<User> findById(String id) {
+        return userRepository.findById(id);
+    }
+
     public User findByEmail(String email) {
         return userRepository.findByEmail(email);
     }

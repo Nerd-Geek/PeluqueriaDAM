@@ -47,7 +47,7 @@ public class ServiceController {
 //		}
 //	}
 
-	@GetMapping("/services")
+	@GetMapping("/services/")
 	public ResponseEntity<?> findByNameContainsIgnoreCase(@RequestParam(name = "searchQuery") Optional<String> searchQuery
 	) {
 		List<Service> services;
@@ -73,7 +73,7 @@ public class ServiceController {
 		}
 	}
 
-	@PostMapping("/services")
+	@PostMapping("/services/")
 	public ResponseEntity<?> newService(@RequestBody ServiceDTO newService) {
 		Service service = serviceMapper.fromDTO(newService);
 		checkServiceData(service);

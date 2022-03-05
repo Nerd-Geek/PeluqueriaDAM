@@ -1,6 +1,7 @@
 package ies.luisvives.serverpeluqueriadam.config.security;
 
 import ies.luisvives.serverpeluqueriadam.config.APIConfig;
+import ies.luisvives.serverpeluqueriadam.config.security.jwt.JwtAuthorizationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,17 +20,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled  = true)
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationEntryPoint jwtAuthenticationEntryPoint;
-    // Agreagr JWT
-    //private final JwtAuthorizationFilter jwtAuthorizationFilter;
+    private final JwtAuthorizationFilter jwtAuthorizationFilter;
 
     @Bean
     @Override
-    public AuthenticationManager authenticationManager() throws Exception {
+    public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
 
@@ -50,11 +51,29 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/users/**").permitAll()
-                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/**").hasAnyRole("USER", "ADMIN")
-
-                // Añadir todas las entidades más
-                .anyRequest().not().authenticated();
-        //http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/appointments/").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/appointments/").hasAnyRole("USER, ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/appointments/mobile").hasAnyRole("USER, ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/appointments/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/appointments/{id}").hasAnyRole("USER, ADMIN")
+                .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/appointments/{id}").hasAnyRole("USER, ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/services/").hasAnyRole("USER, ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/services/").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/services/{id}").hasAnyRole("USER, ADMIN")
+                .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/services/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/services/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/").hasRole( "ADMIN")
+                .antMatchers(HttpMethod.GET,  APIConfig.API_PATH + "/users/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,  APIConfig.API_PATH + "/users/{usename}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET,  APIConfig.API_PATH + "/users/{email}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT,  APIConfig.API_PATH + "/users/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE,  APIConfig.API_PATH + "/users/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/users/").hasAnyRole("USER, ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/users/login").permitAll()
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/me").hasAnyRole("USER, ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/logins/").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/logins/{id}").hasRole("ADMIN")
+                .anyRequest().authenticated();
+        http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     }
 }
