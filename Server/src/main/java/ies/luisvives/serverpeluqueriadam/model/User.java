@@ -23,6 +23,8 @@ import javax.validation.constraints.*;
 @AllArgsConstructor
 @Table(name = "users")
 public class User implements UserDetails {
+@ToString
+public class User {
     private String id;
     private String image;
     @Column(unique = true)
@@ -36,6 +38,7 @@ public class User implements UserDetails {
     private String email;
     @ToString.Exclude
     private Set<Login> logins;
+    @ToString.Exclude
     private Set<Appointment> appointments;
     private Set<UserRole> roles;
     private UserGender gender;
