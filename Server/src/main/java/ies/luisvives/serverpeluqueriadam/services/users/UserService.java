@@ -3,6 +3,7 @@ package ies.luisvives.serverpeluqueriadam.services.users;
 import ies.luisvives.serverpeluqueriadam.dto.user.CreateUserDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.NewUserWithDifferentPasswordsException;
 import ies.luisvives.serverpeluqueriadam.model.User;
+import ies.luisvives.serverpeluqueriadam.model.UserRole;
 import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -11,8 +12,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @RequiredArgsConstructor
@@ -46,7 +46,10 @@ public class UserService {
 
     public User save(CreateUserDTO newUser) {
         if (newUser.getPassword().contentEquals(newUser.getPasswordConfirm())) {
+            Set<UserRole> defaultRoles = new HashSet<>();
+            defaultRoles.add(UserRole.USER);
             User user = User.builder()
+                    .id(UUID.randomUUID().toString())
                     .name(newUser.getName())
                     .surname(newUser.getSurname())
                     .username(newUser.getUsername())
@@ -55,6 +58,7 @@ public class UserService {
                     .phoneNumber(newUser.getPhoneNumber())
                     .image(newUser.getImage())
                     .gender(newUser.getGender())
+                    .roles(defaultRoles)
                     .build();
             try {
                 return userRepository.save(user);
