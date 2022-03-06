@@ -1,8 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.dto.service;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
@@ -11,6 +9,8 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ServiceDTO {
     private String id;
     private String image;
