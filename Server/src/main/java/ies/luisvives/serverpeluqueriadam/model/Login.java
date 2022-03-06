@@ -50,6 +50,7 @@ public class Login {
     }
 
     @NotBlank(message = "El token no puede estar vacío")
+    @Column(length = 512)
     public String getToken() {
         return token;
     }
