@@ -2,6 +2,7 @@ package ies.luisvives.serverpeluqueriadam.services.appointments;
 
 import ies.luisvives.serverpeluqueriadam.exceptions.appointment.OutOfStockException;
 import ies.luisvives.serverpeluqueriadam.exceptions.appointment.UserDuplicatedAppointment;
+import ies.luisvives.serverpeluqueriadam.exceptions.appointment.WrongAppointmentDateException;
 import ies.luisvives.serverpeluqueriadam.model.Appointment;
 import ies.luisvives.serverpeluqueriadam.repository.AppointmentRepository;
 import lombok.RequiredArgsConstructor;
@@ -10,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,13 +31,22 @@ public class AppointmentService {
     }
 
     public Appointment saveAppointment(Appointment appointment) {
+        checkAppointmentValid(appointment);
         checkServiceAvailability(appointment);
         checkUserAvailability(appointment);
         return appointmentRepository.save(appointment);
     }
 
+    private void checkAppointmentValid(Appointment appointment) {
+        if (appointment.getTime().isAfter(LocalTime.of(22, 45, 0)) && appointment.getTime().isBefore(LocalTime.of(8, 0, 0))
+                || appointment.getDate().isBefore(LocalDate.now())
+                || (appointment.getTime().isBefore(LocalTime.now()) && appointment.getDate().isEqual(LocalDate.now()))
+        )
+            throw new WrongAppointmentDateException(appointment.getService().getId(), appointment.getDate(), appointment.getTime());
+    }
+
     private void checkServiceAvailability(Appointment appointment) {
-        if (appointment.getService().getStock() <= appointmentRepository.findByDateAndTime(appointment.getDate(), appointment.getTime()).size()) {
+        if (appointment.getService().getStock() <= appointmentRepository.findByDateAndTimeAndService_Id(appointment.getDate(), appointment.getTime(), appointment.getService().getId()).size()) {
             throw new OutOfStockException(appointment.getService().getId(), appointment.getDate(), appointment.getTime());
         }
     }

@@ -15,7 +15,7 @@ import java.util.Optional;
 public interface AppointmentRepository extends JpaRepository<Appointment,String> {
     Page<Appointment> findByDateAndUser_UsernameContainsIgnoreCaseAndService_Id(LocalDate date, String username, String id, Pageable pageable);
 
-    List<Appointment> findByDateAndTime(LocalDate date, LocalTime time);
+    List<Appointment> findByDateAndTimeAndService_Id(LocalDate date, LocalTime time, String serviceId);
 
 
 
