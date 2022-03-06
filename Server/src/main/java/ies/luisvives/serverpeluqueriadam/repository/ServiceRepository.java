@@ -10,11 +10,5 @@ import java.util.List;
 import java.util.Optional;
 
 public interface ServiceRepository extends JpaRepository<Service, String> {
-    List<Service> findByName(Optional<String> name);
-
     List<Service> findByNameContainsIgnoreCase(Optional<String> name);
-
-
-
-    List<Service> findByOrderByPriceAsc(Sort sort);
 }

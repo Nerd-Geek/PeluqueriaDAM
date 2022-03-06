@@ -43,7 +43,7 @@ public class UserController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
 
-    @GetMapping("/users/")
+    @GetMapping("/")
     public ResponseEntity<?> findAll(
             @RequestParam("searchQuery") Optional<String> searchQuery
     ) {
@@ -59,7 +59,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable String id) {
         User user = userService.findById(id).orElse(null);
         if (user == null) {
@@ -69,7 +69,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/users/{username}")
+    @GetMapping("/{username}")
     public ResponseEntity<?> findByUsername(@PathVariable String username) {
         User user = userService.findByUsernameIgnoreCase(username).orElse(null);
         if (user == null) {
@@ -78,7 +78,7 @@ public class UserController {
             return ResponseEntity.ok(userMapper.toDTO(user));
         }
     }
-    @GetMapping("/users/{email}")
+    @GetMapping("/{email}")
     public ResponseEntity<?> findByEmail(@PathVariable String email) {
         User user = userService.findByEmail(email);
         if (user == null) {
@@ -93,6 +93,7 @@ public class UserController {
     public UserDTO me(@AuthenticationPrincipal User user) {
         return userMapper.toDTO(user);
     }
+    
     @CrossOrigin(origins = "http://localhost:3306")
     @PostMapping("/login")
     public JwtUserResponse login(@Valid @RequestBody LoginRequest loginRequest) {
