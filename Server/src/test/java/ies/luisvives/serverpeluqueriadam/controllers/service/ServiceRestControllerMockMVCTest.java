@@ -77,17 +77,130 @@ public class ServiceRestControllerMockMVCTest {
                         get("/rest/services/all")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON)
-                                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9." +
-                                        "eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY1Njc" +
-                                        "4OTUsImV4cCI6MTY0NjY1NDI5NSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9." +
-                                        "fdOutityYeNECJIZ262cwFDs0k6JmamY9kS5JQAmMsKU8Zl0tvfKeB0ZyQMCxlIVvxDQnvw7k-eborchd2CKsw")
-                )
+                                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOi" +
+                                        "JjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY1NzY2MzgsImV4cCI6MT" +
+                                        "Y0NjY2MzAzOCwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJVU0VSLCBBRE1JTiJ9.HIY1f7O_OWY9SDfnJHkgN" +
+                                        "GvqxqbWuJutdF_cnA7ulkwYz-LrDpAFrsFd9MFSQCL7Ms87cqALVqXsV4z0cphRYg"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$[0].name", is(service.getName())))
                 .andExpect(jsonPath("$[0].price", is(service.getPrice())))
                 .andExpect(jsonPath("$[0].stock", is(service.getStock())))
                 .andReturn();
         Mockito.verify(serviceRepository, Mockito.times(2)).findAll();
-        Mockito.verify(serviceMapper, Mockito.times(1)).toDTO(List.of(service));
+        Mockito.verify(serviceMapper, Mockito.times(2)).toDTO(List.of(service));
+    }
+
+    @Test
+    @Order(2)
+    void findByIdTest() throws Exception {
+        Mockito.when(serviceRepository.findById(service.getId()))
+                .thenReturn(Optional.of(service));
+        Mockito.when(serviceMapper.toDTO(service)).thenReturn(serviceDTO);
+        mockMvc.perform(
+                get("/rest/services/" + service.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOi" +
+                                "JjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY1NzY2MzgsImV4cCI6MT" +
+                                "Y0NjY2MzAzOCwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJVU0VSLCBBRE1JTiJ9.HIY1f7O_OWY9SDfnJHkgN" +
+                                "GvqxqbWuJutdF_cnA7ulkwYz-LrDpAFrsFd9MFSQCL7Ms87cqALVqXsV4z0cphRYg"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is(service.getName())))
+                .andExpect(jsonPath("$.price", is(service.getPrice())))
+                .andExpect(jsonPath("$.stock", is(service.getStock())))
+                .andReturn();
+        Mockito.verify(serviceRepository, Mockito.times(1)).findById(service.getId());
+        Mockito.verify(serviceMapper, Mockito.times(1)).toDTO(service);
+    }
+
+    @Test
+    @Order(3)
+    void findByExceptionTEst() throws Exception {
+        Mockito.when(serviceRepository.findById(service.getId()))
+                .thenReturn(Optional.empty());
+        mockMvc.perform(
+                get("/rest/services/" + service.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOi" +
+                                "JjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY1NzY2MzgsImV4cCI6MT" +
+                                "Y0NjY2MzAzOCwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJVU0VSLCBBRE1JTiJ9.HIY1f7O_OWY9SDfnJHkgN" +
+                                "GvqxqbWuJutdF_cnA7ulkwYz-LrDpAFrsFd9MFSQCL7Ms87cqALVqXsV4z0cphRYg"))
+                .andExpect(status().isNotFound());
+        Mockito.verify(serviceRepository, Mockito.times(1)).findById(service.getId());
+    }
+
+    @Test
+    @Order(4)
+    void deleteTest() throws Exception {
+        Mockito.when(serviceRepository.findById(service.getId()))
+                .thenReturn(Optional.of(service));
+        Mockito.when(serviceMapper.toDTO(service)).thenReturn(serviceDTO);
+        Mockito.doNothing().when(serviceRepository).delete(service);
+
+        mockMvc.perform(
+                delete("/rest/services/" + service.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOi" +
+                                "JjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY1NzY2MzgsImV4cCI6MT" +
+                                "Y0NjY2MzAzOCwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJVU0VSLCBBRE1JTiJ9.HIY1f7O_OWY9SDfnJHkgN" +
+                                "GvqxqbWuJutdF_cnA7ulkwYz-LrDpAFrsFd9MFSQCL7Ms87cqALVqXsV4z0cphRYg"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is(service.getName())))
+                .andExpect(jsonPath("$.price", is(service.getPrice())))
+                .andExpect(jsonPath("$.stock", is(service.getStock())))
+                .andReturn();
+
+        Mockito.verify(serviceRepository, Mockito.times(1))
+                .findById(service.getId());
+        Mockito.verify(serviceRepository, Mockito.times(1))
+                .delete(service);
+        Mockito.verify(serviceMapper, Mockito.times(1))
+                .toDTO(service);
+    }
+
+    @Test
+    @Order(5)
+    void deleteExceptionTest() throws Exception {
+        Mockito.when(serviceRepository.findById(service.getId()))
+                .thenReturn(Optional.empty());
+        mockMvc.perform(
+                delete("/rest/services/" + service.getId())
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOi" +
+                                "JjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY1NzY2MzgsImV4cCI6MT" +
+                                "Y0NjY2MzAzOCwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJVU0VSLCBBRE1JTiJ9.HIY1f7O_OWY9SDfnJHkgN" +
+                                "GvqxqbWuJutdF_cnA7ulkwYz-LrDpAFrsFd9MFSQCL7Ms87cqALVqXsV4z0cphRYg"))
+                .andExpect(status().isNotFound());
+        Mockito.verify(serviceRepository, Mockito.times(1)).findById(service.getId());
+    }
+
+    @Test
+    @Order(6)
+    void updateTest() throws Exception {
+        Mockito.when(serviceRepository.findById(service.getId())).thenReturn(Optional.of(service));
+        Mockito.when(serviceRepository.save(service)).thenReturn(service);
+        Mockito.when(serviceMapper.toDTO(service)).thenReturn(serviceDTO);
+        var ser =  jsonServiceDTO.write(serviceDTO).getJson();
+
+        mockMvc.perform(
+                put("/rest/services/" + service.getId())
+                        .content(ser)
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON)
+                        .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOi" +
+                                "JjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY1NzY2MzgsImV4cCI6MT" +
+                                "Y0NjY2MzAzOCwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJVU0VSLCBBRE1JTiJ9.HIY1f7O_OWY9SDfnJHkgN" +
+                                "GvqxqbWuJutdF_cnA7ulkwYz-LrDpAFrsFd9MFSQCL7Ms87cqALVqXsV4z0cphRYg"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.name", is(service.getName())))
+                .andExpect(jsonPath("$.price", is(service.getPrice())))
+                .andExpect(jsonPath("$.stock", is(service.getStock())))
+                .andReturn();
+        Mockito.verify(serviceRepository, Mockito.times(1)).findById(service.getId());
+        Mockito.verify(serviceRepository, Mockito.times(1)).save(service);
+        Mockito.verify(serviceMapper, Mockito.times(1)).toDTO(service);
     }
 }

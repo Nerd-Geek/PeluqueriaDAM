@@ -66,7 +66,7 @@ public class ServiceController {
 	}
 
 	@GetMapping("/{id}")
-	public ResponseEntity<?> findById(@PathVariable String id) {
+	public ResponseEntity<ServiceDTO> findById(@PathVariable String id) {
 		Service service = serviceRepository.findById(id).orElse(null);
 		if (service == null) {
 			throw new ServiceNotFoundException(id);
@@ -76,7 +76,7 @@ public class ServiceController {
 	}
 
 	@PostMapping("/")
-	public ResponseEntity<?> newService(@RequestBody ServiceDTO newService) {
+	public ResponseEntity<ServiceDTO> newService(@RequestBody ServiceDTO newService) {
 		Service service = serviceMapper.fromDTO(newService);
 		checkServiceData(service);
 		Service serviceInsert = serviceRepository.save(service);
@@ -84,20 +84,19 @@ public class ServiceController {
 	}
 
 	@PutMapping("/{id}")
-	public ResponseEntity<?> update(@RequestBody Service newService, @PathVariable String id) {
+	public ResponseEntity<ServiceDTO> update(@PathVariable String id, @RequestBody ServiceDTO newService) {
 		try {
 			Service serviceUpdated = serviceRepository.findById(id).orElse(null);
 			if (serviceUpdated == null) {
 				throw new ServiceNotFoundException(id);
 			} else {
-				checkServiceData(newService);
+				checkServiceData(serviceUpdated);
 
 				serviceUpdated.setName(newService.getName());
 				serviceUpdated.setDescription(newService.getDescription());
 				serviceUpdated.setImage(newService.getImage());
 				serviceUpdated.setPrice(newService.getPrice());
 				serviceUpdated.setStock(newService.getStock());
-				serviceUpdated.setAppointments(newService.getAppointments());
 				serviceUpdated = serviceRepository.save(serviceUpdated);
 
 				return ResponseEntity.ok(serviceMapper.toDTO(serviceUpdated));
@@ -109,14 +108,14 @@ public class ServiceController {
 
 	@DeleteMapping("/{id}")
 	public ResponseEntity<ServiceDTO> deleteService(@PathVariable String id) {
-		try {
+
 			Service service = serviceRepository.findById(id).orElse(null);
 			if (service == null) {
 				throw new ServiceNotFoundException(id);
-			} else {
+			}
+			try {
 				serviceRepository.delete(service);
 				return ResponseEntity.ok(serviceMapper.toDTO(service));
-			}
 		} catch (Exception e) {
 			throw new GeneralBadRequestException("Eliminar", "Error al borrar el service");
 		}

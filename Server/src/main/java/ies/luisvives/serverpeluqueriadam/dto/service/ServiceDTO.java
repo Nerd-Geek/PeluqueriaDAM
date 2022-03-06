@@ -1,10 +1,12 @@
 package ies.luisvives.serverpeluqueriadam.dto.service;
 
+import ies.luisvives.serverpeluqueriadam.model.Appointment;
 import lombok.*;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Getter
 @Setter
