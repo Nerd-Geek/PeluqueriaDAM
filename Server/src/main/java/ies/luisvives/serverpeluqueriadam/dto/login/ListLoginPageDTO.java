@@ -1,9 +1,7 @@
 package ies.luisvives.serverpeluqueriadam.dto.login;
 
 import ies.luisvives.serverpeluqueriadam.config.APIConfig;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -13,6 +11,8 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class ListLoginPageDTO {
     private final LocalDateTime query = LocalDateTime.now();
     private final String project = "SpringDam";

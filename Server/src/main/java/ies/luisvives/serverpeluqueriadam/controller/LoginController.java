@@ -34,8 +34,24 @@ public class LoginController {
         this.loginMapper = loginMapper;
     }
 
-    @CrossOrigin(origins = "http://localhost:3306")
     @GetMapping("/")
+    public ResponseEntity<List<LoginDTO>> findAll() {
+        List<Login> logins = null;
+        try {
+            logins = loginRepository.findAll();
+            if (!logins.isEmpty()) {
+                return ResponseEntity.ok(loginMapper.toDTO(logins));
+            } else {
+                throw new LoginsNotFoundException();
+            }
+        } catch (Exception e) {
+            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
+        }
+    }
+
+
+    @CrossOrigin(origins = "http://localhost:3306")
+    @GetMapping("/page")
     public ResponseEntity<ListLoginPageDTO> findAllLogins(
             @RequestParam(name = "page", defaultValue = "0") int page,
             @RequestParam(name = "size", defaultValue = "10") int size
@@ -51,12 +67,12 @@ public class LoginController {
                     .build();
             return ResponseEntity.ok(listLoginPageDTO);
         } catch (Exception e) {
-            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
+            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos"+e.getMessage());
         }
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable String id) {
+    public ResponseEntity<LoginDTO> findById(@PathVariable String id) {
         Login login = loginRepository.findById(id).orElse(null);
         if (login == null) {
             throw new LoginNotFoundException(id);
@@ -66,7 +82,7 @@ public class LoginController {
     }
 
     @PostMapping("/")
-    public ResponseEntity<?> save(@RequestBody LoginDTO loginDTO) {
+    public ResponseEntity<LoginDTO> save(@RequestBody LoginDTO loginDTO) {
         try {
             Login login = loginMapper.fromDTO(loginDTO);
             checkLoginData(login);
@@ -78,7 +94,7 @@ public class LoginController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> update(@PathVariable String id, @RequestBody Login login) {
+    public ResponseEntity<LoginDTO> update(@PathVariable String id, @RequestBody Login login) {
         try {
             Login updated = loginRepository.findById(id).orElse(null);
             if (updated == null) {
@@ -98,15 +114,14 @@ public class LoginController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable String id) {
+    public ResponseEntity<LoginDTO> delete(@PathVariable String id) {
+        Login login = loginRepository.findById(id).orElse(null);
+        if (login == null) {
+            throw new LoginNotFoundException(id);
+        }
         try {
-            Login login = loginRepository.findById(id).orElse(null);
-            if (login == null) {
-                throw new LoginNotFoundException(id);
-            } else {
-                loginRepository.delete(login);
-                return ResponseEntity.ok(loginMapper.toDTO(login));
-            }
+            loginRepository.delete(login);
+            return ResponseEntity.ok(loginMapper.toDTO(login));
         } catch (Exception e) {
             throw new GeneralBadRequestException("Eliminar", "Error al borrar el login");
         }

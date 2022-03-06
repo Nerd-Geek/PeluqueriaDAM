@@ -1,8 +1,7 @@
 package ies.luisvives.serverpeluqueriadam.dto.login;
 
 import ies.luisvives.serverpeluqueriadam.dto.user.LoginUserDTO;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -10,6 +9,9 @@ import java.util.Date;
 
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class LoginDTO {
     private String id;
     @NotBlank(message = "El token no puede ser vacío")
