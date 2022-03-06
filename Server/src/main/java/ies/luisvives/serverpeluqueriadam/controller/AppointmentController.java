@@ -8,8 +8,6 @@ import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.ServiceNotFoundException;
 import ies.luisvives.serverpeluqueriadam.exceptions.appointment.AppointmentBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.appointment.AppointmentNotFoundException;
-import ies.luisvives.serverpeluqueriadam.exceptions.appointment.OutOfStockException;
-import ies.luisvives.serverpeluqueriadam.exceptions.appointment.UserDuplicatedAppointment;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByIdException;
 import ies.luisvives.serverpeluqueriadam.mapper.AppointmentMapper;
 import ies.luisvives.serverpeluqueriadam.model.Appointment;
@@ -57,16 +55,7 @@ public class AppointmentController {
     ) {
         List<Appointment> appointments = null;
         try {
-            appointments = appointmentService.findAllAppointments();
-            if (searchQuery.isPresent()) {
-                appointments = appointments.stream().filter(a -> a.getUser().getUsername().contains(searchQuery.get())).collect(Collectors.toList());
-            }
-            if (date.isPresent()) {
-                LocalDate parsedDate = LocalDate.parse(date.get());
-                appointments = appointments.stream().filter(a -> a.getDate().equals(parsedDate)).collect(Collectors.toList());
-            }
-            if (service_id.isPresent())
-                appointments = appointments.stream().filter(a -> a.getService().getId().equals(service_id.get())).collect(Collectors.toList());
+            appointments = getAllFilteredAppointments(searchQuery, date, service_id);
 
             return ResponseEntity.ok(appointmentMapper.toDTO(appointments));
         } catch (Exception e) {
@@ -83,21 +72,28 @@ public class AppointmentController {
     ) {
         List<Appointment> appointments = null;
         try {
-            appointments = appointmentService.findAllAppointments();
-            if (searchQuery.isPresent()) {
-                appointments = appointments.stream().filter(a -> a.getUser().getUsername().contains(searchQuery.get())).collect(Collectors.toList());
-            }
-            if (date.isPresent()) {
-                LocalDate parsedDate = LocalDate.parse(date.get());
-                appointments = appointments.stream().filter(a -> a.getDate().equals(parsedDate)).collect(Collectors.toList());
-            }
-            if (service_id.isPresent())
-                appointments = appointments.stream().filter(a -> a.getService().getId().equals(service_id.get())).collect(Collectors.toList());
+            appointments = getAllFilteredAppointments(searchQuery, date, service_id);
 
             return ResponseEntity.ok(appointmentMapper.toUserlessDTO(appointments));
         } catch (Exception e) {
             throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
         }
+    }
+
+    private List<Appointment> getAllFilteredAppointments(@RequestParam(name = "searchQuery") Optional<String> searchQuery, @RequestParam(name = "date") Optional<String> date, @RequestParam(name = "service_id") Optional<String> service_id) {
+        List<Appointment> appointments;
+        appointments = appointmentService.findAllAppointments();
+        if (searchQuery.isPresent()) {
+            appointments = appointments.stream().filter(a -> a.getUser().getUsername().contains(searchQuery.get())).collect(Collectors.toList());
+        }
+        if (date.isPresent()) {
+            LocalDate parsedDate = LocalDate.parse(date.get());
+            appointments = appointments.stream().filter(a -> a.getDate().equals(parsedDate)).collect(Collectors.toList());
+        }
+        if (service_id.isPresent()) {
+            appointments = appointments.stream().filter(a -> a.getService().getId().equals(service_id.get())).collect(Collectors.toList());
+        }
+        return appointments;
     }
 
     @GetMapping("/{id}")
