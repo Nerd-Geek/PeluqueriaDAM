@@ -58,6 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/appointments/{id}").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/appointments/{id}").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/services/").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/services/all").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/services/").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/services/{id}").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/services/{id}").hasRole("ADMIN")

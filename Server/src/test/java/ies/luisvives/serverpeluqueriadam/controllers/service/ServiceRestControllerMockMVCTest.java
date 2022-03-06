@@ -23,9 +23,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.List;
 import java.util.Optional;
 
-import java.util.List;
-
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -63,7 +60,7 @@ public class ServiceRestControllerMockMVCTest {
 
     @Autowired
     public ServiceRestControllerMockMVCTest(ServiceRepository serviceRepository, StorageService storageService,
-                                            ServiceMapper serviceMapper, MockMvc mockMvc) {
+                                            ServiceMapper serviceMapper) {
         this.serviceRepository = serviceRepository;
         this.storageService = storageService;
         this.serviceMapper = serviceMapper;
@@ -77,11 +74,20 @@ public class ServiceRestControllerMockMVCTest {
 
         mockMvc
                 .perform(
-                        get("/rest/services/")
+                        get("/rest/services/all")
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .accept(MediaType.APPLICATION_JSON)
-                ).andExpect(status().isOk())
-
+                                .header("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9." +
+                                        "eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY1Njc" +
+                                        "4OTUsImV4cCI6MTY0NjY1NDI5NSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9." +
+                                        "fdOutityYeNECJIZ262cwFDs0k6JmamY9kS5JQAmMsKU8Zl0tvfKeB0ZyQMCxlIVvxDQnvw7k-eborchd2CKsw")
+                )
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].name", is(service.getName())))
+                .andExpect(jsonPath("$[0].price", is(service.getPrice())))
+                .andExpect(jsonPath("$[0].stock", is(service.getStock())))
                 .andReturn();
+        Mockito.verify(serviceRepository, Mockito.times(2)).findAll();
+        Mockito.verify(serviceMapper, Mockito.times(1)).toDTO(List.of(service));
     }
 }

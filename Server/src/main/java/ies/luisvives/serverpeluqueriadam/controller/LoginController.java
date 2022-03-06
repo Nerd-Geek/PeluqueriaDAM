@@ -1,5 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
+import ies.luisvives.serverpeluqueriadam.config.APIConfig;
 import ies.luisvives.serverpeluqueriadam.dto.login.ListLoginPageDTO;
 import ies.luisvives.serverpeluqueriadam.dto.login.LoginDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
@@ -22,7 +23,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/logins")
+@RequestMapping(APIConfig.API_PATH + "/logins")
 public class LoginController {
     private final LoginRepository loginRepository;
     private final LoginMapper loginMapper;

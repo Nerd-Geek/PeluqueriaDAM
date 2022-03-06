@@ -1,5 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
+import ies.luisvives.serverpeluqueriadam.config.APIConfig;
 import ies.luisvives.serverpeluqueriadam.dto.service.ServiceDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.ServiceNotFoundException;
@@ -16,6 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping(APIConfig.API_PATH + "/services")
 public class ServiceController {
 
 	private final ServiceRepository serviceRepository;
@@ -27,27 +29,27 @@ public class ServiceController {
 		this.serviceMapper = serviceMapper;
 	}
 
-//	@GetMapping("/services")
-//	public ResponseEntity<?> findAll(@RequestParam(name = "limit") Optional<String> limit) {
-//		List<Service> services = null;
-//		try {
-//			services = serviceRepository.findAll();
-//
-//			if (limit.isPresent() && !services.isEmpty() && services.size() > Integer.parseInt(limit.get())) {
-//				return ResponseEntity.ok(serviceMapper.toDTO(services.subList(0, Integer.parseInt(limit.get()))));
-//			} else {
-//				if (!services.isEmpty()) {
-//					return ResponseEntity.ok(serviceMapper.toDTO(services));
-//				} else {
-//					throw new ServicesNotFoundException();
-//				}
-//			}
-//		} catch (Exception e) {
-//			throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
-//		}
-//	}
+	@GetMapping("/all")
+	public ResponseEntity<List<ServiceDTO>> findAll(@RequestParam(name = "limit") Optional<String> limit) {
+		List<Service> services = null;
+		try {
+			services = serviceRepository.findAll();
 
-	@GetMapping("/services/")
+			if (limit.isPresent() && !services.isEmpty() && services.size() > Integer.parseInt(limit.get())) {
+				return ResponseEntity.ok(serviceMapper.toDTO(services.subList(0, Integer.parseInt(limit.get()))));
+			} else {
+				if (!services.isEmpty()) {
+					return ResponseEntity.ok(serviceMapper.toDTO(services));
+				} else {
+					throw new ServicesNotFoundException();
+				}
+			}
+		} catch (Exception e) {
+			throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos");
+		}
+	}
+
+	@GetMapping("/")
 	public ResponseEntity<?> findByNameContainsIgnoreCase(@RequestParam(name = "searchQuery") Optional<String> searchQuery
 	) {
 		List<Service> services;
@@ -63,7 +65,7 @@ public class ServiceController {
 		}
 	}
 
-	@GetMapping("/services/{id}")
+	@GetMapping("/{id}")
 	public ResponseEntity<?> findById(@PathVariable String id) {
 		Service service = serviceRepository.findById(id).orElse(null);
 		if (service == null) {
@@ -73,7 +75,7 @@ public class ServiceController {
 		}
 	}
 
-	@PostMapping("/services/")
+	@PostMapping("/")
 	public ResponseEntity<?> newService(@RequestBody ServiceDTO newService) {
 		Service service = serviceMapper.fromDTO(newService);
 		checkServiceData(service);
@@ -81,7 +83,7 @@ public class ServiceController {
 		return ResponseEntity.ok(serviceMapper.toDTO(serviceInsert));
 	}
 
-	@PutMapping("/services/{id}")
+	@PutMapping("/{id}")
 	public ResponseEntity<?> update(@RequestBody Service newService, @PathVariable String id) {
 		try {
 			Service serviceUpdated = serviceRepository.findById(id).orElse(null);
@@ -105,7 +107,7 @@ public class ServiceController {
 		}
 	}
 
-	@DeleteMapping("/services/{id}")
+	@DeleteMapping("/{id}")
 	public ResponseEntity<ServiceDTO> deleteService(@PathVariable String id) {
 		try {
 			Service service = serviceRepository.findById(id).orElse(null);
