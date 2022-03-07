@@ -11,6 +11,7 @@ import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByEmailException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByIdException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByUsernameException;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UsersNotFoundException;
 import ies.luisvives.serverpeluqueriadam.mapper.UserMapper;
 import ies.luisvives.serverpeluqueriadam.model.Login;
 import ies.luisvives.serverpeluqueriadam.model.User;
