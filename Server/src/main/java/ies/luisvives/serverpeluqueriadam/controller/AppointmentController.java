@@ -16,6 +16,10 @@ import ies.luisvives.serverpeluqueriadam.model.User;
 import ies.luisvives.serverpeluqueriadam.repository.ServiceRepository;
 import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
 import ies.luisvives.serverpeluqueriadam.services.appointments.AppointmentService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -47,6 +51,12 @@ public class AppointmentController {
     }
 
     @CrossOrigin(origins = "http://localhost:3306")
+    @ApiOperation(value = "Obtener todas las citas", notes = "Obtiene todas las citas")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = AppointmentDTO.class, responseContainer = "List"),
+            @ApiResponse(code = 404, message = "Not Found", response = AppointmentNotFoundException.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @GetMapping("/")
     public ResponseEntity<?> findAll(
             @RequestParam(required  = false, name = "searchQuery") Optional<String> searchQuery
@@ -64,6 +74,12 @@ public class AppointmentController {
     }
 
     @CrossOrigin(origins = "http://localhost:3306")
+    @ApiOperation(value = "Obtener todas las citas para usuario", notes = "Obtiene todas las citas para el usuario móvil")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = AppointmentDTO.class, responseContainer = "List"),
+            @ApiResponse(code = 404, message = "Not Found", response = AppointmentNotFoundException.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @GetMapping("/mobile")
     public ResponseEntity<?> findAllUserless(
             @RequestParam(required  = false, name = "searchQuery") Optional<String> searchQuery
@@ -96,6 +112,11 @@ public class AppointmentController {
         return appointments;
     }
 
+    @ApiOperation(value = "Obtener una cita por id", notes = "Obtiene una cita por id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = AppointmentDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = AppointmentNotFoundException.class)
+    })
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable String id) {
         Appointment appointment = appointmentService.findAppointmentById(id).orElse(null);
@@ -106,6 +127,11 @@ public class AppointmentController {
         }
     }
 
+    @ApiOperation(value = "Crear una cita", notes = "Crea una cita")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Created", response = CreateAppointmentDTO.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @PostMapping("/")
     public ResponseEntity<?> save(@RequestBody CreateAppointmentDTO appointmentDTO) {
         try {
@@ -131,6 +157,12 @@ public class AppointmentController {
         return appointment;
     }
 
+    @ApiOperation(value = "Actualizar una cita", notes = "Actualiza una cita en base al id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = CreateAppointmentDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = AppointmentNotFoundException.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @PutMapping("/{id}")
     public ResponseEntity<?> update(@PathVariable String id, @RequestBody CreateAppointmentDTO createAppointmentDTO) {
         try {
@@ -150,6 +182,12 @@ public class AppointmentController {
         }
     }
 
+    @ApiOperation(value = "Eliminar una cita", notes = "Elimina una cita en base a su id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = AppointmentDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = AppointmentNotFoundException.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<?> delete(@PathVariable String id) {
         try {
@@ -180,6 +218,11 @@ public class AppointmentController {
         }
     }
 
+    @ApiOperation(value = "Crear una cita", notes = "Crea una cita con media type")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Created", response = AppointmentDTO.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> newAppointment(@RequestPart("appointment") AppointmentDTO appointmentDTO) {
         try {
@@ -192,6 +235,12 @@ public class AppointmentController {
         }
     }
 
+    @ApiOperation(value = "Obtener todas las citas paginadas", notes = "Obtiene todas las citas paginadas")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = ListAppointmentPageDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = AppointmentNotFoundException.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @GetMapping("/all")
     public ResponseEntity<?> list(
             @RequestParam(defaultValue = "0") int page,

@@ -9,18 +9,18 @@ import ies.luisvives.serverpeluqueriadam.exceptions.login.LoginNotFoundException
 import ies.luisvives.serverpeluqueriadam.exceptions.login.LoginsNotFoundException;
 import ies.luisvives.serverpeluqueriadam.mapper.LoginMapper;
 import ies.luisvives.serverpeluqueriadam.model.Login;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
 import ies.luisvives.serverpeluqueriadam.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(APIConfig.API_PATH + "/logins")
@@ -34,6 +34,12 @@ public class LoginController {
         this.loginMapper = loginMapper;
     }
 
+    @ApiOperation(value = "Obtener todos los logins", notes = "Obtiene todos los logins")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = LoginDTO.class, responseContainer = "List"),
+            @ApiResponse(code = 404, message = "Not Found", response = LoginNotFoundException.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @GetMapping("/")
     public ResponseEntity<List<LoginDTO>> findAll() {
         List<Login> logins = null;
@@ -49,7 +55,13 @@ public class LoginController {
         }
     }
 
-
+    @ApiOperation(value = "Obtiene una lista de logins", notes = "Obtiene una lista de logins paginada")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = ListLoginPageDTO.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class),
+            @ApiResponse(code = 401, message = "No autenticado"),
+            @ApiResponse(code = 403, message = "No autorizado")
+    })
     @CrossOrigin(origins = "http://localhost:3306")
     @GetMapping("/page")
     public ResponseEntity<ListLoginPageDTO> findAllLogins(
@@ -71,6 +83,11 @@ public class LoginController {
         }
     }
 
+    @ApiOperation(value = "Obtener un producto por id", notes = "Obtiene un producto por id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = LoginDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = LoginsNotFoundException.class)
+    })
     @GetMapping("/{id}")
     public ResponseEntity<LoginDTO> findById(@PathVariable String id) {
         Login login = loginRepository.findById(id).orElse(null);
@@ -81,6 +98,11 @@ public class LoginController {
         }
     }
 
+    @ApiOperation(value = "Crear un login", notes = "Crea un login")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Created", response = LoginDTO.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @PostMapping("/")
     public ResponseEntity<LoginDTO> save(@RequestBody LoginDTO loginDTO) {
         try {
@@ -93,6 +115,12 @@ public class LoginController {
         }
     }
 
+    @ApiOperation(value = "Actualizar un login", notes = "Actualiza un login por su id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = LoginDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = LoginNotFoundException.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @PutMapping("/{id}")
     public ResponseEntity<LoginDTO> update(@PathVariable String id, @RequestBody Login login) {
         try {
@@ -113,6 +141,12 @@ public class LoginController {
         }
     }
 
+    @ApiOperation(value = "Eliminar un login", notes = "Elimina un login en base a su id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = LoginDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = LoginsNotFoundException.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @DeleteMapping("/{id}")
     public ResponseEntity<LoginDTO> delete(@PathVariable String id) {
         Login login = loginRepository.findById(id).orElse(null);

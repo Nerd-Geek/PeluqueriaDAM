@@ -7,6 +7,10 @@ import ies.luisvives.serverpeluqueriadam.exceptions.ServiceNotFoundException;
 import ies.luisvives.serverpeluqueriadam.exceptions.service.ServiceBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.service.ServicesNotFoundException;
 import ies.luisvives.serverpeluqueriadam.mapper.ServiceMapper;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
 import ies.luisvives.serverpeluqueriadam.model.Service;
 import ies.luisvives.serverpeluqueriadam.repository.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +33,12 @@ public class ServiceController {
 		this.serviceMapper = serviceMapper;
 	}
 
+	@ApiOperation(value = "Obtener todos los servicios", notes = "Obtiene todos los servicios")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK", response = ServiceDTO.class, responseContainer = "List"),
+			@ApiResponse(code = 404, message = "Not Found", response = ServicesNotFoundException.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+	})
 	@GetMapping("/all")
 	public ResponseEntity<List<ServiceDTO>> findAll(@RequestParam(name = "limit") Optional<String> limit) {
 		List<Service> services = null;
@@ -49,6 +59,12 @@ public class ServiceController {
 		}
 	}
 
+	@ApiOperation(value = "Obtener todos un servicio", notes = "Obtiene un servicio en base a su nombre")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK", response = ServiceDTO.class, responseContainer = "List"),
+			@ApiResponse(code = 404, message = "Not Found", response = ServicesNotFoundException.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+	})
 	@GetMapping("/")
 	public ResponseEntity<?> findByNameContainsIgnoreCase(@RequestParam(name = "searchQuery") Optional<String> searchQuery
 	) {
@@ -65,6 +81,11 @@ public class ServiceController {
 		}
 	}
 
+	@ApiOperation(value = "Obtener un servicooo por id", notes = "Obtiene un producto por id")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK", response = ServiceDTO.class),
+			@ApiResponse(code = 404, message = "Not Found", response = ServiceNotFoundException.class)
+	})
 	@GetMapping("/{id}")
 	public ResponseEntity<ServiceDTO> findById(@PathVariable String id) {
 		Service service = serviceRepository.findById(id).orElse(null);
@@ -75,6 +96,11 @@ public class ServiceController {
 		}
 	}
 
+	@ApiOperation(value = "Crear un servicio", notes = "Crea un servicio")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "Created", response = ServiceDTO.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+	})
 	@PostMapping("/")
 	public ResponseEntity<ServiceDTO> newService(@RequestBody ServiceDTO newService) {
 		Service service = serviceMapper.fromDTO(newService);
@@ -83,6 +109,12 @@ public class ServiceController {
 		return ResponseEntity.ok(serviceMapper.toDTO(serviceInsert));
 	}
 
+	@ApiOperation(value = "Actualizar un servicio", notes = "Actualiza un servicio en base a su id")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK", response = ServiceDTO.class),
+			@ApiResponse(code = 404, message = "Not Found", response = ServiceNotFoundException.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+	})
 	@PutMapping("/{id}")
 	public ResponseEntity<ServiceDTO> update(@PathVariable String id, @RequestBody ServiceDTO newService) {
 		try {
@@ -106,6 +138,12 @@ public class ServiceController {
 		}
 	}
 
+	@ApiOperation(value = "Actualizar un servicio", notes = "Actualiza un servicio en base a su id")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK", response = ServiceDTO.class),
+			@ApiResponse(code = 404, message = "Not Found", response = ServiceNotFoundException.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+	})
 	@DeleteMapping("/{id}")
 	public ResponseEntity<ServiceDTO> deleteService(@PathVariable String id) {
 

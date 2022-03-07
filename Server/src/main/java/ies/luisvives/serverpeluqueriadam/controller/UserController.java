@@ -1,5 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.controller;
 
+
 import ies.luisvives.serverpeluqueriadam.config.APIConfig;
 import ies.luisvives.serverpeluqueriadam.config.security.jwt.JwtTokenProvider;
 import ies.luisvives.serverpeluqueriadam.config.security.jwt.model.JwtUserResponse;
@@ -16,7 +17,6 @@ import ies.luisvives.serverpeluqueriadam.repository.LoginRepository;
 import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
 import ies.luisvives.serverpeluqueriadam.services.users.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -31,6 +31,10 @@ import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping(APIConfig.API_PATH + "/users")
@@ -43,6 +47,12 @@ public class UserController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
 
+    @ApiOperation(value = "Obtener todos los usuarios", notes = "Obtiene todos los usuarios")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = UserDTO.class, responseContainer = "List"),
+            @ApiResponse(code = 404, message = "Not Found", response = UsersNotFoundException.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @GetMapping("/")
     public ResponseEntity<?> findAll(
             @RequestParam("searchQuery") Optional<String> searchQuery
@@ -59,6 +69,11 @@ public class UserController {
         }
     }
 
+    @ApiOperation(value = "Obtener un usuario por id", notes = "Obtiene un usuario en base al id")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = UserDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = UsersNotFoundException.class)
+    })
     @GetMapping("/{id}")
     public ResponseEntity<?> findById(@PathVariable String id) {
         User user = userService.findById(id).orElse(null);
@@ -69,6 +84,11 @@ public class UserController {
         }
     }
 
+    @ApiOperation(value = "Obtener un usuario por username", notes = "Obtiene un usuario en base al username")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = UserDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = UsersNotFoundException.class)
+    })
     @GetMapping("/{username}")
     public ResponseEntity<?> findByUsername(@PathVariable String username) {
         User user = userService.findByUsernameIgnoreCase(username).orElse(null);
@@ -78,6 +98,12 @@ public class UserController {
             return ResponseEntity.ok(userMapper.toDTO(user));
         }
     }
+
+    @ApiOperation(value = "Obtener un usuario por email", notes = "Obtiene un usuario en base al email")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = UserDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = UsersNotFoundException.class)
+    })
     @GetMapping("/{email}")
     public ResponseEntity<?> findByEmail(@PathVariable String email) {
         User user = userService.findByEmail(email);
@@ -88,13 +114,24 @@ public class UserController {
         }
     }
 
+
     @CrossOrigin(origins = "http://localhost:3306")
+    @ApiOperation(value = "Obtener un usuario", notes = "Obtiene un usuario que esta logueado")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "OK", response = UserDTO.class),
+            @ApiResponse(code = 404, message = "Not Found", response = UsersNotFoundException.class)
+    })
     @GetMapping("/me")
     public UserDTO me(@AuthenticationPrincipal User user) {
         return userMapper.toDTO(user);
     }
     
     @CrossOrigin(origins = "http://localhost:3306")
+    @ApiOperation(value = "Loguear un usuario", notes = "Loguea un usuario")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Created", response = UserDTO.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @PostMapping("/login")
     public JwtUserResponse login(@Valid @RequestBody LoginRequest loginRequest) {
         Authentication authentication =
@@ -112,6 +149,11 @@ public class UserController {
         return convertUserEntityAndTokenToJwtUserResponse(user, jwtToken);
     }
 
+    @ApiOperation(value = "Crear un usuario", notes = "Crea un usuario")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Created", response = UserDTO.class),
+            @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
+    })
     @PostMapping("/")
     public UserDTO nuevoUsuario(@RequestBody CreateUserDTO newUser) {
         return userMapper.toDTO(userService.save(newUser));
