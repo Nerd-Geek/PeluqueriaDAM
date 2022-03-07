@@ -20,7 +20,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 @EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled  = true)
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final UserDetailsService userDetailsService;
@@ -63,12 +63,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/services/{id}").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/services/{id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/services/{id}").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/").hasRole( "ADMIN")
-                .antMatchers(HttpMethod.GET,  APIConfig.API_PATH + "/users/{id}").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,  APIConfig.API_PATH + "/users/{usename}").hasRole("ADMIN")
-                .antMatchers(HttpMethod.GET,  APIConfig.API_PATH + "/users/{email}").hasRole("ADMIN")
-                .antMatchers(HttpMethod.PUT,  APIConfig.API_PATH + "/users/{id}").hasRole("ADMIN")
-                .antMatchers(HttpMethod.DELETE,  APIConfig.API_PATH + "/users/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/name/{usename}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/email/{email}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/users/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/users/{id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/users/").permitAll()
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/users/login").permitAll()
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/me").hasAnyRole("USER", "ADMIN")

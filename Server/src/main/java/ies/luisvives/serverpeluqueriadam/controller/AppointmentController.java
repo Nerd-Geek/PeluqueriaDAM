@@ -148,7 +148,7 @@ public class AppointmentController {
         Service service = serviceRepository.findById(appointmentDTO.getServiceId()).orElseThrow(() -> new ServiceNotFoundException(appointmentDTO.getServiceId()));
         User user = userRepository.findById(appointmentDTO.getUserId()).orElseThrow(() -> new UserNotFoundByIdException(appointmentDTO.getUserId()));
         Appointment appointment = Appointment.builder()
-                .id(UUID.randomUUID().toString())
+                .id(appointmentDTO.getId())
                 .time(appointmentDTO.getTime())
                 .date(appointmentDTO.getDate())
                 .user(user)

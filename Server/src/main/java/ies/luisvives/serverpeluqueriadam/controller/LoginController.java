@@ -70,7 +70,7 @@ public class LoginController {
     ) {
         Pageable pageable = Pageable.ofSize(size).withPage(page);
         try {
-            Page<Login>pagedResult = loginRepository.findAll(pageable);
+            Page<Login> pagedResult = loginRepository.findAll(pageable);
             ListLoginPageDTO listLoginPageDTO = ListLoginPageDTO.builder()
                     .data(loginMapper.toDTO(pagedResult.getContent()))
                     .totalPages(pagedResult.getTotalPages())
@@ -79,7 +79,7 @@ public class LoginController {
                     .build();
             return ResponseEntity.ok(listLoginPageDTO);
         } catch (Exception e) {
-            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos"+e.getMessage());
+            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos" + e.getMessage());
         }
     }
 

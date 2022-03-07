@@ -8,13 +8,14 @@ import ies.luisvives.serverpeluqueriadam.config.security.jwt.model.LoginRequest;
 import ies.luisvives.serverpeluqueriadam.dto.user.CreateUserDTO;
 import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
-import ies.luisvives.serverpeluqueriadam.exceptions.user.*;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByEmailException;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByIdException;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByUsernameException;
 import ies.luisvives.serverpeluqueriadam.mapper.UserMapper;
 import ies.luisvives.serverpeluqueriadam.model.Login;
 import ies.luisvives.serverpeluqueriadam.model.User;
 import ies.luisvives.serverpeluqueriadam.model.UserRole;
 import ies.luisvives.serverpeluqueriadam.repository.LoginRepository;
-import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
 import ies.luisvives.serverpeluqueriadam.services.users.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -89,7 +90,7 @@ public class UserController {
             @ApiResponse(code = 200, message = "OK", response = UserDTO.class),
             @ApiResponse(code = 404, message = "Not Found", response = UsersNotFoundException.class)
     })
-    @GetMapping("/{username}")
+    @GetMapping("/name/{username}")
     public ResponseEntity<?> findByUsername(@PathVariable String username) {
         User user = userService.findByUsernameIgnoreCase(username).orElse(null);
         if (user == null) {
@@ -104,7 +105,7 @@ public class UserController {
             @ApiResponse(code = 200, message = "OK", response = UserDTO.class),
             @ApiResponse(code = 404, message = "Not Found", response = UsersNotFoundException.class)
     })
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public ResponseEntity<?> findByEmail(@PathVariable String email) {
         User user = userService.findByEmail(email);
         if (user == null) {
@@ -125,7 +126,7 @@ public class UserController {
     public UserDTO me(@AuthenticationPrincipal User user) {
         return userMapper.toDTO(user);
     }
-    
+
     @CrossOrigin(origins = "http://localhost:3306")
     @ApiOperation(value = "Loguear un usuario", notes = "Loguea un usuario")
     @ApiResponses(value = {
