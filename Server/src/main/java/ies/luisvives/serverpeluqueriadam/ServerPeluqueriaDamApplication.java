@@ -1,9 +1,5 @@
 package ies.luisvives.serverpeluqueriadam;
 
-import ies.luisvives.serverpeluqueriadam.model.Appointment;
-import ies.luisvives.serverpeluqueriadam.model.Login;
-import ies.luisvives.serverpeluqueriadam.model.Service;
-import ies.luisvives.serverpeluqueriadam.model.User;
 import ies.luisvives.serverpeluqueriadam.repository.AppointmentRepository;
 import ies.luisvives.serverpeluqueriadam.repository.LoginRepository;
 import ies.luisvives.serverpeluqueriadam.repository.ServiceRepository;
@@ -12,12 +8,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.LocalTime;
-import java.util.Date;
-import java.util.UUID;
 
 @SpringBootApplication
 public class ServerPeluqueriaDamApplication {

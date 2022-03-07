@@ -8,16 +8,12 @@ import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
 import ies.luisvives.serverpeluqueriadam.services.uploads.FileSystemStorageService;
 import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,7 +50,7 @@ public class FilesControllerMockTest {
         this.fileSystemStorageService = fileSystemStorageService;
     }
 
-//    @Test
+    //    @Test
 //    @Order(1)
 //    void getAllTestMock() {
 //
@@ -77,7 +73,7 @@ public class FilesControllerMockTest {
 //    @Test
 //    @Order(2)
 //    void serveFileTestMock() {
-  // TODO:  mockHttpServletRequest ??
+    // TODO:  mockHttpServletRequest ??
 //        LoginUserDTO loginUserDTO = LoginUserDTO.builder()
 //                .username(user.getUsername())
 //                .password(user.getPassword())
@@ -110,8 +106,10 @@ public class FilesControllerMockTest {
     @Test
     @Order(3)
     void uploadFileTestMock() {
-        MultipartFile file = new MockMultipartFile("image1", "image1",
+        MultipartFile file = new MockMultipartFile("C:\\Users\\Madirex\\Pictures\\2020.png", "image1",
                 "application/doc", "image".getBytes());
+        //System.out.println(file.get);
+
         //TODO: nullpointer
         System.out.println(filesRestController.uploadFile(file).getStatusCode());
     }
