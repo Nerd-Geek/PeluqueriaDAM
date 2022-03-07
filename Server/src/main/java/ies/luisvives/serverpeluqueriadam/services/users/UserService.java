@@ -49,7 +49,7 @@ public class UserService {
             Set<UserRole> defaultRoles = new HashSet<>();
             defaultRoles.add(UserRole.USER);
             User user = User.builder()
-                    .id(UUID.randomUUID().toString())
+                    .id(newUser.getId())
                     .name(newUser.getName())
                     .surname(newUser.getSurname())
                     .username(newUser.getUsername())

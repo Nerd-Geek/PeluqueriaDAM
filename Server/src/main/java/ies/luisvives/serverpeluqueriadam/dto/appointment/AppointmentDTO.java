@@ -2,8 +2,7 @@ package ies.luisvives.serverpeluqueriadam.dto.appointment;
 import ies.luisvives.serverpeluqueriadam.dto.service.ServiceDTO;
 import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.model.Service;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -11,6 +10,9 @@ import java.time.LocalTime;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class AppointmentDTO {
     private String id;
     @NotNull(message = "La fecha no puede ser nula")

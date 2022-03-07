@@ -122,7 +122,7 @@ public class AppointmentController {
         Service service = serviceRepository.findById(appointmentDTO.getServiceId()).orElseThrow(() -> new ServiceNotFoundException(appointmentDTO.getServiceId()));
         User user = userRepository.findById(appointmentDTO.getUserId()).orElseThrow(() -> new UserNotFoundByIdException(appointmentDTO.getUserId()));
         Appointment appointment = Appointment.builder()
-                .id(UUID.randomUUID().toString())
+                .id(appointmentDTO.getId())
                 .time(appointmentDTO.getTime())
                 .date(appointmentDTO.getDate())
                 .user(user)
@@ -177,18 +177,6 @@ public class AppointmentController {
         }
         if (appointment.getTime() == null) {
             throw new AppointmentBadRequestException("Time", "La hora es obligatoria");
-        }
-    }
-
-    @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public ResponseEntity<?> newAppointment(@RequestPart("appointment") AppointmentDTO appointmentDTO) {
-        try {
-            Appointment appointment = appointmentMapper.fromDTO(appointmentDTO);
-            checkAppointmentData(appointment);
-            Appointment inserted = appointmentService.saveAppointment(appointment);
-            return ResponseEntity.ok(appointmentMapper.toDTO(inserted));
-        } catch (AppointmentNotFoundException ex) {
-            throw new GeneralBadRequestException("Insertar", "Error al insertar la cita. Campos incorrectos");
         }
     }
 
