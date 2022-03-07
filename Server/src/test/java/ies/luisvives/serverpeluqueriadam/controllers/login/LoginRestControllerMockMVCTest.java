@@ -90,7 +90,7 @@ public class LoginRestControllerMockMVCTest {
 
     @Test
     @Order(1)
-    public void findAllTest() throws Exception {
+    void findAllTest() throws Exception {
 
         Mockito.when(loginRepository.findAll())
                 .thenReturn(List.of(login));

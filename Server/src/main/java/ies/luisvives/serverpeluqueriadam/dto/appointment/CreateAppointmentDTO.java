@@ -1,9 +1,6 @@
 package ies.luisvives.serverpeluqueriadam.dto.appointment;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -15,6 +12,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CreateAppointmentDTO {
     private String id;
     @NotNull(message = "La fecha no puede ser nula")

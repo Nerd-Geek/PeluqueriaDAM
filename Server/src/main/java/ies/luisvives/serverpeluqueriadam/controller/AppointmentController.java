@@ -58,7 +58,7 @@ public class AppointmentController {
             @ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class)
     })
     @GetMapping("/")
-    public ResponseEntity<?> findAll(
+    public ResponseEntity<List<AppointmentDTO>> findAll(
             @RequestParam(required  = false, name = "searchQuery") Optional<String> searchQuery
             , @RequestParam(required  = false, name = "date") Optional<String> date
             , @RequestParam(required  = false, name = "service_id") Optional<String> service_id
@@ -118,7 +118,7 @@ public class AppointmentController {
             @ApiResponse(code = 404, message = "Not Found", response = AppointmentNotFoundException.class)
     })
     @GetMapping("/{id}")
-    public ResponseEntity<?> findById(@PathVariable String id) {
+    public ResponseEntity<AppointmentDTO> findById(@PathVariable String id) {
         Appointment appointment = appointmentService.findAppointmentById(id).orElse(null);
         if (appointment == null) {
             throw new AppointmentNotFoundException(id);

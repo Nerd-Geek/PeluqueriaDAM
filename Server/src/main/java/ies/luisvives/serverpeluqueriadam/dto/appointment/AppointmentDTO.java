@@ -13,6 +13,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Builder
 public class AppointmentDTO {
     private String id;
     @NotNull(message = "La fecha no puede ser nula")
