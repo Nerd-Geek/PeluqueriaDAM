@@ -228,4 +228,48 @@ public class UserRepositoryIntegrationTest {
         User begone = userRepository.findById(newUser.getId()).orElse(null);
         assertNull(begone);
     }
+
+
+    @Test
+    void findByUsernameIgnoreCase() {
+        User savedUser = userRepository.findByUsernameIgnoreCase(user.getUsername().toUpperCase()).orElse(new User());
+
+        assertAll(
+                () -> assertEquals(savedUser.getId(), user.getId()),
+                () -> assertEquals(savedUser.getUsername(), user.getUsername()),
+                () -> assertEquals(savedUser.getPassword(), user.getPassword()),
+                () -> assertEquals(savedUser.getName(), user.getName()),
+                () -> assertEquals(savedUser.getEmail(), user.getEmail()),
+                () -> assertEquals(savedUser.getImage(), user.getImage()),
+                () -> assertEquals(savedUser.getSurname(), user.getSurname()),
+                () -> assertEquals(savedUser.getGender(), user.getGender()),
+                () -> assertEquals(savedUser.getPhoneNumber(), user.getPhoneNumber()),
+                () -> assertEquals(savedUser.getRoles(), user.getRoles()),
+                () -> assertEquals(savedUser.getAppointments().size(), user.getAppointments().size()),
+                () -> assertEquals(savedUser.getLogins().size(), user.getLogins().size())
+        );
+    }
+
+    @Test
+    void findByUsernameContainsIgnoreCase() {
+        List<User> allUsers = userRepository.findByUsernameContainsIgnoreCase("");
+        List<User> oneUser = userRepository.findByUsernameContainsIgnoreCase("nombre usuario");
+        List<User> noUser = userRepository.findByUsernameContainsIgnoreCase("1203894571-0293548120-9349857");
+        List<User> findAll = userRepository.findAll();
+        assertAll(
+                () -> assertEquals(oneUser.get(0).getUsername(), "nombre usuario"),
+                () -> assertEquals(allUsers.size(), findAll.size()),
+                () -> assertEquals(noUser.size(), 0)
+        );
+    }
+
+    @Test
+    void findByEmail() {
+        User emailUser = userRepository.findByEmail("adsada@sdasdd.com");
+        User nonEmailUser  = userRepository.findByEmail("asdfasdfasdfasdfasdfasdfasdfasdf@sdasasdfasdfasdfasdfasdfasdfasdfasdfasddd.comnot");
+        assertAll(
+                () -> assertEquals(emailUser.getEmail(), "adsada@sdasdd.com"),
+                () -> assertNull(nonEmailUser)
+        );
+    }
 }

@@ -36,7 +36,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @ImportAutoConfiguration
 public class UserRepositoryJPATest {
 
-    private static final User user = User.builder()
+    private static User user = User.builder()
             .id("ec272c62-9d31-11ec-b909-0242ac1200015")
             .username("nombre usuario")
             .name("nombre")
@@ -50,7 +50,7 @@ public class UserRepositoryJPATest {
             .roles(Set.of(UserRole.USER, UserRole.ADMIN))
             .build();
 
-    private static final Login login = Login.builder()
+    private static Login login = Login.builder()
             .id("233149e4-b6f3-4692-ac71-2e8123bc2416")
             .user(user)
             .instant(Date.from(Instant.now()))
@@ -61,7 +61,7 @@ public class UserRepositoryJPATest {
                     "ddlAivBy7dUEbArgy-EYgTW0w")
             .build();
 
-    private static final Service service = Service.builder()
+    private static Service service = Service.builder()
             .id("7dafe5fd-976b-450a-9bab-17ab450a4f17")
             .name("nombre")
             .stock(5)
@@ -69,7 +69,7 @@ public class UserRepositoryJPATest {
             .build();
 
 
-    private static final Appointment appointment1 = Appointment.builder()
+    private static Appointment appointment1 = Appointment.builder()
             .id("0fc7d018-9d32-11ec-b909-0242ac120018")
             .service(service)
             .user(user)
@@ -77,7 +77,7 @@ public class UserRepositoryJPATest {
             .time(LocalTime.of(9, 0, 0))
             .build();
 
-    private static final Appointment appointment2 = Appointment.builder()
+    private static Appointment appointment2 = Appointment.builder()
             .id("0fc7d018-9d32-11ec-b909-0242ac120019")
             .service(service)
             .user(user)
@@ -85,7 +85,7 @@ public class UserRepositoryJPATest {
             .time(LocalTime.of(10, 0, 0))
             .build();
 
-    private static final Appointment appointment3 = Appointment.builder()
+    private static Appointment appointment3 = Appointment.builder()
             .id("0fc7d018-9d32-11ec-b909-0242ac120020")
             .service(service)
             .user(user)
@@ -93,15 +93,10 @@ public class UserRepositoryJPATest {
             .time(LocalTime.of(11, 0, 0))
             .build();
 
-
-    @Autowired
-    private LoginRepository loginRepository;
     @Autowired
     private UserRepository userRepository;
     @Autowired
     private AppointmentRepository appointmentRepository;
-    @Autowired
-    private ServiceRepository serviceRepository;
 
     @Autowired
     private TestEntityManager entityManager;
@@ -182,48 +177,80 @@ public class UserRepositoryJPATest {
 
     @Test
     void update() {
-        User newUser = entityManager.find(User.class, "ec272c62-9d31-11ec-b909-0242ac1200015");
-        newUser.setAppointments(Set.of(appointment1, appointment2));
-        newUser.setLogins(new HashSet<>());
+        User newUser = User.builder()
+                .id(UUID.randomUUID().toString())
+                .username("poquito")
+                .password("$2a$12$MvKeyxrlM0PxpT8egBnq1O/L/rY36QUWyhYDG7JINbziLpmYKmgDW")
+                .name("poco")
+                .email("poco@poco.com")
+                .phoneNumber("609580881")
+                .image(null)
+                .gender(UserGender.Male)
+                .surname("poquin")
+                .roles(Set.of(UserRole.USER, UserRole.ADMIN))
+                .appointments(new HashSet<>())
+                .logins(new HashSet<>())
+                .build();
 
         User savedUser = userRepository.save(newUser);
+
+        User modUser = userRepository.getById(savedUser.getId());
+        modUser.setPhoneNumber("090999909");
+
+        userRepository.save(modUser);
         assertAll(
-                () -> assertEquals(newUser.getId(), savedUser.getId()),
-                () -> assertEquals(newUser.getUsername(), savedUser.getUsername()),
-                () -> assertEquals(newUser.getPassword(), savedUser.getPassword()),
-                () -> assertEquals(newUser.getName(), savedUser.getName()),
-                () -> assertEquals(newUser.getEmail(), savedUser.getEmail()),
-                () -> assertEquals(newUser.getImage(), savedUser.getImage()),
-                () -> assertEquals(newUser.getSurname(), savedUser.getSurname()),
-                () -> assertEquals(newUser.getGender(), savedUser.getGender()),
-                () -> assertEquals(newUser.getPhoneNumber(), savedUser.getPhoneNumber()),
-                () -> assertEquals(newUser.getRoles(), savedUser.getRoles()),
-                () -> assertEquals(newUser.getAppointments().size(), savedUser.getAppointments().size()),
-                () -> assertEquals(newUser.getLogins().size(), savedUser.getLogins().size())
+                () -> assertEquals(modUser.getId(), savedUser.getId()),
+                () -> assertEquals(modUser.getUsername(), savedUser.getUsername()),
+                () -> assertEquals(modUser.getPassword(), savedUser.getPassword()),
+                () -> assertEquals(modUser.getName(), savedUser.getName()),
+                () -> assertEquals(modUser.getEmail(), savedUser.getEmail()),
+                () -> assertEquals(modUser.getImage(), savedUser.getImage()),
+                () -> assertEquals(modUser.getSurname(), savedUser.getSurname()),
+                () -> assertEquals(modUser.getGender(), savedUser.getGender()),
+                () -> assertEquals(modUser.getPhoneNumber(), savedUser.getPhoneNumber()),
+                () -> assertEquals(modUser.getRoles(), savedUser.getRoles()),
+                () -> assertEquals(modUser.getAppointments().size(), savedUser.getAppointments().size()),
+                () -> assertEquals(modUser.getLogins().size(), savedUser.getLogins().size())
         );
     }
 
     @Test
     void delete() {
-        entityManager.persist(user);
-        entityManager.persist(service);
-        entityManager.persist(appointment3);
+        User newUser = User.builder()
+                .id(UUID.randomUUID().toString())
+                .username("poquiton")
+                .password("$2a$12$MvKeyxrlM0PxpT8egBnq1O/L/rY36QUWyhYDG7JINbziLpmYKmgDW")
+                .name("poco")
+                .email("pocazo@poco.com")
+                .phoneNumber("609580881")
+                .image(null)
+                .gender(UserGender.Male)
+                .surname("poquin")
+                .roles(Set.of(UserRole.USER, UserRole.ADMIN))
+                .appointments(new HashSet<>())
+                .logins(new HashSet<>())
+                .build();
+
+        entityManager.persist(newUser);
         entityManager.flush();
 
-        appointmentRepository.delete(appointment3);
-        assertNull(appointmentRepository.findById(appointment3.getId()).orElse(null));
+        userRepository.delete(newUser);
+        assertNull(userRepository.findById(newUser.getId()).orElse(null));
+    }
+
+
+    @Test
+    void findByUsernameIgnoreCase() {
+
     }
 
     @Test
-    void filteredFindAll() {
-        entityManager.persist(user);
-        entityManager.persist(service);
-        entityManager.persist(appointment1);
-        entityManager.persist(appointment2);
-        entityManager.persist(appointment3);
+    void findByUsernameContainsIgnoreCase() {
 
-        List<Appointment> appointments = appointmentRepository.findByDateAndTimeAndService_Id(appointment1.getDate(), appointment1.getTime(), appointment1.getService().getId());
-        assertEquals(appointments.size(), 1);
+    }
+
+    @Test
+    void findByEmail() {
 
     }
 }
