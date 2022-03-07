@@ -69,7 +69,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/name/{username}")
     public ResponseEntity<?> findByUsername(@PathVariable String username) {
         User user = userService.findByUsernameIgnoreCase(username).orElse(null);
         if (user == null) {
@@ -78,7 +78,7 @@ public class UserController {
             return ResponseEntity.ok(userMapper.toDTO(user));
         }
     }
-    @GetMapping("/{email}")
+    @GetMapping("/email/{email}")
     public ResponseEntity<?> findByEmail(@PathVariable String email) {
         User user = userService.findByEmail(email);
         if (user == null) {

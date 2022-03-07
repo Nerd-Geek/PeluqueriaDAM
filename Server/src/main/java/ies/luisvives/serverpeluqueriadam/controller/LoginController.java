@@ -12,15 +12,11 @@ import ies.luisvives.serverpeluqueriadam.model.Login;
 import ies.luisvives.serverpeluqueriadam.repository.LoginRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(APIConfig.API_PATH + "/logins")
@@ -58,7 +54,7 @@ public class LoginController {
     ) {
         Pageable pageable = Pageable.ofSize(size).withPage(page);
         try {
-            Page<Login>pagedResult = loginRepository.findAll(pageable);
+            Page<Login> pagedResult = loginRepository.findAll(pageable);
             ListLoginPageDTO listLoginPageDTO = ListLoginPageDTO.builder()
                     .data(loginMapper.toDTO(pagedResult.getContent()))
                     .totalPages(pagedResult.getTotalPages())
@@ -67,7 +63,7 @@ public class LoginController {
                     .build();
             return ResponseEntity.ok(listLoginPageDTO);
         } catch (Exception e) {
-            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos"+e.getMessage());
+            throw new GeneralBadRequestException("Selección de Datos", "Parámetros de consulta incorrectos" + e.getMessage());
         }
     }
 
