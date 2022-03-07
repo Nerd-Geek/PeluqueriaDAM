@@ -7,16 +7,16 @@ import ies.luisvives.serverpeluqueriadam.config.security.jwt.model.LoginRequest;
 import ies.luisvives.serverpeluqueriadam.dto.user.CreateUserDTO;
 import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
-import ies.luisvives.serverpeluqueriadam.exceptions.user.*;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByEmailException;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByIdException;
+import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByUsernameException;
 import ies.luisvives.serverpeluqueriadam.mapper.UserMapper;
 import ies.luisvives.serverpeluqueriadam.model.Login;
 import ies.luisvives.serverpeluqueriadam.model.User;
 import ies.luisvives.serverpeluqueriadam.model.UserRole;
 import ies.luisvives.serverpeluqueriadam.repository.LoginRepository;
-import ies.luisvives.serverpeluqueriadam.repository.UserRepository;
 import ies.luisvives.serverpeluqueriadam.services.users.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -93,7 +93,7 @@ public class UserController {
     public UserDTO me(@AuthenticationPrincipal User user) {
         return userMapper.toDTO(user);
     }
-    
+
     @CrossOrigin(origins = "http://localhost:3306")
     @PostMapping("/login")
     public JwtUserResponse login(@Valid @RequestBody LoginRequest loginRequest) {
