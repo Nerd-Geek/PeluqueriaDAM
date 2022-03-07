@@ -2,7 +2,6 @@ package ies.luisvives.serverpeluqueriadam.dto.user;
 
 import lombok.*;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 @Getter
