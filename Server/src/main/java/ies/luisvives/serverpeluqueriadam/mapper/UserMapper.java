@@ -19,7 +19,7 @@ public class UserMapper {
         return modelMapper.map(user, UserDTO.class);
     }
 
-    public User fromDTO(UserDTO userDTO) {
+    public User fromDTO(CreateUserDTO userDTO) {
         return modelMapper.map(userDTO, User.class);
     }
 

@@ -60,6 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/services/").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/services/all").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/services/").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/services/create").hasRole("ADMIN")
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/services/{id}").hasAnyRole("USER", "ADMIN")
                 .antMatchers(HttpMethod.PUT, APIConfig.API_PATH + "/services/{id}").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/services/{id}").hasRole("ADMIN")
@@ -72,8 +73,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/users/").permitAll()
                 .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/users/login").permitAll()
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/users/me").hasAnyRole("USER", "ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/users/create").hasAnyRole("USER","ADMIN")
                 .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/logins/").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, APIConfig.API_PATH + "/logins/{id}").hasRole("ADMIN")
+                .antMatchers(HttpMethod.GET, APIConfig.API_PATH + "/files/{filename:.+}").hasAnyRole("USER","ADMIN")
+                .antMatchers(HttpMethod.POST, APIConfig.API_PATH + "/files/").hasAnyRole("USER","ADMIN")
                 .anyRequest().authenticated();
         http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
     }

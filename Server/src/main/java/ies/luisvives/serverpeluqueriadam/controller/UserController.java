@@ -5,20 +5,25 @@ import ies.luisvives.serverpeluqueriadam.config.APIConfig;
 import ies.luisvives.serverpeluqueriadam.config.security.jwt.JwtTokenProvider;
 import ies.luisvives.serverpeluqueriadam.config.security.jwt.model.JwtUserResponse;
 import ies.luisvives.serverpeluqueriadam.config.security.jwt.model.LoginRequest;
+import ies.luisvives.serverpeluqueriadam.dto.service.ServiceDTO;
 import ies.luisvives.serverpeluqueriadam.dto.user.CreateUserDTO;
 import ies.luisvives.serverpeluqueriadam.dto.user.UserDTO;
 import ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException;
+import ies.luisvives.serverpeluqueriadam.exceptions.ServiceNotFoundException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByEmailException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByIdException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UserNotFoundByUsernameException;
 import ies.luisvives.serverpeluqueriadam.exceptions.user.UsersNotFoundException;
 import ies.luisvives.serverpeluqueriadam.mapper.UserMapper;
 import ies.luisvives.serverpeluqueriadam.model.Login;
+import ies.luisvives.serverpeluqueriadam.model.Service;
 import ies.luisvives.serverpeluqueriadam.model.User;
 import ies.luisvives.serverpeluqueriadam.model.UserRole;
 import ies.luisvives.serverpeluqueriadam.repository.LoginRepository;
+import ies.luisvives.serverpeluqueriadam.services.uploads.StorageService;
 import ies.luisvives.serverpeluqueriadam.services.users.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,6 +42,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import io.swagger.v3.oas.annotations.Operation;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping(APIConfig.API_PATH + "/users")
@@ -46,6 +52,7 @@ public class UserController {
     private final UserMapper userMapper;
     private final LoginRepository loginRepository;
 
+    private final StorageService storageService;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenProvider tokenProvider;
 
@@ -161,10 +168,32 @@ public class UserController {
         return userMapper.toDTO(userService.save(newUser));
     }
 
+    @PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> nuevoUsuario(
+            @RequestPart("user") CreateUserDTO createUserDTO,
+            @RequestPart("file") MultipartFile file) {
+
+        User user = userMapper.fromDTOCreate(createUserDTO);
+
+        if (!file.isEmpty()) {
+            String imagen = storageService.store(file);
+            String urlImagen = storageService.getUrl(imagen);
+            user.setImage(urlImagen);
+            createUserDTO.setImage(user.getImage());
+        }
+        try {
+            User userInsertado = userService.save(createUserDTO);
+            return ResponseEntity.ok(userMapper.toDTO(userInsertado));
+        } catch (ServiceNotFoundException ex) {
+            throw new GeneralBadRequestException("Insertar", "Error al insertar el producto. Campos incorrectos");
+        }
+    }
+
     private JwtUserResponse convertUserEntityAndTokenToJwtUserResponse(User user, String jwtToken) {
         return JwtUserResponse
                 .jwtUserResponseBuilder()
                 .id(user.getId())
+                .image(user.getImage())
                 .name(user.getName())
                 .image(user.getImage())
                 .userRoles(user.getRoles().stream().map(UserRole::name).collect(Collectors.toSet()))

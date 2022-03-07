@@ -50,6 +50,7 @@ public class UserService {
             defaultRoles.add(UserRole.USER);
             User user = User.builder()
                     .id(newUser.getId())
+                    .image(newUser.getImage())
                     .name(newUser.getName())
                     .surname(newUser.getSurname())
                     .username(newUser.getUsername())

@@ -33,7 +33,7 @@ public class FilesRestController {
             @ApiResponse(code = 200, message = "OK", response = Resource.class),
             @ApiResponse(code = 404, message = "Not Found", response = StorageException.class),
     })
-    @GetMapping(value = "{filename:.+}")
+    @GetMapping(value = "/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename, HttpServletRequest request) {
         Resource file = storageService.loadAsResource(filename);
@@ -59,7 +59,7 @@ public class FilesRestController {
             @ApiResponse(code = 200, message = "OK", response = Map.class),
             @ApiResponse(code = 400, message = "Bad Request", response = StorageException.class),
     })
-    @PostMapping(value = "", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    @PostMapping(value = "/", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<Map<String, Object>> uploadFile(@RequestPart("file") MultipartFile file) {
         String urlImage = null;
         try {

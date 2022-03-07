@@ -7,6 +7,7 @@ import ies.luisvives.serverpeluqueriadam.exceptions.ServiceNotFoundException;
 import ies.luisvives.serverpeluqueriadam.exceptions.service.ServiceBadRequestException;
 import ies.luisvives.serverpeluqueriadam.exceptions.service.ServicesNotFoundException;
 import ies.luisvives.serverpeluqueriadam.mapper.ServiceMapper;
+import ies.luisvives.serverpeluqueriadam.services.uploads.StorageService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -14,8 +15,10 @@ import io.swagger.v3.oas.annotations.Operation;
 import ies.luisvives.serverpeluqueriadam.model.Service;
 import ies.luisvives.serverpeluqueriadam.repository.ServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,11 +28,13 @@ import java.util.Optional;
 public class ServiceController {
 
 	private final ServiceRepository serviceRepository;
+	private final StorageService storageService;
 	private final ServiceMapper serviceMapper;
 
 	@Autowired
-	public ServiceController(ServiceRepository repository, ServiceMapper serviceMapper) {
+	public ServiceController(ServiceRepository repository, StorageService storageService, ServiceMapper serviceMapper) {
 		this.serviceRepository = repository;
+		this.storageService = storageService;
 		this.serviceMapper = serviceMapper;
 	}
 
@@ -156,6 +161,32 @@ public class ServiceController {
 				return ResponseEntity.ok(serviceMapper.toDTO(service));
 		} catch (Exception e) {
 			throw new GeneralBadRequestException("Eliminar", "Error al borrar el service");
+		}
+	}
+
+	@ApiOperation(value = "Crea un servicio con imagen", notes = "Crea un servicio con imagen")
+	@ApiResponses(value = {
+			@ApiResponse(code = 200, message = "OK", response = ServiceDTO.class),
+			@ApiResponse(code = 400, message = "Bad Request", response = GeneralBadRequestException.class),
+	})
+	@PostMapping(value = "/create", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ResponseEntity<?> nuevoServicio(
+			@RequestPart("service") ServiceDTO serviceDTO,
+			@RequestPart("file") MultipartFile file) {
+
+		Service service = serviceMapper.fromDTO(serviceDTO);
+		checkServiceData(service);
+
+		if (!file.isEmpty()) {
+			String imagen = storageService.store(file);
+			String urlImagen = storageService.getUrl(imagen);
+			service.setImage(urlImagen);
+		}
+		try {
+			Service serviceInsertado = serviceRepository.save(service);
+			return ResponseEntity.ok(serviceMapper.toDTO(serviceInsertado));
+		} catch (ServiceNotFoundException ex) {
+			throw new GeneralBadRequestException("Insertar", "Error al insertar el producto. Campos incorrectos");
 		}
 	}
 
