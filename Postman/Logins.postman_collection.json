@@ -1,0 +1,730 @@
+{
+	"info": {
+		"_postman_id": "d638e53f-4d17-4543-aa0f-f1dcaa40c1c6",
+		"name": "Logins",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"Admin\",\r\n    \"password\":\"Godlike\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:13169/rest/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Admin Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Admin\",\r\n    \"password\":\"Godlike\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:13169/rest/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:54:04 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\n    \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n    \"username\": \"Admin\",\n    \"name\": \"Admin\",\n    \"surname\": \"freljorld\",\n    \"phoneNumber\": \"234567890\",\n    \"email\": \"porofernandez@freljorld.com\",\n    \"gender\": \"Male\",\n    \"userRoles\": [\n        \"ADMIN\",\n        \"USER\"\n    ],\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY3MTE2NDQsImV4cCI6MTY0Njc5ODA0NCwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.v0RtJzFc3-07JUPwf4rb1ULO6_au9VPnd34ZZMYEtlWSWW-xqaoulw0_fyiST0kcTRbvXUL8-3ckd0lVdCFK_A\"\n}"
+				},
+				{
+					"name": "Fail Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\":\"Admin\",\r\n    \"password\":\"Godlikent\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:13169/rest/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=ISO-8859-1"
+						},
+						{
+							"key": "Content-Length",
+							"value": "35"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:54:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"UNAUTHORIZED\": \"Bad credentials\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Logins",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY3MTA2NzUsImV4cCI6MTY0Njc5NzA3NSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.hIo-8TcpJfL6jwJgZW7t2WF3-qxeQOtWqWPZquGS7ilGVmaMfRDpnqgW_kbglXWNbiDv3Ykq7HzCgs2_r55qZg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:13169/rest/logins/",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"logins",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Logins",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:13169/rest/logins/",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"logins",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:55:00 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"0ff90996-0259-4527-8593-fd4ba236a9a3\",\n        \"token\": \"124771249\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"tdemaria42\",\n            \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n        }\n    },\n    {\n        \"id\": \"143cb0c4-0e27-4672-bbda-56c5fc4bf480\",\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY3MTA2NzUsImV4cCI6MTY0Njc5NzA3NSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.hIo-8TcpJfL6jwJgZW7t2WF3-qxeQOtWqWPZquGS7ilGVmaMfRDpnqgW_kbglXWNbiDv3Ykq7HzCgs2_r55qZg\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"Admin\",\n            \"password\": \"$2a$12$tkmFeFcSZ4CLCgjbNhgrO.1D3izDlrNjidrkOZZlOvPlJm2D/oBYq\"\n        }\n    },\n    {\n        \"id\": \"233149e4-b6f3-4692-ac71-2e8123bc24b2\",\n        \"token\": \"123213412\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"jbatista49\",\n            \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n        }\n    },\n    {\n        \"id\": \"2bdfc328-77dd-40b9-a479-a3dd03d20373\",\n        \"token\": \"275072041\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"kkellingstong73\",\n            \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n        }\n    },\n    {\n        \"id\": \"5c19b9c6-7e6b-4a82-bcd5-e3439fb16434\",\n        \"token\": \"012740172\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"fcasimiro27\",\n            \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n        }\n    },\n    {\n        \"id\": \"6403b535-a665-47be-bd1c-491520df59a2\",\n        \"token\": \"814142974\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"porron2\",\n            \"password\": \"$2a$10$Jt3jTxuBRHW4aCc0fj4SUuQF1H28qDc5RQSV4rQtAudzZlpB5Jk2W\"\n        }\n    },\n    {\n        \"id\": \"6b94ef36-9484-445a-b0e3-e7d065663e5f\",\n        \"token\": \"108737017\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"fcasimiro27\",\n            \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n        }\n    },\n    {\n        \"id\": \"6f09f4a7-f512-47c3-87f4-114dcfd575ff\",\n        \"token\": \"124814771\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"jbatista49\",\n            \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n        }\n    },\n    {\n        \"id\": \"6fd02378-cb7a-40d7-aa83-464742f9d02d\",\n        \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY3MTE2NDQsImV4cCI6MTY0Njc5ODA0NCwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.v0RtJzFc3-07JUPwf4rb1ULO6_au9VPnd34ZZMYEtlWSWW-xqaoulw0_fyiST0kcTRbvXUL8-3ckd0lVdCFK_A\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"Admin\",\n            \"password\": \"$2a$12$tkmFeFcSZ4CLCgjbNhgrO.1D3izDlrNjidrkOZZlOvPlJm2D/oBYq\"\n        }\n    },\n    {\n        \"id\": \"78593ff2-edc5-4973-b57e-d64650e7eeda\",\n        \"token\": \"258081724\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"hhumarera900\",\n            \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n        }\n    },\n    {\n        \"id\": \"8babf873-55b3-4f1c-b207-1618eec240ea\",\n        \"token\": \"582072077\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"Admin\",\n            \"password\": \"$2a$12$tkmFeFcSZ4CLCgjbNhgrO.1D3izDlrNjidrkOZZlOvPlJm2D/oBYq\"\n        }\n    },\n    {\n        \"id\": \"ed58b76f-9144-4c80-8762-9c4ef3db1e3c\",\n        \"token\": \"252528284\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"rhermanas42\",\n            \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n        }\n    },\n    {\n        \"id\": \"f72b1d01-34bd-4761-891a-20230ee6bf1b\",\n        \"token\": \"102740174\",\n        \"instance\": null,\n        \"user\": {\n            \"username\": \"Admin\",\n            \"password\": \"$2a$12$tkmFeFcSZ4CLCgjbNhgrO.1D3izDlrNjidrkOZZlOvPlJm2D/oBYq\"\n        }\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Login By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY3MTA2NzUsImV4cCI6MTY0Njc5NzA3NSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.hIo-8TcpJfL6jwJgZW7t2WF3-qxeQOtWqWPZquGS7ilGVmaMfRDpnqgW_kbglXWNbiDv3Ykq7HzCgs2_r55qZg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:13169/rest/logins/0ff90996-0259-4527-8593-fd4ba236a9a3",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"logins",
+						"0ff90996-0259-4527-8593-fd4ba236a9a3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Login By Id Correct",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:13169/rest/logins/0ff90996-0259-4527-8593-fd4ba236a9a3",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"logins",
+								"0ff90996-0259-4527-8593-fd4ba236a9a3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:55:27 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"0ff90996-0259-4527-8593-fd4ba236a9a3\",\n    \"token\": \"124771249\",\n    \"instance\": null,\n    \"user\": {\n        \"username\": \"tdemaria42\",\n        \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n    }\n}"
+				},
+				{
+					"name": "Get Login By Id Incorrect",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:13169/rest/logins/0ff90996-0259-4527-8593-fd4ba236a9a2",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"logins",
+								"0ff90996-0259-4527-8593-fd4ba236a9a2"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:55:44 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": 1646711744713,\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/rest/logins/0ff90996-0259-4527-8593-fd4ba236a9a2\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Login",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY3MTA2NzUsImV4cCI6MTY0Njc5NzA3NSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.hIo-8TcpJfL6jwJgZW7t2WF3-qxeQOtWqWPZquGS7ilGVmaMfRDpnqgW_kbglXWNbiDv3Ykq7HzCgs2_r55qZg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:13169/rest/logins/0ff90996-0259-4527-8593-fd4ba236a9a3",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"logins",
+						"0ff90996-0259-4527-8593-fd4ba236a9a3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Login Correct",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:13169/rest/logins/0ff90996-0259-4527-8593-fd4ba236a9a3",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"logins",
+								"0ff90996-0259-4527-8593-fd4ba236a9a3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:56:21 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"0ff90996-0259-4527-8593-fd4ba236a9a3\",\n    \"token\": \"124771249\",\n    \"instance\": null,\n    \"user\": {\n        \"username\": \"tdemaria42\",\n        \"password\": \"$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2\"\n    }\n}"
+				},
+				{
+					"name": "Delete Login Incorrect",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:13169/rest/logins/0ff90996-0259-4527-8593-fd4ba236a9a3",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"logins",
+								"0ff90996-0259-4527-8593-fd4ba236a9a3"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:56:28 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": 1646711788793,\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/rest/logins/0ff90996-0259-4527-8593-fd4ba236a9a3\"\n}"
+				}
+			]
+		}
+	]
+}

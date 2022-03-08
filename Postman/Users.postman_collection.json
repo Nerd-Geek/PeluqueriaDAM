@@ -1,0 +1,755 @@
+{
+	"info": {
+		"_postman_id": "2db4f338-389b-455a-914a-3a089f87d840",
+		"name": "Users",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\":\"\",\r\n    \"image\": null,\r\n    \"username\": \"porro\",\r\n    \"password\": \"1234\",\r\n    \"passwordConfirm\":\"1234\",\r\n    \"name\":\"porro\",\r\n    \"surname\":\"porrillo\",\r\n    \"phoneNumber\":\"609580805\",\r\n    \"email\":\"porrillo@porrillo.com\",\r\n    \"gender\":\"Male\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:13169/rest/users/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"users",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create User Correct",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"0b1810ec-6191-492c-91b6-04ea0c93dab8\",\r\n    \"image\": null,\r\n    \"username\": \"porron2\",\r\n    \"password\": \"12345\",\r\n    \"passwordConfirm\":\"12345\",\r\n    \"name\":\"porro\",\r\n    \"surname\":\"porrillo\",\r\n    \"phoneNumber\":\"609580805\",\r\n    \"email\":\"porrillo3@porrillo.com\",\r\n    \"gender\":\"Male\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:13169/rest/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"users",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:36:02 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"0b1810ec-6191-492c-91b6-04ea0c93dab8\",\n    \"image\": null,\n    \"username\": \"porron2\",\n    \"name\": \"porro\",\n    \"surname\": \"porrillo\",\n    \"phoneNumber\": \"609580805\",\n    \"email\": \"porrillo3@porrillo.com\",\n    \"gender\": \"Male\",\n    \"userRoles\": [\n        \"USER\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"porro\",\r\n    \"password\": \"1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:13169/rest/users/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login Correct User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"porro\",\r\n    \"password\": \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:13169/rest/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 13:06:08 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"18c84899-d9b9-478c-bb80-46f6ecbf22cc\",\n    \"image\": null,\n    \"username\": \"porro\",\n    \"name\": \"porro\",\n    \"surname\": \"porrillo\",\n    \"phoneNumber\": \"609580805\",\n    \"email\": \"porrillo@porrillo.com\",\n    \"gender\": \"Male\",\n    \"userRoles\": [\n        \"USER\"\n    ],\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOGM4NDg5OS1kOWI5LTQ3OGMtYmI4MC00NmY2ZWNiZjIyY2MiLCJpYXQiOjE2NDY1NzE5NjgsImV4cCI6MTY0NjY1ODM2OCwibmFtZSI6InBvcnJvIiwicm9sZXMiOiJVU0VSIn0.zgBMtKA721eEG3w-LukYRCUf5IUgIMU2JExVjXhH35sytBytaDOqDvT5XjdP-ajfckXuCjr7xYrtqgPzuKpffA\"\n}"
+				},
+				{
+					"name": "Login Correct Admin",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"Admin\",\r\n    \"password\": \"Godlike\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:13169/rest/users/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"users",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:37:55 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\n    \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n    \"username\": \"Admin\",\n    \"name\": \"Admin\",\n    \"surname\": \"freljorld\",\n    \"phoneNumber\": \"234567890\",\n    \"email\": \"porofernandez@freljorld.com\",\n    \"gender\": \"Male\",\n    \"userRoles\": [\n        \"ADMIN\",\n        \"USER\"\n    ],\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY3MTA2NzUsImV4cCI6MTY0Njc5NzA3NSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.hIo-8TcpJfL6jwJgZW7t2WF3-qxeQOtWqWPZquGS7ilGVmaMfRDpnqgW_kbglXWNbiDv3Ykq7HzCgs2_r55qZg\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Token User info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxOGM4NDg5OS1kOWI5LTQ3OGMtYmI4MC00NmY2ZWNiZjIyY2MiLCJpYXQiOjE2NDY1NzE5NjgsImV4cCI6MTY0NjY1ODM2OCwibmFtZSI6InBvcnJvIiwicm9sZXMiOiJVU0VSIn0.zgBMtKA721eEG3w-LukYRCUf5IUgIMU2JExVjXhH35sytBytaDOqDvT5XjdP-ajfckXuCjr7xYrtqgPzuKpffA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:13169/rest/users/me/",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"users",
+						"me",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Token info",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:13169/rest/users/me/",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"users",
+								"me",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 13:07:37 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"18c84899-d9b9-478c-bb80-46f6ecbf22cc\",\n    \"image\": null,\n    \"username\": \"porro\",\n    \"name\": \"porro\",\n    \"surname\": \"porrillo\",\n    \"phoneNumber\": \"609580805\",\n    \"email\": \"porrillo@porrillo.com\",\n    \"gender\": \"Male\",\n    \"userRoles\": [\n        \"USER\"\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Users",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "Get All Users",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"users",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:38:22 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"\",\n        \"image\": null,\n        \"username\": \"porro\",\n        \"name\": \"porro\",\n        \"surname\": \"porrillo\",\n        \"phoneNumber\": \"609580805\",\n        \"email\": \"porrillo@porrillo.com\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"0b1810ec-6191-492c-91b6-04ea0c93dab8\",\n        \"image\": null,\n        \"username\": \"porron2\",\n        \"name\": \"porro\",\n        \"surname\": \"porrillo\",\n        \"phoneNumber\": \"609580805\",\n        \"email\": \"porrillo3@porrillo.com\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"2e9f78be-6563-42ee-83bb-e8f72c938646\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"kkellingstong73\",\n        \"name\": \"Karen\",\n        \"surname\": \"Kellingstong\",\n        \"phoneNumber\": \"633594773\",\n        \"email\": \"kkellyd@independent.co.uk\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"3a49cf85-3bfa-40e7-9c54-7db0518696ca\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"rhermanas42\",\n        \"name\": \"Raquel\",\n        \"surname\": \"Hermanas\",\n        \"phoneNumber\": \"687128442\",\n        \"email\": \"rcrothers9@mlb.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"40eb045d-1b22-469e-9014-0bc4bbe4a3c1\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"pbelmonte19\",\n        \"name\": \"Pablo\",\n        \"surname\": \"Belmonte\",\n        \"phoneNumber\": \"639443819\",\n        \"email\": \"dberick3@behance.net\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"436eecf5-ca23-4650-8da6-71a9c7a8f99d\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"dzamora83\",\n        \"name\": \"Daniel\",\n        \"surname\": \"Zamora\",\n        \"phoneNumber\": \"712191483\",\n        \"email\": \"jdezamora4@google.co.jp\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"4b1d3ee3-0baf-4d0e-9aaa-72418b723d3e\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"jmanzano89\",\n        \"name\": \"Javier\",\n        \"surname\": \"Manzano\",\n        \"phoneNumber\": \"715558889\",\n        \"email\": \"tvinnicombe5@webeden.co.uk\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"4d047ef1-206f-43be-a1c3-d5578c3846d3\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"tfigueroa26\",\n        \"name\": \"Tamara\",\n        \"surname\": \"Figueroa\",\n        \"phoneNumber\": \"684339226\",\n        \"email\": \"tfigurej@163.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"6c3607d4-21c9-4137-a49e-83383b6277ee\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"lgregorio32\",\n        \"name\": \"Lorena\",\n        \"surname\": \"Gregorio\",\n        \"phoneNumber\": \"693841432\",\n        \"email\": \"lgrigoriof@bizjournals.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"jbatista49\",\n        \"name\": \"Juan\",\n        \"surname\": \"Batista\",\n        \"phoneNumber\": \"678429049\",\n        \"email\": \"aocrigane0@slideshare.net\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"7ee77bd1-1563-4937-bb14-ecd3d2503a05\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"hcollado34\",\n        \"name\": \"Helena\",\n        \"surname\": \"Collado\",\n        \"phoneNumber\": \"683471234\",\n        \"email\": \"hcowelle@github.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"8c2e01c4-7bbb-4f65-bee5-410df2fa429d\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"lcastillo45\",\n        \"name\": \"Lorenzo\",\n        \"surname\": \"Castillo\",\n        \"phoneNumber\": \"647293745\",\n        \"email\": \"mkimbury2@wp.com\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"9dccf8c2-8a7f-4117-a2ca-ae14c35c9abf\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"tdemaria42\",\n        \"name\": \"Teresa\",\n        \"surname\": \"de Maria\",\n        \"phoneNumber\": \"696142642\",\n        \"email\": \"tosband7@amazon.co.jp\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"a049aff3-d439-4e77-9e3b-e6ffa59d9119\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"mmontero31\",\n        \"name\": \"Miguel\",\n        \"surname\": \"Montero\",\n        \"phoneNumber\": \"643424231\",\n        \"email\": \"lmorsom1@merriam-webster.com\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"a12ce02c-4f2e-4cbf-86b1-db5e1e95fba1\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"fcasimiro27\",\n        \"name\": \"Filomena\",\n        \"surname\": \"Casimiro\",\n        \"phoneNumber\": \"698443227\",\n        \"email\": \"fcawderyi@nbcnews.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"a6894032-abf6-4f93-b70e-030bb07dc45a\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"hhumarera900\",\n        \"name\": \"Hilda\",\n        \"surname\": \"Humarera\",\n        \"phoneNumber\": \"716553900\",\n        \"email\": \"hhuskc@zimbio.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"b778d509-c6ee-40b0-9320-93b4601e7f9c\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"bgallardo32\",\n        \"name\": \"Bella\",\n        \"surname\": \"Gallardo\",\n        \"phoneNumber\": \"714474232\",\n        \"email\": \"bgaynesfo@over-blog.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"bff28d7f-869a-4f0f-ae7e-2c74c23d4746\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"lcerezo32\",\n        \"name\": \"Laura\",\n        \"surname\": \"Cerezo\",\n        \"phoneNumber\": \"698142732\",\n        \"email\": \"kheineken8@sitemeter.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"Admin\",\n        \"name\": \"Admin\",\n        \"surname\": \"freljorld\",\n        \"phoneNumber\": \"234567890\",\n        \"email\": \"porofernandez@freljorld.com\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"ADMIN\",\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"d6381995-0703-4da7-8206-4c31392b4e9b\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"acolgado74\",\n        \"name\": \"Adriana\",\n        \"surname\": \"Colgado\",\n        \"phoneNumber\": \"693231474\",\n        \"email\": \"acoltang@reuters.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    {\n        \"id\": \"d8425a3b-c57c-4577-80e2-59a2397db67e\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"kgertray84\",\n        \"name\": \"Kelly\",\n        \"surname\": \"Gertray\",\n        \"phoneNumber\": \"701412984\",\n        \"email\": \"kgertrayh@gravatar.com\",\n        \"gender\": \"Female\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get User By Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY3MTA2NzUsImV4cCI6MTY0Njc5NzA3NSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.hIo-8TcpJfL6jwJgZW7t2WF3-qxeQOtWqWPZquGS7ilGVmaMfRDpnqgW_kbglXWNbiDv3Ykq7HzCgs2_r55qZg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:13169/rest/users/0b1810ec-6191-492c-91b6-04ea0c93dab8",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"users",
+						"0b1810ec-6191-492c-91b6-04ea0c93dab8"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get User By Id Correct",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/users/0b1810ec-6191-492c-91b6-04ea0c93dab8",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"users",
+								"0b1810ec-6191-492c-91b6-04ea0c93dab8"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:39:04 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"0b1810ec-6191-492c-91b6-04ea0c93dab8\",\n    \"image\": null,\n    \"username\": \"porron2\",\n    \"name\": \"porro\",\n    \"surname\": \"porrillo\",\n    \"phoneNumber\": \"609580805\",\n    \"email\": \"porrillo3@porrillo.com\",\n    \"gender\": \"Male\",\n    \"userRoles\": [\n        \"USER\"\n    ]\n}"
+				},
+				{
+					"name": "Get User By Id Incorrect",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/users/0b1810ec-6191-492c-91b6-04ea0c93dab7",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"users",
+								"0b1810ec-6191-492c-91b6-04ea0c93dab7"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:40:31 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": 1646710831056,\n    \"status\": 404,\n    \"error\": \"Not Found\",\n    \"path\": \"/rest/users/0b1810ec-6191-492c-91b6-04ea0c93dab7\"\n}"
+				}
+			]
+		}
+	]
+}

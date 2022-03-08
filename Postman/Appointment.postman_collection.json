@@ -1,0 +1,1616 @@
+{
+	"info": {
+		"_postman_id": "be56650b-329e-474b-92c6-92e064c9371b",
+		"name": "Appointment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY2ODI5NTksImV4cCI6MTY0Njc2OTM1OSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.6KaxgPWL_SWJJ58PapedUSdwAJ-WxVF8DR6FhS1vmXfINRS64QKG-jpV0utkyKfHAdSXQHG8jDSe8yTCisxB1A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:13169/rest/appointments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"appointments",
+						""
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "",
+							"disabled": true
+						},
+						{
+							"key": "searchQuery",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Auth",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 12:13:04 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"5b4dce42-9142-469e-93c0-70ff2a26f03c\",\n        \"date\": \"2022-02-13\",\n        \"time\": \"10:00:00\",\n        \"user\": {\n            \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n            \"image\": null,\n            \"username\": \"jbatista49\",\n            \"name\": \"Juan\",\n            \"surname\": \"Batista\",\n            \"phoneNumber\": \"678429049\",\n            \"email\": \"aocrigane0@slideshare.net\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": null,\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"b1d2a72e-ffcb-4458-9351-35dea125b797\",\n        \"date\": \"2022-02-24\",\n        \"time\": \"11:15:00\",\n        \"user\": {\n            \"id\": \"0b1810ec-6191-492c-91b6-04ea0c93dab8\",\n            \"image\": null,\n            \"username\": \"mpalacios12\",\n            \"name\": \"Martin\",\n            \"surname\": \"Palacios\",\n            \"phoneNumber\": \"645294912\",\n            \"email\": \"glongmaid6@printfriendly.com\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": null,\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"e4781fb4-3be0-4eaf-af1c-3809761f1f21\",\n        \"date\": \"2022-02-27\",\n        \"time\": \"12:30:00\",\n        \"user\": {\n            \"id\": \"9dccf8c2-8a7f-4117-a2ca-ae14c35c9abf\",\n            \"image\": null,\n            \"username\": \"tdemaria42\",\n            \"name\": \"Teresa\",\n            \"surname\": \"de Maria\",\n            \"phoneNumber\": \"696142642\",\n            \"email\": \"tosband7@amazon.co.jp\",\n            \"gender\": \"Female\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"baeac544-4bef-40f9-aed3-8730f80f27d8\",\n            \"image\": null,\n            \"name\": \"Tinte Color Completo\",\n            \"description\": \"Tintura de color completo\",\n            \"price\": 28,\n            \"stock\": 3\n        }\n    },\n    {\n        \"id\": \"1810996a-3d0f-4576-9d07-4b7fa11a4456\",\n        \"date\": \"2022-03-05\",\n        \"time\": \"13:45:00\",\n        \"user\": {\n            \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n            \"image\": null,\n            \"username\": \"jbatista49\",\n            \"name\": \"Juan\",\n            \"surname\": \"Batista\",\n            \"phoneNumber\": \"678429049\",\n            \"email\": \"aocrigane0@slideshare.net\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": null,\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"9e2dcf7f-867f-47f1-9b99-21c12eecf55c\",\n        \"date\": \"2022-03-08\",\n        \"time\": \"14:00:00\",\n        \"user\": {\n            \"id\": \"3a49cf85-3bfa-40e7-9c54-7db0518696ca\",\n            \"image\": null,\n            \"username\": \"rhermanas42\",\n            \"name\": \"Raquel\",\n            \"surname\": \"Hermanas\",\n            \"phoneNumber\": \"687128442\",\n            \"email\": \"rcrothers9@mlb.com\",\n            \"gender\": \"Female\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"a6bc5b80-213c-4579-8335-f104d1bbfbb6\",\n            \"image\": null,\n            \"name\": \"Corte pelo Mujer\",\n            \"description\": \"Corte de pelo basico para mujeres\",\n            \"price\": 16,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"6e625b74-2725-4d7d-a40a-4a68aead3ae2\",\n        \"date\": \"2022-02-13\",\n        \"time\": \"15:15:00\",\n        \"user\": {\n            \"id\": \"a6894032-abf6-4f93-b70e-030bb07dc45a\",\n            \"image\": null,\n            \"username\": \"hhumarera900\",\n            \"name\": \"Hilda\",\n            \"surname\": \"Humarera\",\n            \"phoneNumber\": \"716553900\",\n            \"email\": \"hhuskc@zimbio.com\",\n            \"gender\": \"Female\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"baeac544-4bef-40f9-aed3-8730f80f27d8\",\n            \"image\": null,\n            \"name\": \"Tinte Color Completo\",\n            \"description\": \"Tintura de color completo\",\n            \"price\": 28,\n            \"stock\": 3\n        }\n    },\n    {\n        \"id\": \"a92cd43d-c68f-4485-9882-8addefbd90bf\",\n        \"date\": \"2022-03-03\",\n        \"time\": \"16:15:00\",\n        \"user\": {\n            \"id\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\n            \"image\": null,\n            \"username\": \"Admin\",\n            \"name\": \"Admin\",\n            \"surname\": \"freljorld\",\n            \"phoneNumber\": \"234567890\",\n            \"email\": \"porofernandez@freljorld.com\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"ADMIN\",\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"a6bc5b80-213c-4579-8335-f104d1bbfbb6\",\n            \"image\": null,\n            \"name\": \"Corte pelo Mujer\",\n            \"description\": \"Corte de pelo basico para mujeres\",\n            \"price\": 16,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"7db8fe32-1c22-4241-965b-f47e491e223c\",\n        \"date\": \"2022-03-04\",\n        \"time\": \"17:00:00\",\n        \"user\": {\n            \"id\": \"a12ce02c-4f2e-4cbf-86b1-db5e1e95fba1\",\n            \"image\": null,\n            \"username\": \"fcasimiro27\",\n            \"name\": \"Filomena\",\n            \"surname\": \"Casimiro\",\n            \"phoneNumber\": \"698443227\",\n            \"email\": \"fcawderyi@nbcnews.com\",\n            \"gender\": \"Female\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"a6bc5b80-213c-4579-8335-f104d1bbfbb6\",\n            \"image\": null,\n            \"name\": \"Corte pelo Mujer\",\n            \"description\": \"Corte de pelo basico para mujeres\",\n            \"price\": 16,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"9856be1a-22cd-4c0a-b66f-f31e51117dca\",\n        \"date\": \"2022-04-12\",\n        \"time\": \"18:00:00\",\n        \"user\": {\n            \"id\": \"2e9f78be-6563-42ee-83bb-e8f72c938646\",\n            \"image\": null,\n            \"username\": \"kkellingstong73\",\n            \"name\": \"Karen\",\n            \"surname\": \"Kellingstong\",\n            \"phoneNumber\": \"633594773\",\n            \"email\": \"kkellyd@independent.co.uk\",\n            \"gender\": \"Female\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"a6bc5b80-213c-4579-8335-f104d1bbfbb6\",\n            \"image\": null,\n            \"name\": \"Corte pelo Mujer\",\n            \"description\": \"Corte de pelo basico para mujeres\",\n            \"price\": 16,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"242506a8-44a5-4d8a-b19d-2f64d763fe38\",\n        \"date\": \"2022-03-21\",\n        \"time\": \"19:45:00\",\n        \"user\": {\n            \"id\": \"a12ce02c-4f2e-4cbf-86b1-db5e1e95fba1\",\n            \"image\": null,\n            \"username\": \"fcasimiro27\",\n            \"name\": \"Filomena\",\n            \"surname\": \"Casimiro\",\n            \"phoneNumber\": \"698443227\",\n            \"email\": \"fcawderyi@nbcnews.com\",\n            \"gender\": \"Female\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"baeac544-4bef-40f9-aed3-8730f80f27d8\",\n            \"image\": null,\n            \"name\": \"Tinte Color Completo\",\n            \"description\": \"Tintura de color completo\",\n            \"price\": 28,\n            \"stock\": 3\n        }\n    },\n    {\n        \"id\": \"efd584b8-15ae-4743-8a1d-c4b4f6060b86\",\n        \"date\": \"2022-02-26\",\n        \"time\": \"20:15:00\",\n        \"user\": {\n            \"id\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\n            \"image\": null,\n            \"username\": \"Admin\",\n            \"name\": \"Admin\",\n            \"surname\": \"freljorld\",\n            \"phoneNumber\": \"234567890\",\n            \"email\": \"porofernandez@freljorld.com\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"ADMIN\",\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"3423fc1b-694e-447b-af7e-2a21ccf45e7c\",\n            \"image\": null,\n            \"name\": \"Alisado de Keratina\",\n            \"description\": \"Alisado de keratina\",\n            \"price\": 175,\n            \"stock\": 1\n        }\n    }\n]"
+				},
+				{
+					"name": "Get All filtered by date",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/?date=2022-03-03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-03-03"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 12:33:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"a92cd43d-c68f-4485-9882-8addefbd90bf\",\n        \"date\": \"2022-03-03\",\n        \"time\": \"16:15:00\",\n        \"user\": {\n            \"id\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\n            \"image\": null,\n            \"username\": \"Admin\",\n            \"name\": \"Admin\",\n            \"surname\": \"freljorld\",\n            \"phoneNumber\": \"234567890\",\n            \"email\": \"porofernandez@freljorld.com\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"ADMIN\",\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"a6bc5b80-213c-4579-8335-f104d1bbfbb6\",\n            \"image\": null,\n            \"name\": \"Corte pelo Mujer\",\n            \"description\": \"Corte de pelo basico para mujeres\",\n            \"price\": 16,\n            \"stock\": 4\n        }\n    }\n]"
+				},
+				{
+					"name": "Get All filtered by serviceID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/?service_id=7dafe5fd-976b-450a-9bab-17ab450a4fff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-03-03",
+									"disabled": true
+								},
+								{
+									"key": "service_id",
+									"value": "7dafe5fd-976b-450a-9bab-17ab450a4fff"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 12:34:53 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"5b4dce42-9142-469e-93c0-70ff2a26f03c\",\n        \"date\": \"2022-02-13\",\n        \"time\": \"10:00:00\",\n        \"user\": {\n            \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n            \"image\": null,\n            \"username\": \"jbatista49\",\n            \"name\": \"Juan\",\n            \"surname\": \"Batista\",\n            \"phoneNumber\": \"678429049\",\n            \"email\": \"aocrigane0@slideshare.net\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": null,\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"b1d2a72e-ffcb-4458-9351-35dea125b797\",\n        \"date\": \"2022-02-24\",\n        \"time\": \"11:15:00\",\n        \"user\": {\n            \"id\": \"0b1810ec-6191-492c-91b6-04ea0c93dab8\",\n            \"image\": null,\n            \"username\": \"mpalacios12\",\n            \"name\": \"Martin\",\n            \"surname\": \"Palacios\",\n            \"phoneNumber\": \"645294912\",\n            \"email\": \"glongmaid6@printfriendly.com\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": null,\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"1810996a-3d0f-4576-9d07-4b7fa11a4456\",\n        \"date\": \"2022-03-05\",\n        \"time\": \"13:45:00\",\n        \"user\": {\n            \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n            \"image\": null,\n            \"username\": \"jbatista49\",\n            \"name\": \"Juan\",\n            \"surname\": \"Batista\",\n            \"phoneNumber\": \"678429049\",\n            \"email\": \"aocrigane0@slideshare.net\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": null,\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    }\n]"
+				},
+				{
+					"name": "Get All filtered by Username",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/?searchQuery=jba",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-03-03",
+									"disabled": true
+								},
+								{
+									"key": "service_id",
+									"value": "7dafe5fd-976b-450a-9bab-17ab450a4fff",
+									"disabled": true
+								},
+								{
+									"key": "searchQuery",
+									"value": "jba"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 12:35:46 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"5b4dce42-9142-469e-93c0-70ff2a26f03c\",\n        \"date\": \"2022-02-13\",\n        \"time\": \"10:00:00\",\n        \"user\": {\n            \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n            \"image\": null,\n            \"username\": \"jbatista49\",\n            \"name\": \"Juan\",\n            \"surname\": \"Batista\",\n            \"phoneNumber\": \"678429049\",\n            \"email\": \"aocrigane0@slideshare.net\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": null,\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"1810996a-3d0f-4576-9d07-4b7fa11a4456\",\n        \"date\": \"2022-03-05\",\n        \"time\": \"13:45:00\",\n        \"user\": {\n            \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n            \"image\": null,\n            \"username\": \"jbatista49\",\n            \"name\": \"Juan\",\n            \"surname\": \"Batista\",\n            \"phoneNumber\": \"678429049\",\n            \"email\": \"aocrigane0@slideshare.net\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": null,\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    }\n]"
+				},
+				{
+					"name": "Get All Paginated",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/all?page=1&size=10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								"all"
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-03-03",
+									"disabled": true
+								},
+								{
+									"key": "service_id",
+									"value": "7dafe5fd-976b-450a-9bab-17ab450a4fff",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "size",
+									"value": "10"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 12:37:14 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"query\": \"2022-03-06T13:37:14.5375872\",\n    \"project\": \"SpringDam\",\n    \"version\": \"1.0\",\n    \"data\": [\n        {\n            \"id\": \"efd584b8-15ae-4743-8a1d-c4b4f6060b86\",\n            \"date\": \"2022-02-26\",\n            \"time\": \"20:15:00\",\n            \"user\": {\n                \"id\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\n                \"image\": null,\n                \"username\": \"Admin\",\n                \"name\": \"Admin\",\n                \"surname\": \"freljorld\",\n                \"phoneNumber\": \"234567890\",\n                \"email\": \"porofernandez@freljorld.com\",\n                \"gender\": \"Male\",\n                \"userRoles\": [\n                    \"ADMIN\",\n                    \"USER\"\n                ]\n            },\n            \"service\": {\n                \"id\": \"3423fc1b-694e-447b-af7e-2a21ccf45e7c\",\n                \"image\": null,\n                \"name\": \"Alisado de Keratina\",\n                \"description\": \"Alisado de keratina\",\n                \"price\": 175,\n                \"stock\": 1\n            }\n        }\n    ],\n    \"currentPage\": 1,\n    \"totalElements\": 11,\n    \"totalPages\": 2\n}"
+				},
+				{
+					"name": "Get All filtered by date, service, username",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/?date=2022-02-13&service_id=7dafe5fd-976b-450a-9bab-17ab450a4fff&searchQuery=jba",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-02-13"
+								},
+								{
+									"key": "service_id",
+									"value": "7dafe5fd-976b-450a-9bab-17ab450a4fff"
+								},
+								{
+									"key": "searchQuery",
+									"value": "jba"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 12:38:20 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"5b4dce42-9142-469e-93c0-70ff2a26f03c\",\n        \"date\": \"2022-02-13\",\n        \"time\": \"10:00:00\",\n        \"user\": {\n            \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n            \"image\": null,\n            \"username\": \"jbatista49\",\n            \"name\": \"Juan\",\n            \"surname\": \"Batista\",\n            \"phoneNumber\": \"678429049\",\n            \"email\": \"aocrigane0@slideshare.net\",\n            \"gender\": \"Male\",\n            \"userRoles\": [\n                \"USER\"\n            ]\n        },\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": null,\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    }\n]"
+				},
+				{
+					"name": "Get All no auth",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": "2022-02-13",
+									"disabled": true
+								},
+								{
+									"key": "service_id",
+									"value": "7dafe5fd-976b-450a-9bab-17ab450a4fff",
+									"disabled": true
+								},
+								{
+									"key": "searchQuery",
+									"value": "jba",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json;charset=ISO-8859-1"
+						},
+						{
+							"key": "Content-Length",
+							"value": "76"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 12:38:53 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"UNAUTHORIZED\": \"Full authentication is required to access this resource\"\n}"
+				},
+				{
+					"name": "Get All bad request param empty",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/?date=",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								""
+							],
+							"query": [
+								{
+									"key": "date",
+									"value": ""
+								},
+								{
+									"key": "service_id",
+									"value": "7dafe5fd-976b-450a-9bab-17ab450a4fff",
+									"disabled": true
+								},
+								{
+									"key": "searchQuery",
+									"value": "jba",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 12:39:29 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": \"2022-03-06T12:39:29.159+00:00\",\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"trace\": \"ies.luisvives.serverpeluqueriadam.exceptions.GeneralBadRequestException: Error al procesar: Selección de Datos : Parámetros de consulta incorrectos\\r\\n\\tat ies.luisvives.serverpeluqueriadam.controller.AppointmentController.findAll(AppointmentController.java:62)\\r\\n\\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)\\r\\n\\tat java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)\\r\\n\\tat java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)\\r\\n\\tat java.base/java.lang.reflect.Method.invoke(Method.java:566)\\r\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205)\\r\\n\\tat org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150)\\r\\n\\tat org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)\\r\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895)\\r\\n\\tat org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808)\\r\\n\\tat org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)\\r\\n\\tat org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067)\\r\\n\\tat org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963)\\r\\n\\tat org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)\\r\\n\\tat org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)\\r\\n\\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:655)\\r\\n\\tat org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)\\r\\n\\tat javax.servlet.http.HttpServlet.service(HttpServlet.java:764)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\\r\\n\\tat org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\\r\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:111)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327)\\r\\n\\tat org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115)\\r\\n\\tat org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:122)\\r\\n\\tat org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:116)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126)\\r\\n\\tat org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:109)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat ies.luisvives.serverpeluqueriadam.config.security.jwt.JwtAuthorizationFilter.doFilterInternal(JwtAuthorizationFilter.java:47)\\r\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103)\\r\\n\\tat org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)\\r\\n\\tat org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)\\r\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110)\\r\\n\\tat org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55)\\r\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)\\r\\n\\tat org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336)\\r\\n\\tat org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211)\\r\\n\\tat org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183)\\r\\n\\tat org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:354)\\r\\n\\tat org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:267)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\\r\\n\\tat org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)\\r\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\\r\\n\\tat org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)\\r\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\\r\\n\\tat org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)\\r\\n\\tat org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189)\\r\\n\\tat org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162)\\r\\n\\tat org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197)\\r\\n\\tat org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97)\\r\\n\\tat org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:540)\\r\\n\\tat org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135)\\r\\n\\tat org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)\\r\\n\\tat org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78)\\r\\n\\tat org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357)\\r\\n\\tat org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:382)\\r\\n\\tat org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)\\r\\n\\tat org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:895)\\r\\n\\tat org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1732)\\r\\n\\tat org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)\\r\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)\\r\\n\\tat org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)\\r\\n\\tat org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)\\r\\n\\tat java.base/java.lang.Thread.run(Thread.java:829)\\r\\n\",\n    \"message\": \"Error al procesar: Selección de Datos : Parámetros de consulta incorrectos\",\n    \"path\": \"/rest/appointments/\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get By Id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": [
+				{
+					"name": "Get By ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/5b4dce42-9142-469e-93c0-70ff2a26f03c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								"5b4dce42-9142-469e-93c0-70ff2a26f03c"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 06 Mar 2022 12:13:08 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5b4dce42-9142-469e-93c0-70ff2a26f03c\",\n    \"date\": \"2022-02-13\",\n    \"time\": \"10:00:00\",\n    \"user\": {\n        \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n        \"image\": null,\n        \"username\": \"jbatista49\",\n        \"name\": \"Juan\",\n        \"surname\": \"Batista\",\n        \"phoneNumber\": \"678429049\",\n        \"email\": \"aocrigane0@slideshare.net\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    \"service\": {\n        \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n        \"image\": null,\n        \"name\": \"Corte pelo Hombre\",\n        \"description\": \"Corte de pelo para hombres\",\n        \"price\": 15,\n        \"stock\": 4\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Post Appointment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY2NjYwMDMsImV4cCI6MTY0Njc1MjQwMywibmFtZSI6IkFkbWluIiwicm9sZXMiOiJVU0VSLCBBRE1JTiJ9.XgjkZDgwwxLCpvezbgMX1nOtc4tXvO7TkfR0HUGnE3Di63KVwWBWNdW3C8mJeCEIzr_UUAmmaDbbu8yvdaeoRw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\",\r\n    \"date\": \"2022-03-27\",\r\n    \"time\": \"12:45:00\",\r\n    \"userId\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\r\n    \"serviceId\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:13169/rest/appointments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"appointments",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Post Appointment correct",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\",\r\n    \"date\": \"2022-03-27\",\r\n    \"time\": \"12:45:00\",\r\n    \"userId\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\r\n    \"serviceId\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:25:14 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\",\n    \"date\": [\n        2022,\n        3,\n        27\n    ],\n    \"time\": [\n        12,\n        45\n    ],\n    \"user\": {\n        \"id\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"Admin\",\n        \"name\": \"Admin\",\n        \"surname\": \"freljorld\",\n        \"phoneNumber\": \"234567890\",\n        \"email\": \"porofernandez@freljorld.com\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"ADMIN\",\n            \"USER\"\n        ]\n    },\n    \"service\": {\n        \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n        \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n        \"name\": \"Corte pelo Hombre\",\n        \"description\": \"Corte de pelo para hombres\",\n        \"price\": 15,\n        \"stock\": 4\n    }\n}"
+				},
+				{
+					"name": "Post Appointment incorrect",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": \"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\",\r\n    \"date\": \"2022-02-07\",\r\n    \"time\": \"12:45:00\",\r\n    \"userId\": \"c1334d57-120b-437b-baef-cf5b5f68cc3e\",\r\n    \"serviceId\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								""
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:25:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": 1646709937664,\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"path\": \"/rest/appointments/\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Put Appointment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date\": \"2022-02-13\",\r\n    \"time\": \"10:00:00\",\r\n    \"userId\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\r\n    \"serviceId\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\"\r\n }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:13169/appointments/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"appointments",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Put Appointment Change Datetime",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\",\r\n    \"date\": \"2022-05-13\",\r\n    \"time\": \"10:00:00\",\r\n    \"userId\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\r\n    \"serviceId\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:30:28 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\",\n    \"date\": [\n        2022,\n        5,\n        13\n    ],\n    \"time\": [\n        10,\n        0\n    ],\n    \"user\": {\n        \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"jbatista49\",\n        \"name\": \"Juan\",\n        \"surname\": \"Batista\",\n        \"phoneNumber\": \"678429049\",\n        \"email\": \"aocrigane0@slideshare.net\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    \"service\": {\n        \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n        \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n        \"name\": \"Corte pelo Hombre\",\n        \"description\": \"Corte de pelo para hombres\",\n        \"price\": 15,\n        \"stock\": 4\n    }\n}"
+				},
+				{
+					"name": "Put Appointment Wrong Datetime",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\",\r\n    \"date\": \"2022-02-13\",\r\n    \"time\": \"10:00:00\",\r\n    \"userId\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\r\n    \"serviceId\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\"\r\n }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:30:54 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": 1646710254442,\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"path\": \"/rest/appointments/5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Appointment",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY2ODI5NTksImV4cCI6MTY0Njc2OTM1OSwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.6KaxgPWL_SWJJ58PapedUSdwAJ-WxVF8DR6FhS1vmXfINRS64QKG-jpV0utkyKfHAdSXQHG8jDSe8yTCisxB1A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:13169/rest/appointments/5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"appointments",
+						"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Appointment correct",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:31:39 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\",\n    \"date\": [\n        2022,\n        5,\n        13\n    ],\n    \"time\": [\n        10,\n        0\n    ],\n    \"user\": {\n        \"id\": \"76b2071a-3f97-4666-bd76-3d3d38ca677d\",\n        \"image\": \"http://localhost:13169/rest/files/1646675189773_user.png\",\n        \"username\": \"jbatista49\",\n        \"name\": \"Juan\",\n        \"surname\": \"Batista\",\n        \"phoneNumber\": \"678429049\",\n        \"email\": \"aocrigane0@slideshare.net\",\n        \"gender\": \"Male\",\n        \"userRoles\": [\n            \"USER\"\n        ]\n    },\n    \"service\": {\n        \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n        \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n        \"name\": \"Corte pelo Hombre\",\n        \"description\": \"Corte de pelo para hombres\",\n        \"price\": 15,\n        \"stock\": 4\n    }\n}"
+				},
+				{
+					"name": "Delete Appointment incorrect",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								"5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:32:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "close"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"timestamp\": 1646710352440,\n    \"status\": 400,\n    \"error\": \"Bad Request\",\n    \"path\": \"/rest/appointments/5c92f9b2-1bbc-4131-8f2a-d6fcf6da46fd\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Without User info",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjMTMzNGQ1Ny0xMjBiLTQzN2ItYmFlZi1jZjViNWY2OGNjM2UiLCJpYXQiOjE2NDY2Nzc1NzQsImV4cCI6MTY0Njc2Mzk3NCwibmFtZSI6IkFkbWluIiwicm9sZXMiOiJBRE1JTiwgVVNFUiJ9.4o4cNlY6r0CfjF5tlHuSTvAI2X22AaNt5sp5ctOdZxgYoRITgVZP_AWEe4HKktMsFEV3dXjCSiqt1Ji0Up40WA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:13169/rest/appointments/mobile",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "13169",
+					"path": [
+						"rest",
+						"appointments",
+						"mobile"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Without User info",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:13169/rest/appointments/mobile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "13169",
+							"path": [
+								"rest",
+								"appointments",
+								"mobile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Vary",
+							"value": "Origin"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Method"
+						},
+						{
+							"key": "Vary",
+							"value": "Access-Control-Request-Headers"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "X-XSS-Protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache, no-store, max-age=0, must-revalidate"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "Expires",
+							"value": "0"
+						},
+						{
+							"key": "X-Frame-Options",
+							"value": "DENY"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Tue, 08 Mar 2022 03:32:52 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"1810996a-3d0f-4576-9d07-4b7fa11a4456\",\n        \"date\": [\n            2022,\n            3,\n            5\n        ],\n        \"time\": [\n            13,\n            45\n        ],\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"242506a8-44a5-4d8a-b19d-2f64d763fe38\",\n        \"date\": [\n            2022,\n            3,\n            21\n        ],\n        \"time\": [\n            19,\n            45\n        ],\n        \"service\": {\n            \"id\": \"baeac544-4bef-40f9-aed3-8730f80f27d8\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Tinte Color Completo\",\n            \"description\": \"Tintura de color completo\",\n            \"price\": 28,\n            \"stock\": 3\n        }\n    },\n    {\n        \"id\": \"5b4dce42-9142-469e-93c0-70ff2a26f03c\",\n        \"date\": [\n            2022,\n            2,\n            13\n        ],\n        \"time\": [\n            10,\n            0\n        ],\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"6e625b74-2725-4d7d-a40a-4a68aead3ae2\",\n        \"date\": [\n            2022,\n            2,\n            13\n        ],\n        \"time\": [\n            15,\n            15\n        ],\n        \"service\": {\n            \"id\": \"baeac544-4bef-40f9-aed3-8730f80f27d8\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Tinte Color Completo\",\n            \"description\": \"Tintura de color completo\",\n            \"price\": 28,\n            \"stock\": 3\n        }\n    },\n    {\n        \"id\": \"7db8fe32-1c22-4241-965b-f47e491e223c\",\n        \"date\": [\n            2022,\n            3,\n            4\n        ],\n        \"time\": [\n            17,\n            0\n        ],\n        \"service\": {\n            \"id\": \"a6bc5b80-213c-4579-8335-f104d1bbfbb6\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Corte pelo Mujer\",\n            \"description\": \"Corte de pelo basico para mujeres\",\n            \"price\": 16,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"9856be1a-22cd-4c0a-b66f-f31e51117dca\",\n        \"date\": [\n            2022,\n            4,\n            12\n        ],\n        \"time\": [\n            18,\n            0\n        ],\n        \"service\": {\n            \"id\": \"a6bc5b80-213c-4579-8335-f104d1bbfbb6\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Corte pelo Mujer\",\n            \"description\": \"Corte de pelo basico para mujeres\",\n            \"price\": 16,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"9e2dcf7f-867f-47f1-9b99-21c12eecf55c\",\n        \"date\": [\n            2022,\n            3,\n            8\n        ],\n        \"time\": [\n            14,\n            0\n        ],\n        \"service\": {\n            \"id\": \"a6bc5b80-213c-4579-8335-f104d1bbfbb6\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Corte pelo Mujer\",\n            \"description\": \"Corte de pelo basico para mujeres\",\n            \"price\": 16,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"a92cd43d-c68f-4485-9882-8addefbd90bf\",\n        \"date\": [\n            2022,\n            3,\n            3\n        ],\n        \"time\": [\n            16,\n            15\n        ],\n        \"service\": {\n            \"id\": \"a6bc5b80-213c-4579-8335-f104d1bbfbb6\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Corte pelo Mujer\",\n            \"description\": \"Corte de pelo basico para mujeres\",\n            \"price\": 16,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"b1d2a72e-ffcb-4458-9351-35dea125b797\",\n        \"date\": [\n            2022,\n            2,\n            24\n        ],\n        \"time\": [\n            11,\n            15\n        ],\n        \"service\": {\n            \"id\": \"7dafe5fd-976b-450a-9bab-17ab450a4fff\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Corte pelo Hombre\",\n            \"description\": \"Corte de pelo para hombres\",\n            \"price\": 15,\n            \"stock\": 4\n        }\n    },\n    {\n        \"id\": \"e4781fb4-3be0-4eaf-af1c-3809761f1f21\",\n        \"date\": [\n            2022,\n            2,\n            27\n        ],\n        \"time\": [\n            12,\n            30\n        ],\n        \"service\": {\n            \"id\": \"baeac544-4bef-40f9-aed3-8730f80f27d8\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Tinte Color Completo\",\n            \"description\": \"Tintura de color completo\",\n            \"price\": 28,\n            \"stock\": 3\n        }\n    },\n    {\n        \"id\": \"efd584b8-15ae-4743-8a1d-c4b4f6060b86\",\n        \"date\": [\n            2022,\n            2,\n            26\n        ],\n        \"time\": [\n            20,\n            15\n        ],\n        \"service\": {\n            \"id\": \"3423fc1b-694e-447b-af7e-2a21ccf45e7c\",\n            \"image\": \"http://localhost:13169/rest/files/1646673674286_service.png\",\n            \"name\": \"Alisado de Keratina\",\n            \"description\": \"Alisado de keratina\",\n            \"price\": 175,\n            \"stock\": 1\n        }\n    }\n]"
+				}
+			]
+		}
+	]
+}
