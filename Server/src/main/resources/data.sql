@@ -1,3 +1,19 @@
+create table appointment (id varchar(255) not null, appointment_date date, appointment_time time, id_service varchar(255), id_user varchar(255), primary key (id)) engine=InnoDB;
+create table login (id varchar(255) not null, instant datetime(6), token varchar(512), id_user varchar(255) not null, primary key (id)) engine=InnoDB;
+create table services (id varchar(255) not null, description varchar(255), image varchar(255), name varchar(255), price double precision, stock integer, primary key (id)) engine=InnoDB;
+create table user_roles (user_id varchar(255) not null, roles varchar(255)) engine=InnoDB;
+create table users (id varchar(255) not null, email varchar(255), gender varchar(255), image varchar(255), name varchar(255), password varchar(255), phone_number varchar(255), surname varchar(255), username varchar(255), primary key (id)) engine=InnoDB;
+alter table services drop index if exists UK_h4rqgjwnqidx6mvj4i22dxwxe;
+alter table services add constraint UK_h4rqgjwnqidx6mvj4i22dxwxe unique (name);
+alter table users drop index if exists UK_6dotkott2kjsp8vw4d0m25fb7;
+alter table users add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email);
+alter table users drop index if exists UK_r43af9ap4edm43mmtq01oddj6;
+alter table users add constraint UK_r43af9ap4edm43mmtq01oddj6 unique (username);
+alter table appointment add constraint FK5k0oem3ypbsnpc0kt1htx37w4 foreign key (id_service) references services (id);
+alter table appointment add constraint FKmldusone9n43v3q6qrtjvb9jh foreign key (id_user) references users (id);
+alter table login add constraint FKddrmlhg56oaq3coq9xohjulr4 foreign key (id_user) references users (id);
+alter table user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users (id);
+
 insert into users values ('c1334d57-120b-437b-baef-cf5b5f68cc3e','porofernandez@freljorld.com','Male','http://localhost:13169/rest/files/1646675189773_user.png', 'Admin', '$2a$12$tkmFeFcSZ4CLCgjbNhgrO.1D3izDlrNjidrkOZZlOvPlJm2D/oBYq', '234567890', 'freljorld', 'Admin');
 insert into users values ('76b2071a-3f97-4666-bd76-3d3d38ca677d','aocrigane0@slideshare.net','Male','http://localhost:13169/rest/files/1646675189773_user.png', 'Juan', '$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2', '678429049', 'Batista', 'jbatista49');
 insert into users values ('a049aff3-d439-4e77-9e3b-e6ffa59d9119','lmorsom1@merriam-webster.com','Male','http://localhost:13169/rest/files/1646675189773_user.png', 'Miguel', '$2a$12$EZKesxbYLoZ6x3/NL.TJSODhGW5jNOpua4j.newEgPCPPZMxfdUo2', '643424231', 'Montero', 'mmontero31');

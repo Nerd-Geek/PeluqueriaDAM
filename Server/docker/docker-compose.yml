@@ -2,13 +2,27 @@
 version: '3.1'
 
 services:
+  peluqueria:
+    build: ./../
+    image: sps169/peluqueria-dam:latest
+    container_name: peluqueria-dam
+    ports:
+      - "13169:13169"
+    expose:
+      - 13169
+    volumes:
+      - mariadb-peluqueria-volumen:/usr/peluqueria-volumen/
+    networks:
+      - mariadb-network
+    depends_on:
+      - db
 
   db:
     build: ./mariadb
     image: mariadb
     container_name: mariaDBPeluqueria
     ports:
-      - 3306:3306
+      - "3306:3306"
     expose:
       - 3306
     volumes:
@@ -22,7 +36,7 @@ services:
     container_name: adminer
     restart: always
     ports:
-      - 8080:8080
+      - "8080:8080"
     networks:
       - mariadb-network
     depends_on:
